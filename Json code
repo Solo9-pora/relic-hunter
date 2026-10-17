@@ -1,8 +1,0 @@
-{
-  "leaderboard": {
-    "stats": [
-      { "key": "score", "label": "Score", "order": "highest" },
-      { "key": "artifacts", "label": "Artifacts found", "order": "highest" }
-    ]
-  }
-}
