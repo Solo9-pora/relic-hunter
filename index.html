@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Relic Hunter: Nigeria Edition - start.ng</title>
 <style>
@@ -113,63 +113,63 @@ body.photo #overlay,body.photo #info{background:#000a}
 }
 </style></head><body>
 <div id="viewGame">
-<div class="hud"><div class="grp"><button id="menuBtn">â˜° Menu</button><span id="stageName">Stage 1: Nok</span></div>
-<div class="grp"><span id="coins">ðŸ’° 100</span><span id="lives">â¤ï¸â¤ï¸â¤ï¸</span><span id="score">0</span><span id="time">â± 90s</span><button id="photoBtn" title="Photo mode">ðŸ“·</button><button id="fsBtn" title="Fullscreen">â›¶</button></div></div>
+<div class="hud"><div class="grp"><button id="menuBtn">☰ Menu</button><span id="stageName">Stage 1: Nok</span></div>
+<div class="grp"><span id="coins">💰 100</span><span id="lives">❤️❤️❤️</span><span id="score">0</span><span id="time">⏱ 90s</span><button id="photoBtn" title="Photo mode">📷</button><button id="fsBtn" title="Fullscreen">⛶</button></div></div>
 <div id="grid">
 <canvas id="scene"></canvas>
-<div id="foundWrap">ðŸº <span id="found">0/3</span></div>
-<div id="venom">â˜ ï¸ Venom tickingâ€¦</div>
-<div id="padL"><button id="upBtn">â¬†ï¸</button><button id="leftBtn">â¬…ï¸</button><button id="downBtn">â¬‡ï¸</button><button id="rightBtn">âž¡ï¸</button></div>
-<div id="padR"><div id="zoomRow"><button id="zoomIn">ï¼‹</button><button id="zoomOut">ï¼</button></div><button id="atkBtn">âš”ï¸</button><div id="toolRow"><button id="hbSpear">ðŸ”¨<i id="cSpear">0</i></button><button id="hbMachete">ðŸ”ª<i id="cMachete">0</i></button><button id="hbTorch">ðŸ”¥<i id="cTorch">0</i></button><button id="hbMed">ðŸ©¹<i id="cMed">0</i></button><button id="hbShop">ðŸ›’</button></div></div>
+<div id="foundWrap">🏺 <span id="found">0/3</span></div>
+<div id="venom">☠️ Venom ticking…</div>
+<div id="padL"><button id="upBtn">⬆️</button><button id="leftBtn">⬅️</button><button id="downBtn">⬇️</button><button id="rightBtn">➡️</button></div>
+<div id="padR"><div id="zoomRow"><button id="zoomIn">＋</button><button id="zoomOut">－</button></div><button id="atkBtn">⚔️</button><div id="toolRow"><button id="hbSpear">🔨<i id="cSpear">0</i></button><button id="hbMachete">🔪<i id="cMachete">0</i></button><button id="hbTorch">🔥<i id="cTorch">0</i></button><button id="hbMed">🩹<i id="cMed">0</i></button><button id="hbShop">🛒</button></div></div>
 <div id="digBarWrap"><div id="digBar"></div></div>
-<div id="photoBar"><button id="phSh">ðŸ“¸ Save</button><button id="phRot">â†» Rotate</button><button id="phZIn">ðŸ”ï¼‹</button><button id="phZOut">ðŸ”ï¼</button><button id="phDone">âœ… Done</button></div>
+<div id="photoBar"><button id="phSh">📸 Save</button><button id="phRot">↻ Rotate</button><button id="phZIn">🔍＋</button><button id="phZOut">🔍－</button><button id="phDone">✅ Done</button></div>
 <div id="overlay"><h2 id="ovT">Stage 1: Nok, Plateau State</h2><p id="ovP">Find 3 Nok artifacts in 90s. Avoid traps.</p>
-<div><button class="big" id="play">â–¶ Start Stage 1</button></div>
-<p style="font-size:12px;opacity:.7;max-width:320px">D-pad = move â€¢ âš”ï¸ = attack â€¢ ðŸ›’ = shop â€¢ â˜° = map &amp; gear</p></div>
-<div id="info"><div class="ibox"><div id="infoIcon">ðŸ—¿</div><h3 id="infoTitle"></h3><p><b id="infoMeta"></b></p><p id="infoFact"></p><p id="infoQuiz" style="background:#2a2413;padding:10px;border-radius:10px"></p><div id="quizBox"></div><button class="big" id="continueBtn">Continue â†’</button></div></div>
+<div><button class="big" id="play">▶ Start Stage 1</button></div>
+<p style="font-size:12px;opacity:.7;max-width:320px">D-pad = move • ⚔️ = attack • 🛒 = shop • ☰ = map &amp; gear</p></div>
+<div id="info"><div class="ibox"><div id="infoIcon">🗿</div><h3 id="infoTitle"></h3><p><b id="infoMeta"></b></p><p id="infoFact"></p><p id="infoQuiz" style="background:#2a2413;padding:10px;border-radius:10px"></p><div id="quizBox"></div><button class="big" id="continueBtn">Continue →</button></div></div>
 </div>
 </div>
 
 <div id="menuPage" class="page">
-<div class="mhead"><button id="menuBack">â† Back to game</button>
-<div style="display:flex;gap:8px;align-items:center"><div class="card"><img id="face" alt="face"><div><b id="name">Guest</b><span id="acct">Not signed in</span></div><button id="signin">Sign in</button></div><button class="soundBtn" id="soundBtn">ðŸ”Š Sound: On</button></div></div>
-<h1 style="font-size:18px;text-align:center">ðŸº Relic Hunter: <span>Nigeria Edition</span></h1>
+<div class="mhead"><button id="menuBack">← Back to game</button>
+<div style="display:flex;gap:8px;align-items:center"><div class="card"><img id="face" alt="face"><div><b id="name">Guest</b><span id="acct">Not signed in</span></div><button id="signin">Sign in</button></div><button class="soundBtn" id="soundBtn">🔊 Sound: On</button></div></div>
+<h1 style="font-size:18px;text-align:center">🏺 Relic Hunter: <span>Nigeria Edition</span></h1>
 <p style="font-size:12px;opacity:.75;text-align:center;margin:4px 0 0">Travel through 5 ancient kingdoms. Fight wildlife, dig relics, spend coins on gear.</p>
-<div class="tabs"><button id="tabMap" class="active">ðŸ—ºï¸ Map</button><button id="tabColl">ðŸº Collection (<span id="collCount">0</span>/16)</button><button id="tabInfo">ðŸ“š Artifacts</button><button id="tabBoard">ðŸ† Leaderboard</button><button id="tabHelp">â“ How to play</button></div>
-<div id="viewMap"><div class="mapBox"><h2 style="margin:0">ðŸ—ºï¸ Your Journey Across Nigeria</h2><p style="opacity:.8;font-size:12px">True-to-life geography: Nok (Plateau) â†’ Ife (Osun) â†’ Igbo-Ukwu (Anambra) â†’ Benin City (Edo) â†’ Esie (Kwara) &amp; Owo (Ondo). Tap a dot to play.</p>
+<div class="tabs"><button id="tabMap" class="active">🗺️ Map</button><button id="tabColl">🏺 Collection (<span id="collCount">0</span>/16)</button><button id="tabInfo">📚 Artifacts</button><button id="tabBoard">🏆 Leaderboard</button><button id="tabHelp">❓ How to play</button></div>
+<div id="viewMap"><div class="mapBox"><h2 style="margin:0">🗺️ Your Journey Across Nigeria</h2><p style="opacity:.8;font-size:12px">True-to-life geography: Nok (Plateau) → Ife (Osun) → Igbo-Ukwu (Anambra) → Benin City (Edo) → Esie (Kwara) &amp; Owo (Ondo). Tap a dot to play.</p>
 <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
 <path d="M21 338 L43 341 L85 355 L104 362 L123 378 L131 424 L162 431 L192 426 L223 422 L246 429 L249 394 L257 362 L284 348 L315 339 L345 335 L368 316 L391 289 L411 257 L422 220 L437 174 L453 128 L464 87 L449 32 L426 13 L399 27 L338 17 L276 40 L245 27 L207 17 L146 17 L108 17 L86 40 L75 87 L55 128 L28 174 L21 211 L28 266 Z" fill="#2e4a1a" stroke="#d8fd71" stroke-width="3" stroke-linejoin="round"/>
 <text x="250" y="230" fill="#fff" opacity=".22" font-size="34" font-weight="800" text-anchor="middle">NIGERIA</text>
 <path d="M89 137 L100 170 L108 197 L116 225 L175 274 L181 307 L169 335 L153 358" fill="none" stroke="#2f7fd6" stroke-width="4" opacity=".75" stroke-linecap="round"/>
 <path d="M376 316 L340 299 L301 292 L223 272 L175 274" fill="none" stroke="#2f7fd6" stroke-width="3" opacity=".6" stroke-linecap="round"/>
-<text x="160" y="290" fill="#9cc8ff" font-size="9" opacity=".9" text-anchor="middle">Nigerâ€“Benue confluence</text>
+<text x="160" y="290" fill="#9cc8ff" font-size="9" opacity=".9" text-anchor="middle">Niger–Benue confluence</text>
 <path d="M255 178 L91 290 L186 356 L134 342 L94 260" fill="none" stroke="#ffd700" stroke-width="2.5" stroke-dasharray="7,5" opacity=".65"/>
-<g class="dot" data-stage="1"><circle cx="255" cy="178" r="9" fill="#008751"/><text x="255" y="160">1 NOK â€¢ Plateau</text></g>
-<g class="dot" data-stage="2"><circle cx="91" cy="290" r="9" fill="#e67e22"/><text x="91" y="311">2 IFE â€¢ Osun</text></g>
-<g class="dot" data-stage="3"><circle cx="186" cy="356" r="9" fill="#2980b9"/><text x="196" y="380">3 IGBO-UKWU â€¢ Anambra</text></g>
-<g class="dot" data-stage="4"><circle cx="134" cy="342" r="9" fill="#8e44ad"/><text x="134" y="364">4 BENIN â€¢ Edo</text></g>
-<g class="dot" data-stage="5"><circle cx="94" cy="260" r="9" fill="#c0392b"/><text x="94" y="242">5 ESIE â€¢ Kwara</text><circle cx="135" cy="303" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/><text x="135" y="291">Owo</text></g>
+<g class="dot" data-stage="1"><circle cx="255" cy="178" r="9" fill="#008751"/><text x="255" y="160">1 NOK • Plateau</text></g>
+<g class="dot" data-stage="2"><circle cx="91" cy="290" r="9" fill="#e67e22"/><text x="91" y="311">2 IFE • Osun</text></g>
+<g class="dot" data-stage="3"><circle cx="186" cy="356" r="9" fill="#2980b9"/><text x="196" y="380">3 IGBO-UKWU • Anambra</text></g>
+<g class="dot" data-stage="4"><circle cx="134" cy="342" r="9" fill="#8e44ad"/><text x="134" y="364">4 BENIN • Edo</text></g>
+<g class="dot" data-stage="5"><circle cx="94" cy="260" r="9" fill="#c0392b"/><text x="94" y="242">5 ESIE • Kwara</text><circle cx="135" cy="303" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.5"/><text x="135" y="291">Owo</text></g>
 </svg>
-<div class="mapLegend"><span>âœ… Green = Completed</span><span>â­ Gold = Current</span><span>ðŸ”’ Grey = Locked</span></div><div class="mapCard" id="mapCard"><b>Stage 1: Nok</b> â€” Plateau State â€¢ ~1000 BCE</div></div></div>
-<div id="viewColl" style="display:none"><h2>ðŸº My Collection</h2><p style="opacity:.8;font-size:12px">Saved on this device.</p><div class="gallery" id="collGrid"></div></div>
-<div id="viewInfo" style="display:none"><h2>ðŸ“š All Artifacts â€” Encyclopedia</h2><p style="opacity:.8;font-size:12px">Tap any card to read its full story. ðŸ”’ = not yet collected.</p><div class="gallery" id="allGrid"></div></div>
-<div id="viewBoard" style="display:none"><h2>ðŸ† Leaderboard</h2><div id="board"><ol id="lb"></ol><div id="note" style="font-size:12px;opacity:.7"></div></div></div>
+<div class="mapLegend"><span>✅ Green = Completed</span><span>⭐ Gold = Current</span><span>🔒 Grey = Locked</span></div><div class="mapCard" id="mapCard"><b>Stage 1: Nok</b> — Plateau State • ~1000 BCE</div></div></div>
+<div id="viewColl" style="display:none"><h2>🏺 My Collection</h2><p style="opacity:.8;font-size:12px">Saved on this device.</p><div class="gallery" id="collGrid"></div></div>
+<div id="viewInfo" style="display:none"><h2>📚 All Artifacts — Encyclopedia</h2><p style="opacity:.8;font-size:12px">Tap any card to read its full story. 🔒 = not yet collected.</p><div class="gallery" id="allGrid"></div></div>
+<div id="viewBoard" style="display:none"><h2>🏆 Leaderboard</h2><div id="board"><ol id="lb"></ol><div id="note" style="font-size:12px;opacity:.7"></div></div></div>
 </div>
 <div id="toast"></div>
-<div class="modal" id="helpModal"><div class="mbox"><button class="close" data-close="helpModal">âœ•</button><h2>â“ How to play</h2><div class="guide">
-<p><b class="g">Goal</b> â€” every stage buries its relics under soil mounds. Step on a mound and your explorer digs it up. Find them all before time runs out, keeping your 3 lives.</p>
-<p><b class="g">Move</b> with Arrow keys / WASD / D-pad. <b class="g">Drag</b> the scene to orbit the camera and <b class="g">scroll</b> to zoom â€” your keys follow what the camera sees. Face a beast, then press <span class="kitem">Space</span> or âš”ï¸ to attack whatever is one step in front of you.</p>
-<p><b class="g">Coins ðŸ’°</b> start at 100. Earn more: dig an artifact <b>+30</b>, golden coins lying in the field <b>+5</b> each, kill a lion <b>+25</b>, kill a snake <b>+15</b>, cut thorns <b>+5</b> each, a beast caught in a trap <b>+15</b>, stage clear <b>+40</b> plus 1 per second left. Coins and gear are saved on this device.</p>
-<p><b class="g">Hazards</b> â€” ðŸ¦ <b>Lions</b> wander the dig site, chase you when you get close, and cost 1 life on contact (they back off after). ðŸ <b>Snakes</b> rest beside mounds; step on one and it bites â€” venom kills in 12s unless you cure it. ðŸ¥€ <b>Thorns</b> block paths like walls; a machete cuts through. ðŸª¤ <b>Traps</b> cost a life and send you back to the start. On stages 4â€“5 the ðŸ‘¹ <b>palace Guard</b> hunts you too.</p>
-<p><b class="g">Digging &amp; hints</b> â€” digging by hand takes a slow 1.9s (watch the bar); a â›ï¸ steel shovel cuts it to 0.6s. You get <b>2 free shimmer hints</b> per stage; after that the mounds stay dark â€” buy the ðŸ—ºï¸ Stage map so every mound is marked and hinted for the whole stage, or guess by watching where animals gather.</p>
-<p><b class="g">Your gear</b> â€” open the ðŸ›’ shop any time (pauses the action) or press <span class="kitem">B</span>: ðŸ”¨ <b>Spear</b> (ðŸ’°80) kills a lion or snake one step ahead â€” 3 throws each purchase. ðŸ”ª <b>Machete</b> (ðŸ’°60) kills snakes and cuts thorns in front. ðŸ”¥ <b>Torch</b> (ðŸ’°40) panics the nearest lion into fleeing. ðŸ©¹ <b>Medkit</b> (ðŸ’°90): press <span class="kitem">H</span> to restore a life. ðŸ’§ <b>Anti-venom</b> (ðŸ’°70) auto-cures a snake bite. ðŸ“¡ <b>Metal detector</b> (ðŸ’°120): mounds within 2 steps glow while you own it. ðŸ—ºï¸ <b>Stage map</b> (ðŸ’°150): consumed at stage start and marks every mound with continuous hints. â›ï¸ <b>Steel shovel</b> (ðŸ’°140): digs take 0.6s instead of 1.9s, forever.</p>
-<p><b class="g">Camera &amp; screen</b> â€” drag the scene to orbit, pinch (or ï¼‹ï¼ï¼ buttons, or scroll) to zoom, and tap â›¶ in the top bar for fullscreen on mobile. Lions and snakes are marked with glowing rings; thorns blaze orange-red.</p>
-<p><b class="g">Leaderboard &amp; stars</b> â€” sign in with start.ng. Each cleared stage saves your best <b>Score</b> (100 points per artifact + 10 per second remaining) and <b>time left</b> to the shared board. Stars â­ rate your stage: keep all 3 lives for â­â­â­, â­â­ with two, â­ with one.</p>
-<p><b class="g">BOSS fight!</b> â€” dig the final artifact of any stage and its guardian awakens: the <b class="g">Stone Beast of Nok</b>, the <b class="g">Roaring Titan of Ife</b>, the <b class="g">River Serpent Lord</b>, the <b class="g">Palace Warden</b>, or the <b class="g">Esie Stone Golem</b>. Face it and hit with ðŸ”¨ spear (or ðŸ”ª machete) 2â€“3 times before it crushes you. Beating it is worth +ðŸ’°50 and finishes the stage.</p>
-<p><b class="g">Extras</b> â€” ancient quizzes after each dig earn +ðŸ’°15. Floating emojis ðŸ˜¡ðŸ˜´ðŸ˜± show what every beast is up to. The board sometimes ðŸŒ‹ <b>rearranges its walls</b> mid-stage, so rethink your route! Tap ðŸ“· in the top bar for <b>photo mode</b> (rotate, zoom, save a PNG with your explorer and relic). Listen for the savanna wind, chirping birds, drums â€” and your heartbeat when danger is one step away. The highlife jingle plays when you clear a stage!</p>
-<p><b class="g">The journey</b> â€” Stage 1 Nok (~1000 BCE terracotta & iron) â†’ 2 Ife (12thâ€“15th C royal bronzes) â†’ 3 Igbo-Ukwu (9th C bronze hoard) â†’ 4 Benin (15th C palace bronzes, the Guard!) â†’ 5 Esie & Owo (soapstone & terracotta). Every artifact card tells the true story.</p>
+<div class="modal" id="helpModal"><div class="mbox"><button class="close" data-close="helpModal">✕</button><h2>❓ How to play</h2><div class="guide">
+<p><b class="g">Goal</b> — every stage buries its relics under soil mounds. Step on a mound and your explorer digs it up. Find them all before time runs out, keeping your 3 lives.</p>
+<p><b class="g">Move</b> with Arrow keys / WASD / D-pad. <b class="g">Drag</b> the scene to orbit the camera and <b class="g">scroll</b> to zoom — your keys follow what the camera sees. Face a beast, then press <span class="kitem">Space</span> or ⚔️ to attack whatever is one step in front of you.</p>
+<p><b class="g">Coins 💰</b> start at 100. Earn more: dig an artifact <b>+30</b>, golden coins lying in the field <b>+5</b> each, kill a lion <b>+25</b>, kill a snake <b>+15</b>, cut thorns <b>+5</b> each, a beast caught in a trap <b>+15</b>, stage clear <b>+40</b> plus 1 per second left. Coins and gear are saved on this device.</p>
+<p><b class="g">Hazards</b> — 🦁 <b>Lions</b> wander the dig site, chase you when you get close, and cost 1 life on contact (they back off after). 🐍 <b>Snakes</b> rest beside mounds; step on one and it bites — venom kills in 12s unless you cure it. 🥀 <b>Thorns</b> block paths like walls; a machete cuts through. 🪤 <b>Traps</b> cost a life and send you back to the start. On stages 4–5 the 👹 <b>palace Guard</b> hunts you too.</p>
+<p><b class="g">Digging &amp; hints</b> — digging by hand takes a slow 1.9s (watch the bar); a ⛏️ steel shovel cuts it to 0.6s. You get <b>2 free shimmer hints</b> per stage; after that the mounds stay dark — buy the 🗺️ Stage map so every mound is marked and hinted for the whole stage, or guess by watching where animals gather.</p>
+<p><b class="g">Your gear</b> — open the 🛒 shop any time (pauses the action) or press <span class="kitem">B</span>: 🔨 <b>Spear</b> (💰80) kills a lion or snake one step ahead — 3 throws each purchase. 🔪 <b>Machete</b> (💰60) kills snakes and cuts thorns in front. 🔥 <b>Torch</b> (💰40) panics the nearest lion into fleeing. 🩹 <b>Medkit</b> (💰90): press <span class="kitem">H</span> to restore a life. 💧 <b>Anti-venom</b> (💰70) auto-cures a snake bite. 📡 <b>Metal detector</b> (💰120): mounds within 2 steps glow while you own it. 🗺️ <b>Stage map</b> (💰150): consumed at stage start and marks every mound with continuous hints. ⛏️ <b>Steel shovel</b> (💰140): digs take 0.6s instead of 1.9s, forever.</p>
+<p><b class="g">Camera &amp; screen</b> — drag the scene to orbit, pinch (or ＋／－ buttons, or scroll) to zoom, and tap ⛶ in the top bar for fullscreen on mobile. Lions and snakes are marked with glowing rings; thorns blaze orange-red.</p>
+<p><b class="g">Leaderboard &amp; stars</b> — sign in with start.ng. Each cleared stage saves your best <b>Score</b> (100 points per artifact + 10 per second remaining) and <b>time left</b> to the shared board. Stars ⭐ rate your stage: keep all 3 lives for ⭐⭐⭐, ⭐⭐ with two, ⭐ with one.</p>
+<p><b class="g">BOSS fight!</b> — dig the final artifact of any stage and its guardian awakens: the <b class="g">Stone Beast of Nok</b>, the <b class="g">Roaring Titan of Ife</b>, the <b class="g">River Serpent Lord</b>, the <b class="g">Palace Warden</b>, or the <b class="g">Esie Stone Golem</b>. Face it and hit with 🔨 spear (or 🔪 machete) 2–3 times before it crushes you. Beating it is worth +💰50 and finishes the stage.</p>
+<p><b class="g">Extras</b> — ancient quizzes after each dig earn +💰15. Floating emojis 😡😴😱 show what every beast is up to. The board sometimes 🌋 <b>rearranges its walls</b> mid-stage, so rethink your route! Tap 📷 in the top bar for <b>photo mode</b> (rotate, zoom, save a PNG with your explorer and relic). Listen for the savanna wind, chirping birds, drums — and your heartbeat when danger is one step away. The highlife jingle plays when you clear a stage!</p>
+<p><b class="g">The journey</b> — Stage 1 Nok (~1000 BCE terracotta & iron) → 2 Ife (12th–15th C royal bronzes) → 3 Igbo-Ukwu (9th C bronze hoard) → 4 Benin (15th C palace bronzes, the Guard!) → 5 Esie & Owo (soapstone & terracotta). Every artifact card tells the true story.</p>
 </div></div></div>
-<div class="modal" id="shopModal"><div class="mbox"><button class="close" data-close="shopModal">âœ•</button><h2>ðŸ›’ Safari Supply Store â€” <span id="shopCoins">ðŸ’° 100</span></h2><p style="font-size:12px;opacity:.75;margin-top:0">Gear is saved on this device. Weapons use one charge per strike.</p><div id="shopList"></div></div></div>
+<div class="modal" id="shopModal"><div class="mbox"><button class="close" data-close="shopModal">✕</button><h2>🛒 Safari Supply Store — <span id="shopCoins">💰 100</span></h2><p style="font-size:12px;opacity:.75;margin-top:0">Gear is saved on this device. Weapons use one charge per strike.</p><div id="shopList"></div></div></div>
 </div>
 <script type="module">
 import * as THREE from './three.module.min.js';
@@ -216,7 +216,7 @@ function startAmbient(){
 }
 function stopAmbient(){ambTm.forEach(t=>clearTimeout(t));ambTm=[];try{if(ambWind)ambWind.stop()}catch(e){}ambWind=null}
 
-// ===== TALK TO start.ng â€” EXACTLY PER DOCS =====
+// ===== TALK TO start.ng — EXACTLY PER DOCS =====
 const START_NG='https://start.ng';
 let frameP;
 function connectFrame(){frameP??=new Promise((resolve,reject)=>{const el=document.createElement('iframe');el.src=`${START_NG}/connect`;el.hidden=true;el.onload=()=>resolve(el);el.onerror=reject;document.body.append(el)});return frameP}
@@ -261,18 +261,18 @@ let owned={detector:false,shovel:false,...JSON.parse(localStorage.getItem('rh_ow
 function saveEco(){localStorage.setItem('rh_coins',String(coins));localStorage.setItem('rh_inv',JSON.stringify(inventory));localStorage.setItem('rh_own',JSON.stringify(owned));updEco()}
 function addCoins(n){coins+=n;saveEco();if(n>0)playCoinT()}
 const SHOP=[
-{id:'spear',ic:'ðŸ”¨',name:'Spear',price:80,desc:'Kills a lion or snake one step ahead. 3 throws per buy, keep up to 9.'},
-{id:'machete',ic:'ðŸ”ª',name:'Machete',price:60,desc:'Kills snakes and cuts thorns right in front. 6 uses per buy, keep up to 9.'},
-{id:'torch',ic:'ðŸ”¥',name:'Torch',price:40,desc:'Panics the nearest lion into fleeing. 3 uses per buy, keep up to 9.'},
-{id:'medkit',ic:'ðŸ©¹',name:'Medic kit',price:90,desc:'Press H to restore 1 life. Stack up to 3.'},
-{id:'antivenom',ic:'ðŸ’§',name:'Anti-venom',price:70,desc:'Auto-cures a snake bite. Stack up to 3.'},
-{id:'detector',ic:'ðŸ“¡',name:'Metal detector',price:120,desc:'While owned, mounds within 2 steps of you glow. Keep forever.'},
-{id:'mapitem',ic:'ðŸ—ºï¸',name:'Stage map',price:150,desc:'Used automatically at stage start: every mound is marked AND hinted continuously all stage long.'},
-{id:'shovel',ic:'â›ï¸',name:'Steel shovel',price:140,desc:'Digging takes 0.6s instead of 1.9s. Keep forever.'},
+{id:'spear',ic:'🔨',name:'Spear',price:80,desc:'Kills a lion or snake one step ahead. 3 throws per buy, keep up to 9.'},
+{id:'machete',ic:'🔪',name:'Machete',price:60,desc:'Kills snakes and cuts thorns right in front. 6 uses per buy, keep up to 9.'},
+{id:'torch',ic:'🔥',name:'Torch',price:40,desc:'Panics the nearest lion into fleeing. 3 uses per buy, keep up to 9.'},
+{id:'medkit',ic:'🩹',name:'Medic kit',price:90,desc:'Press H to restore 1 life. Stack up to 3.'},
+{id:'antivenom',ic:'💧',name:'Anti-venom',price:70,desc:'Auto-cures a snake bite. Stack up to 3.'},
+{id:'detector',ic:'📡',name:'Metal detector',price:120,desc:'While owned, mounds within 2 steps of you glow. Keep forever.'},
+{id:'mapitem',ic:'🗺️',name:'Stage map',price:150,desc:'Used automatically at stage start: every mound is marked AND hinted continuously all stage long.'},
+{id:'shovel',ic:'⛏️',name:'Steel shovel',price:140,desc:'Digging takes 0.6s instead of 1.9s. Keep forever.'},
 ];
 function updEco(){
-  document.getElementById('coins').textContent='ðŸ’° '+coins;
-  const sc=document.getElementById('shopCoins');if(sc)sc.textContent='ðŸ’° '+coins;
+  document.getElementById('coins').textContent='💰 '+coins;
+  const sc=document.getElementById('shopCoins');if(sc)sc.textContent='💰 '+coins;
   document.getElementById('cSpear').textContent='x'+inventory.spear;
   document.getElementById('cMachete').textContent='x'+inventory.machete;
   document.getElementById('cTorch').textContent='x'+inventory.torch;
@@ -286,7 +286,7 @@ function renderShop(){
   let html='';
   SHOP.forEach(it=>{
     let btn;
-    if(it.id==='detector'||it.id==='shovel')btn=owned[it.id]?'<button disabled>Owned âœ“</button>':'<button data-buy="'+it.id+'">Buy '+it.price+'</button>';
+    if(it.id==='detector'||it.id==='shovel')btn=owned[it.id]?'<button disabled>Owned ✓</button>':'<button data-buy="'+it.id+'">Buy '+it.price+'</button>';
     else{const cap=(it.id==='medkit'||it.id==='antivenom')?3:9;const cur=inventory[it.id]||0;btn=cur>=cap?'<button disabled>Full</button>':'<button data-buy="'+it.id+'">Buy '+it.price+'</button>'}
     const extra=(!('detector'===it.id||'shovel'===it.id)&&inventory[it.id])?' ('+inventory[it.id]+' ready)':'';
     html+='<div class="shopItem"><div class="ic">'+it.ic+'</div><div><b>'+it.name+extra+'</b><p>'+it.desc+'</p></div>'+btn+'</div>';
@@ -294,7 +294,7 @@ function renderShop(){
   document.getElementById('shopList').innerHTML=html;
   document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{
     const id=b.dataset.buy,it=SHOP.find(s=>s.id===id);
-    if(coins<it.price){playTrap();toast('Not enough ðŸ’° â€” need '+(it.price-coins)+' more');return}
+    if(coins<it.price){playTrap();toast('Not enough 💰 — need '+(it.price-coins)+' more');return}
     coins-=it.price;
     if(id==='detector'||id==='shovel')owned[id]=true;else inventory[id]=Math.min(9,(inventory[id]||0)+1);
     playBuy();toast(it.ic+' '+it.name+' purchased!');saveEco();renderShop();
@@ -312,22 +312,22 @@ document.getElementById('hbShop').onclick=()=>{clickSnd();toggleModal('shopModal
 
 // ===== DATA =====
 const ARTIFACTS=[
-{id:'nok-head',stage:1,icon:'ðŸ—¿',title:'Nok Terracotta Head',meta:'Nok â€¢ Plateau â€¢ ~1000 BCE - 500 CE â€¢ Terracotta',fact:"One of Africa's oldest sculptures. Nok artists made lifelike heads with elaborate hairstyles and beads over 2,000 years ago. Nok people were among the first in West Africa to smelt iron.",quiz:"ðŸ§  Older than ancient Rome's empire.",q:{c:'What material is the Nok head made of?',o:['Bronze','Terracotta','Grass'],a:1}},
-{id:'nok-figure',stage:1,icon:'ðŸ—¿',title:'Nok Terracotta Figure',meta:'Nok â€¢ ~500 BCE â€¢ Terracotta',fact:'Full figures show farmers, warriors and leaders, proving Nok society had farming, iron, trade and spiritual life.',quiz:'ðŸ§  Often found buried, used in rituals.',q:{c:'What did the figures prove about Nok society?',o:['They had farming, iron and trade','They never made tools','They ate pizza'],a:0}},
-{id:'nok-pot',stage:1,icon:'ðŸº',title:'Nok Ritual Vessel',meta:'Nok â€¢ ~800 BCE â€¢ Terracotta',fact:'Nok vessels were used for rituals and offerings, decorated with geometric patterns still seen in Nigerian art today.',quiz:'ðŸ§  Nok art influenced later Nigerian traditions.',q:{c:'Nok vessels were mainly used forâ€¦',o:['Rituals and offerings','Fridge storage','Piggy banks'],a:0}},
-{id:'ife-head',stage:2,icon:'ðŸ‘‘',title:'Ife Bronze Head (Ooni)',meta:'Ife â€¢ Osun â€¢ 12th-15th C â€¢ Bronze, lost-wax',fact:'Naturalistic heads of kings. When found, Europeans doubted Africans made them. Today they are world masterpieces.',quiz:'ðŸ§  Ife is called the cradle of the Yoruba.',q:{c:'Which technique created the Ife bronzes?',o:['Lost-wax casting','3D printing','Wood carving'],a:0}},
-{id:'ife-seated',stage:2,icon:'ðŸ‘‘',title:'Ife Seated Royal Figure',meta:'Ife â€¢ 13th-14th C â€¢ Bronze/Stone',fact:'Royal figures in calm, powerful poses with crowns and beads. Kings were both political and spiritual leaders.',quiz:'ðŸ§  Ife art influenced Benin art.',q:{c:'Ife kings wereâ€¦',o:['Only rich men','Political AND spiritual leaders','Farmers only'],a:1}},
-{id:'ife-beads',stage:2,icon:'ðŸ“¿',title:'Ife Royal Beadwork',meta:'Ife â€¢ 14th C â€¢ Glass / Stone Beads',fact:'Coral and glass beads marked royalty in Ife. Only kings could wear certain colours and patterns.',quiz:'ðŸ§  Coral beads still mean royalty in Yorubaland today.',q:{c:'Who wore the special coral beads?',o:['Anyone','Only royals','Planning committee'],a:1}},
-{id:'ukwu-vessel',stage:3,icon:'ðŸº',title:'Igbo-Ukwu Bronze Vessel',meta:'Igbo-Ukwu â€¢ Anambra â€¢ 9th C â€¢ Bronze',fact:'Intricate vessels, ornaments and staffs cast 1,100+ years ago. Proved a wealthy, complex Igbo society thrived long before colonial contact.',quiz:'ðŸ§  Found in 1939 by a farmer digging a well.',q:{c:'The Igbo-Ukwu bronzes are aboutâ€¦',o:['1,100+ years old','10 years old','Ancient news stories'],a:0}},
-{id:'ukwu-staff',stage:3,icon:'ðŸª„',title:'Igbo-Ukwu Ceremonial Staff',meta:'Igbo-Ukwu â€¢ 9th C â€¢ Bronze',fact:'Bronze staffs with spirals and animals were symbols of priestly and political power.',quiz:'ðŸ§  Lost-wax casting is still practised in Nigeria.',q:{c:'The staffs symbolisedâ€¦',o:['Priestly & political power','Garden tools','Fridge magnets'],a:0}},
-{id:'ukwu-pendant',stage:3,icon:'ðŸ’',title:'Igbo-Ukwu Bronze Pendant',meta:'Igbo-Ukwu â€¢ 9th C â€¢ Bronze / Copper',fact:'Delicate pendants and jewellery show Igbo-Ukwu artists mastered metalwork with incredible detail.',quiz:"ðŸ§  Igbo-Ukwu is one of Africa's earliest bronze traditions.",q:{c:'The pendants show the artistsâ€¦',o:['Incredible metalwork detail','Golf skills','Speed fencing'],a:0}},
-{id:'benin-head',stage:4,icon:'ðŸ‘‘',title:'Benin Bronze Head (Oba)',meta:'Benin â€¢ Edo â€¢ 15th-16th C â€¢ Bronze',fact:'Heads of Obas placed on royal altars to honour ancestors. Each Oba had his own head made after death.',quiz:'ðŸ§  Benin City was once larger than London in its time.',q:{c:'The heads honouredâ€¦',o:['Ancestor Obas','Footballers','Snakes'],a:0}},
-{id:'benin-plaque',stage:4,icon:'ðŸ–¼ï¸',title:'Benin Plaque â€” Royal Court',meta:'Benin â€¢ 16th C â€¢ Bronze Plaque',fact:'Bronze plaques covered palace walls like history books, telling stories of kings, warriors and traders.',quiz:'ðŸ§  Many Benin Bronzes were looted in 1897; Nigeria is still seeking their return.',q:{c:'The plaques worked likeâ€¦',o:['History books on walls','TV screens','Billboards'],a:0}},
-{id:'benin-rooster',stage:4,icon:'ðŸ“',title:'Benin Bronze Rooster',meta:'Benin â€¢ 18th C â€¢ Bronze',fact:'The rooster symbolised the Queen Mother (Iyoba). Roosters on the palace showed the power of royal women.',quiz:'ðŸ§  One famous rooster was returned to Nigeria in 2021.',q:{c:'The rooster symbolised theâ€¦',o:['Queen Mother (Iyoba)','Village chief','Market day'],a:0}},
-{id:'benin-leopard',stage:4,icon:'ðŸ†',title:'Benin Leopard â€” Royal Symbol',meta:'Benin â€¢ 16th C â€¢ Bronze',fact:"The leopard was the Oba's personal symbol â€” powerful, fast, king of the forest. Only the Oba could kill a leopard.",quiz:'ðŸ§  Leopards still appear on Edo royal regalia.',q:{c:'Who alone could kill a leopard?',o:['The Oba','Everyone','The army'],a:0}},
-{id:'esie-figure',stage:5,icon:'ðŸ—¿',title:'Esie Soapstone Figure',meta:'Esie â€¢ Kwara â€¢ ~12th-15th C â€¢ Soapstone',fact:'Over 800 soapstone figures found at Esie â€” the largest collection in West Africa. Their origins are still a mystery.',quiz:"ðŸ§  Esie Museum was Nigeria's first museum (1945).",q:{c:'How many Esie figures were found?',o:['Over 800','12','2'],a:0}},
-{id:'owo-head',stage:5,icon:'ðŸ—¿',title:'Owo Terracotta Head',meta:'Owo â€¢ Ondo â€¢ 15th-16th C â€¢ Terracotta',fact:'Owo art blends Ife naturalism and Benin court style, showing links between Yoruba kingdoms.',quiz:'ðŸ§  Owo was a powerful kingdom between Ife and Benin.',q:{c:'Owo art blends the styles ofâ€¦',o:['Ife and Benin','Cairo and Rome','Spain and Mali'],a:0}},
-{id:'tada-figure',stage:5,icon:'ðŸ¥‰',title:'Tada Bronze Figure',meta:'Tada â€¢ Niger â€¢ ~13th-14th C â€¢ Bronze',fact:'Tada bronzes in Nupe land show advanced casting and connections across Nigeria long before modern borders.',quiz:'ðŸ§  Tada proves bronze art was not limited to one kingdom.',q:{c:'Tada bronzes come fromâ€¦',o:['Nupe land, Niger State','Lagos Island','Mount Kilimanjaro'],a:0}},
+{id:'nok-head',stage:1,icon:'🗿',title:'Nok Terracotta Head',meta:'Nok • Plateau • ~1000 BCE - 500 CE • Terracotta',fact:"One of Africa's oldest sculptures. Nok artists made lifelike heads with elaborate hairstyles and beads over 2,000 years ago. Nok people were among the first in West Africa to smelt iron.",quiz:"🧠 Older than ancient Rome's empire.",q:{c:'What material is the Nok head made of?',o:['Bronze','Terracotta','Grass'],a:1}},
+{id:'nok-figure',stage:1,icon:'🗿',title:'Nok Terracotta Figure',meta:'Nok • ~500 BCE • Terracotta',fact:'Full figures show farmers, warriors and leaders, proving Nok society had farming, iron, trade and spiritual life.',quiz:'🧠 Often found buried, used in rituals.',q:{c:'What did the figures prove about Nok society?',o:['They had farming, iron and trade','They never made tools','They ate pizza'],a:0}},
+{id:'nok-pot',stage:1,icon:'🏺',title:'Nok Ritual Vessel',meta:'Nok • ~800 BCE • Terracotta',fact:'Nok vessels were used for rituals and offerings, decorated with geometric patterns still seen in Nigerian art today.',quiz:'🧠 Nok art influenced later Nigerian traditions.',q:{c:'Nok vessels were mainly used for…',o:['Rituals and offerings','Fridge storage','Piggy banks'],a:0}},
+{id:'ife-head',stage:2,icon:'👑',title:'Ife Bronze Head (Ooni)',meta:'Ife • Osun • 12th-15th C • Bronze, lost-wax',fact:'Naturalistic heads of kings. When found, Europeans doubted Africans made them. Today they are world masterpieces.',quiz:'🧠 Ife is called the cradle of the Yoruba.',q:{c:'Which technique created the Ife bronzes?',o:['Lost-wax casting','3D printing','Wood carving'],a:0}},
+{id:'ife-seated',stage:2,icon:'👑',title:'Ife Seated Royal Figure',meta:'Ife • 13th-14th C • Bronze/Stone',fact:'Royal figures in calm, powerful poses with crowns and beads. Kings were both political and spiritual leaders.',quiz:'🧠 Ife art influenced Benin art.',q:{c:'Ife kings were…',o:['Only rich men','Political AND spiritual leaders','Farmers only'],a:1}},
+{id:'ife-beads',stage:2,icon:'📿',title:'Ife Royal Beadwork',meta:'Ife • 14th C • Glass / Stone Beads',fact:'Coral and glass beads marked royalty in Ife. Only kings could wear certain colours and patterns.',quiz:'🧠 Coral beads still mean royalty in Yorubaland today.',q:{c:'Who wore the special coral beads?',o:['Anyone','Only royals','Planning committee'],a:1}},
+{id:'ukwu-vessel',stage:3,icon:'🏺',title:'Igbo-Ukwu Bronze Vessel',meta:'Igbo-Ukwu • Anambra • 9th C • Bronze',fact:'Intricate vessels, ornaments and staffs cast 1,100+ years ago. Proved a wealthy, complex Igbo society thrived long before colonial contact.',quiz:'🧠 Found in 1939 by a farmer digging a well.',q:{c:'The Igbo-Ukwu bronzes are about…',o:['1,100+ years old','10 years old','Ancient news stories'],a:0}},
+{id:'ukwu-staff',stage:3,icon:'🪄',title:'Igbo-Ukwu Ceremonial Staff',meta:'Igbo-Ukwu • 9th C • Bronze',fact:'Bronze staffs with spirals and animals were symbols of priestly and political power.',quiz:'🧠 Lost-wax casting is still practised in Nigeria.',q:{c:'The staffs symbolised…',o:['Priestly & political power','Garden tools','Fridge magnets'],a:0}},
+{id:'ukwu-pendant',stage:3,icon:'💍',title:'Igbo-Ukwu Bronze Pendant',meta:'Igbo-Ukwu • 9th C • Bronze / Copper',fact:'Delicate pendants and jewellery show Igbo-Ukwu artists mastered metalwork with incredible detail.',quiz:"🧠 Igbo-Ukwu is one of Africa's earliest bronze traditions.",q:{c:'The pendants show the artists…',o:['Incredible metalwork detail','Golf skills','Speed fencing'],a:0}},
+{id:'benin-head',stage:4,icon:'👑',title:'Benin Bronze Head (Oba)',meta:'Benin • Edo • 15th-16th C • Bronze',fact:'Heads of Obas placed on royal altars to honour ancestors. Each Oba had his own head made after death.',quiz:'🧠 Benin City was once larger than London in its time.',q:{c:'The heads honoured…',o:['Ancestor Obas','Footballers','Snakes'],a:0}},
+{id:'benin-plaque',stage:4,icon:'🖼️',title:'Benin Plaque — Royal Court',meta:'Benin • 16th C • Bronze Plaque',fact:'Bronze plaques covered palace walls like history books, telling stories of kings, warriors and traders.',quiz:'🧠 Many Benin Bronzes were looted in 1897; Nigeria is still seeking their return.',q:{c:'The plaques worked like…',o:['History books on walls','TV screens','Billboards'],a:0}},
+{id:'benin-rooster',stage:4,icon:'🐓',title:'Benin Bronze Rooster',meta:'Benin • 18th C • Bronze',fact:'The rooster symbolised the Queen Mother (Iyoba). Roosters on the palace showed the power of royal women.',quiz:'🧠 One famous rooster was returned to Nigeria in 2021.',q:{c:'The rooster symbolised the…',o:['Queen Mother (Iyoba)','Village chief','Market day'],a:0}},
+{id:'benin-leopard',stage:4,icon:'🐆',title:'Benin Leopard — Royal Symbol',meta:'Benin • 16th C • Bronze',fact:"The leopard was the Oba's personal symbol — powerful, fast, king of the forest. Only the Oba could kill a leopard.",quiz:'🧠 Leopards still appear on Edo royal regalia.',q:{c:'Who alone could kill a leopard?',o:['The Oba','Everyone','The army'],a:0}},
+{id:'esie-figure',stage:5,icon:'🗿',title:'Esie Soapstone Figure',meta:'Esie • Kwara • ~12th-15th C • Soapstone',fact:'Over 800 soapstone figures found at Esie — the largest collection in West Africa. Their origins are still a mystery.',quiz:"🧠 Esie Museum was Nigeria's first museum (1945).",q:{c:'How many Esie figures were found?',o:['Over 800','12','2'],a:0}},
+{id:'owo-head',stage:5,icon:'🗿',title:'Owo Terracotta Head',meta:'Owo • Ondo • 15th-16th C • Terracotta',fact:'Owo art blends Ife naturalism and Benin court style, showing links between Yoruba kingdoms.',quiz:'🧠 Owo was a powerful kingdom between Ife and Benin.',q:{c:'Owo art blends the styles of…',o:['Ife and Benin','Cairo and Rome','Spain and Mali'],a:0}},
+{id:'tada-figure',stage:5,icon:'🥉',title:'Tada Bronze Figure',meta:'Tada • Niger • ~13th-14th C • Bronze',fact:'Tada bronzes in Nupe land show advanced casting and connections across Nigeria long before modern borders.',quiz:'🧠 Tada proves bronze art was not limited to one kingdom.',q:{c:'Tada bronzes come from…',o:['Nupe land, Niger State','Lagos Island','Mount Kilimanjaro'],a:0}},
 ];
 const STAGES=[
 {num:1,name:'Nok',place:'Plateau State',size:8,time:90,traps:4,walls:4,lions:0,snakes:0,thorns:2,guard:false,boss:'Stone Beast of Nok',desc:'Find 3 Nok artifacts in 90s. A calm safari.',
@@ -336,7 +336,7 @@ const STAGES=[
  bio:{soil:'#4a3b24',ground:'#1f1a0c',rim:'#241d0e',grass:'#2f4a1d',grassC:.5,leaf:'#26421a',trunk:'#4a3320',rock:'#4a4440',trees:32,rocks:6,tufts:60,fog:'#141f0d'}},
 {num:3,name:'Igbo-Ukwu',place:'Anambra State',size:10,time:75,traps:8,walls:8,lions:1,snakes:2,thorns:5,guard:false,boss:'River Serpent Lord',desc:'3 Igbo-Ukwu relics in 75s. Snakes carry venom.',
  bio:{soil:'#4f4434',ground:'#17211d',rim:'#1c2a25',grass:'#31513c',grassC:.45,leaf:'#2d5238',trunk:'#5a4630',rock:'#4d5a50',trees:22,rocks:12,tufts:40,water:'#2b5b54',fog:'#10201c'}},
-{num:4,name:'Benin',place:'Edo State',size:10,time:65,traps:9,walls:9,lions:2,snakes:2,thorns:7,guard:true,boss:'Palace Warden',desc:'4 bronzes in 65s â€” and the palace Guard hunts you!',
+{num:4,name:'Benin',place:'Edo State',size:10,time:65,traps:9,walls:9,lions:2,snakes:2,thorns:7,guard:true,boss:'Palace Warden',desc:'4 bronzes in 65s — and the palace Guard hunts you!',
  bio:{soil:'#6b3320',ground:'#38130a',rim:'#4a1c10',grass:'#3f471c',grassC:.18,leaf:'#3a4a1e',trunk:'#5b3423',rock:'#5c3a2a',trees:14,rocks:10,tufts:26,fog:'#220f07'}},
 {num:5,name:'Esie & Owo',place:'Kwara & Ondo',size:11,time:55,traps:10,walls:10,lions:2,snakes:3,thorns:8,guard:true,boss:'Esie Stone Golem',desc:'Final: 3 treasures in 55s. Everything hunts you.',
  bio:{soil:'#635c52',ground:'#22201c',rim:'#33302b',grass:'#565a41',grassC:.12,leaf:'#4c562e',trunk:'#56483a',rock:'#6f6a62',trees:10,rocks:24,tufts:24,fog:'#1d1c19'}},
@@ -365,12 +365,12 @@ document.getElementById('phZIn').onclick=()=>{sphere=Math.max(6.5,sphere-1.4)};
 document.getElementById('phZOut').onclick=()=>{sphere=Math.min(30,sphere+1.4)};
 document.getElementById('phSh').onclick=()=>{
   try{renderer.render(scene,camera);
-    canvas.toBlob(b=>{if(!b){toast('ðŸ“¸ Capture failed â€” use your phone screenshot');return}
+    canvas.toBlob(b=>{if(!b){toast('📸 Capture failed — use your phone screenshot');return}
       const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='relic-hunter-photo.png';
       document.body.appendChild(a);a.click();a.remove();
       setTimeout(()=>URL.revokeObjectURL(a.href),2000);
-      toast('ðŸ“¸ Photo saved to downloads!')});
-  }catch(e){toast('ðŸ“¸ Use your phone screenshot instead')}
+      toast('📸 Photo saved to downloads!')});
+  }catch(e){toast('📸 Use your phone screenshot instead')}
 };
 
 // ===== MENU / CONTROLS =====
@@ -383,16 +383,16 @@ document.getElementById('menuBtn').onclick=()=>{openMenu();clickSnd()};
 document.getElementById('menuBack').onclick=()=>{closeMenu();clickSnd()};
 document.getElementById('tabMap').onclick=()=>mtab('tabMap');document.getElementById('tabColl').onclick=()=>mtab('tabColl');
 document.getElementById('tabInfo').onclick=()=>mtab('tabInfo');document.getElementById('tabBoard').onclick=()=>mtab('tabBoard');
-document.getElementById('soundBtn').onclick=()=>{soundOn=!soundOn;localStorage.setItem('rh_sound',soundOn?'on':'off');document.getElementById('soundBtn').textContent=soundOn?'ðŸ”Š Sound: On':'ðŸ”‡ Sound: Off';if(soundOn)clickSnd()};
-document.getElementById('soundBtn').textContent=soundOn?'ðŸ”Š Sound: On':'ðŸ”‡ Sound: Off';
+document.getElementById('soundBtn').onclick=()=>{soundOn=!soundOn;localStorage.setItem('rh_sound',soundOn?'on':'off');document.getElementById('soundBtn').textContent=soundOn?'🔊 Sound: On':'🔇 Sound: Off';if(soundOn)clickSnd()};
+document.getElementById('soundBtn').textContent=soundOn?'🔊 Sound: On':'🔇 Sound: Off';
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',2200)}
 let lastToast=0;function toastOnce(m){if(Date.now()-lastToast>1600){lastToast=Date.now();toast(m)}}
 function updateMap(){document.querySelectorAll('.dot').forEach(el=>{const n=+el.dataset.stage;const c=el.querySelector('circle');if(n<unlocked&&n!==curStage){c.setAttribute('fill','#008751')}else if(n===curStage){c.setAttribute('fill','#ffd700');el.classList.add('current')}else{c.setAttribute('fill','#555');el.classList.remove('current')}el.classList.toggle('current',n===curStage);
 el.querySelectorAll('.stars').forEach(t=>t.remove());
-const s=starsMap[n]||0;if(n<=unlocked&&s){const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',c.getAttribute('cx'));t.setAttribute('y',+c.getAttribute('cy')+21);t.setAttribute('fill','#ffd700');t.setAttribute('font-size','10');t.setAttribute('text-anchor','middle');t.setAttribute('class','stars');t.textContent='â˜…'.repeat(s);el.appendChild(t)}
+const s=starsMap[n]||0;if(n<=unlocked&&s){const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',c.getAttribute('cx'));t.setAttribute('y',+c.getAttribute('cy')+21);t.setAttribute('fill','#ffd700');t.setAttribute('font-size','10');t.setAttribute('text-anchor','middle');t.setAttribute('class','stars');t.textContent='★'.repeat(s);el.appendChild(t)}
 });
-const st=STAGES[curStage-1];document.getElementById('mapCard').innerHTML='<b>Stage '+st.num+': '+st.name+'</b> â€” '+st.place+'<br>'+st.desc+' â€¢ Unlocked: '+unlocked+'/5 â€¢ Collected: '+collected.length+'/16 â€¢ Stars: '+('â­'.repeat(starsMap[curStage]||0)||'â€”')+' â€¢ ðŸ’°'+coins}
-document.querySelectorAll('.dot').forEach(el=>el.onclick=()=>{const n=+el.dataset.stage;if(n>unlocked){toast('ðŸ”’ Stage '+n+' is locked. Finish Stage '+(n-1)+' first!');playTrap();return}clickSnd();curStage=n;setupStage(n);scrollTo(0,0)});
+const st=STAGES[curStage-1];document.getElementById('mapCard').innerHTML='<b>Stage '+st.num+': '+st.name+'</b> — '+st.place+'<br>'+st.desc+' • Unlocked: '+unlocked+'/5 • Collected: '+collected.length+'/16 • Stars: '+('⭐'.repeat(starsMap[curStage]||0)||'—')+' • 💰'+coins}
+document.querySelectorAll('.dot').forEach(el=>el.onclick=()=>{const n=+el.dataset.stage;if(n>unlocked){toast('🔒 Stage '+n+' is locked. Finish Stage '+(n-1)+' first!');playTrap();return}clickSnd();curStage=n;setupStage(n);scrollTo(0,0)});
 
 // ===== 3D SCENE =====
 const canvas=document.getElementById('scene');
@@ -400,7 +400,7 @@ let renderer;
 try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true})}catch(e){renderer=undefined}
 const hasGL=!!renderer;
 if(!renderer){
-  document.getElementById('grid').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:20px;text-align:center;opacity:.8">3D is not available on this device â€” the game needs WebGL.</div>';
+  document.getElementById('grid').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:20px;text-align:center;opacity:.8">3D is not available on this device — the game needs WebGL.</div>';
 }else{renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap}
 const scene=new THREE.Scene();
 scene.background=new THREE.Color('#1c150c');
@@ -674,10 +674,10 @@ function loop(){
     if(badgeVec.z>1||!bw){b.style.display='none';return}
     b.style.display='block';b.style.left=Math.round((badgeVec.x*0.5+0.5)*bw)+'px';b.style.top=Math.round((-badgeVec.y*0.5+0.5)*bh)+'px';
     if(b.textContent!==txt)b.textContent=txt};
-  for(const L of lions)updBadge(L.badge,L.g,L.flee>0?'ðŸ˜±':(Math.abs(px-L.x)+Math.abs(py-L.y)<=3?'ðŸ˜¡':'ðŸ˜´'));
-  for(const S of snakes)updBadge(S.badge,S.g,'ðŸ');
-  if(guard3D)updBadge(guard3D.badge,guard3D,'ðŸ‘¹');
-  if(boss)updBadge(boss.badge,boss.g,'ðŸ‘¹');
+  for(const L of lions)updBadge(L.badge,L.g,L.flee>0?'😱':(Math.abs(px-L.x)+Math.abs(py-L.y)<=3?'😡':'😴'));
+  for(const S of snakes)updBadge(S.badge,S.g,'🐍');
+  if(guard3D)updBadge(guard3D.badge,guard3D,'👹');
+  if(boss)updBadge(boss.badge,boss.g,'👹');
   renderer.render(scene,camera);
 }
 loop();
@@ -710,14 +710,14 @@ function setupStage(n){
       do{x=Math.floor(Math.random()*N);y=Math.floor(Math.random()*N);tries++}while(taken(x,y)&&tries<300);
       const g=buildLion();const w=worldOf(x,y,N);g.position.set(w.x,0.05,w.z);mobGroup.add(g);
       addRing(g,'#ff9a3d',0.42);
-      lions.push({g,x,y,tween:null,flee:0,badge:makeBadge('ðŸ˜´')});
+      lions.push({g,x,y,tween:null,flee:0,badge:makeBadge('😴')});
     }
     for(let i=0;i<st.snakes;i++){
       let x,y,tries=0;
       do{x=Math.floor(Math.random()*N);y=Math.floor(Math.random()*N);tries++}while((taken(x,y)||snakes.some(S=>S.x===x&&S.y===y)||lions.some(L=>L.x===x&&L.y===y))&&tries<300);
       const g=buildSnake();const w=worldOf(x,y,N);g.position.set(w.x,0.28,w.z);mobGroup.add(g);
       addRing(g,'#ff4444',0.32,0.26);
-      snakes.push({g,x,y,badge:makeBadge('ðŸ')});
+      snakes.push({g,x,y,badge:makeBadge('🐍')});
     }
     bonusCoins=[];
     const coinMat=new THREE.MeshStandardMaterial({color:'#ffd700',metalness:0.7,roughness:0.3,emissive:'#8a6a00',emissiveIntensity:0.55});
@@ -731,13 +731,13 @@ function setupStage(n){
       bonusCoins.push({g:cg,x,y});
     }
     if(!player3D){const h=createActorHolder();player3D={group:h.mesh,fig:h.fig}}
-    if(!guard3D){guard3D=buildGuard();scene.add(guard3D);guard3D.badge=makeBadge('ðŸ‘¹')}
+    if(!guard3D){guard3D=buildGuard();scene.add(guard3D);guard3D.badge=makeBadge('👹')}
     guard3D.visible=!!st.guard;
     placeActor();placeGuard(N);faceDir(0,1);camTarget.copy(player3D.group.position);
   }
   document.getElementById('ovT').textContent='Stage '+st.num+': '+st.name+', '+st.place;
   document.getElementById('ovP').textContent=st.desc;
-  document.getElementById('play').textContent='â–¶ Start Stage '+st.num;
+  document.getElementById('play').textContent='▶ Start Stage '+st.num;
   document.getElementById('play').onclick=()=>{clickSnd();startStage()};
   document.getElementById('overlay').style.display='flex';
   document.getElementById('info').classList.remove('show');
@@ -769,9 +769,9 @@ function fxBurst(x,z,color){
 function upd(){
   const st=STAGES[curStage-1];
   document.getElementById('stageName').textContent='Stage '+curStage+': '+st.name;
-  document.getElementById('score').textContent='â­ '+totalScore;
-  document.getElementById('lives').textContent='â¤ï¸'.repeat(lives)+'ðŸ–¤'.repeat(Math.max(0,3-lives));
-  document.getElementById('time').textContent='â± '+time+'s';
+  document.getElementById('score').textContent='⭐ '+totalScore;
+  document.getElementById('lives').textContent='❤️'.repeat(lives)+'🖤'.repeat(Math.max(0,3-lives));
+  document.getElementById('time').textContent='⏱ '+time+'s';
   document.getElementById('found').textContent=(stageRelics.length-Object.keys(digSpots).length)+'/'+stageRelics.length;
   document.getElementById('venom').style.display=venomUntil>0?'inline-block':'none';
 }
@@ -779,7 +779,7 @@ function upd(){
 // ===== TIMERS =====
 function stopTimers(){[timer,guardTimer,lionTimer,shimmerTimer,venomTimer,bossTimer].forEach(t=>{if(t)clearInterval(t)});timer=guardTimer=lionTimer=shimmerTimer=venomTimer=bossTimer=null;stopAmbient()}
 function startTimer(){if(timer)clearInterval(timer);timer=setInterval(()=>{if(paused)return;time--;upd();if(time<=0)endGame(false)},1000)}
-function startVenom(){if(venomTimer)clearInterval(venomTimer);venomTimer=setInterval(()=>{if(!running||paused||venomUntil<=0)return;if(Date.now()>=venomUntil){venomUntil=0;if(inventory.antivenom>0){inventory.antivenom--;saveEco();playCure();toast('ðŸ’§ Anti-venom used â€” cured!')}else{loseLife('â˜ ï¸ The venom got you!')}}upd()},1000)}
+function startVenom(){if(venomTimer)clearInterval(venomTimer);venomTimer=setInterval(()=>{if(!running||paused||venomUntil<=0)return;if(Date.now()>=venomUntil){venomUntil=0;if(inventory.antivenom>0){inventory.antivenom--;saveEco();playCure();toast('💧 Anti-venom used — cured!')}else{loseLife('☠️ The venom got you!')}}upd()},1000)}
 function startGuard(){if(guardTimer)clearInterval(guardTimer);const gap=curStage===5?700:850;guardTimer=setInterval(()=>{if(!running||paused||digging||!guard3D.visible)return;guardStep()},gap)}
 function startLions(){if(lionTimer)clearInterval(lionTimer);lionTimer=setInterval(()=>{if(!running||paused||digging)return;lions.forEach(lionThink)},620)}
 function startShimmer(){if(shimmerTimer)clearInterval(shimmerTimer);shimmerTimer=setInterval(()=>{
@@ -790,7 +790,7 @@ function startShimmer(){if(shimmerTimer)clearInterval(shimmerTimer);shimmerTimer
   hintsUsed++;
   mounds[ks[Math.floor(Math.random()*ks.length)]].userData.glow=0.9;
   if(Math.random()<0.4)playShovel();
-  if(hintsUsed===2&&!stageMapUsed)toastOnce('âš¡ Free hints are used up! Buy a ðŸ—ºï¸ Stage map (ðŸ›’ Shop) for always-on hints');
+  if(hintsUsed===2&&!stageMapUsed)toastOnce('⚡ Free hints are used up! Buy a 🗺️ Stage map (🛒 Shop) for always-on hints');
 },3800)}
 
 // ===== GUARD =====
@@ -806,8 +806,8 @@ function guardStep(){
   guardTween={from,to,t:0,dur:0.5};
   guard3D.lookAt(to.x,0.25,to.z);
   const dist=Math.abs(px-gx)+Math.abs(py-gy);
-  if(dist<=2){playGrowl();toastOnce('ðŸ‘¹ The Guard is close!')}
-  if(gx===px&&gy===py)caughtBy('ðŸ‘¹ The Guard caught you! -1 life');
+  if(dist<=2){playGrowl();toastOnce('👹 The Guard is close!')}
+  if(gx===px&&gy===py)caughtBy('👹 The Guard caught you! -1 life');
 }
 function caughtBy(msg){
   lives--;playTrap();shake=0.5;upd();toast(msg);
@@ -835,20 +835,20 @@ function move(dx,dy){
   if(nx<0||nx>=N||ny<0||ny>=N)return;
   pox=px;poy=py;
   const k=kOf(nx,ny);
-  if(wallsSet.has(k)){playTrap();toastOnce('ðŸ§± A wall blocks the way');return}
-  if(thornsSet.has(k)){playTrap();toastOnce('ðŸ¥€ Thorn patch! Cut it with a machete');return}
+  if(wallsSet.has(k)){playTrap();toastOnce('🧱 A wall blocks the way');return}
+  if(thornsSet.has(k)){playTrap();toastOnce('🥀 Thorn patch! Cut it with a machete');return}
   px=nx;py=ny;startPlayerTween();playStep();upd();
-  if(trapsSet.has(k)){loseLife('ðŸª¤ A trap! -1 life');return}
+  if(trapsSet.has(k)){loseLife('🪤 A trap! -1 life');return}
   const c=creatureAt(nx,ny);
   if(c){if(c.list==='snakes')snakeBite(snakes[c.i]);else lionHit(lions[c.i]);return}
   const ci=bonusCoins.findIndex(C=>C.x===nx&&C.y===ny);
-  if(ci>=0){const C=bonusCoins[ci];mobGroup.remove(C.g);bonusCoins.splice(ci,1);totalScore+=5;addCoins(5);fxBurst(C.g.position.x,C.g.position.z,'#ffd700');toastOnce('ðŸ’° Bonus coin +5');upd()}
-  if(gx===px&&gy===py){caughtBy('ðŸ‘¹ The Guard caught you! -1 life');return}
+  if(ci>=0){const C=bonusCoins[ci];mobGroup.remove(C.g);bonusCoins.splice(ci,1);totalScore+=5;addCoins(5);fxBurst(C.g.position.x,C.g.position.z,'#ffd700');toastOnce('💰 Bonus coin +5');upd()}
+  if(gx===px&&gy===py){caughtBy('👹 The Guard caught you! -1 life');return}
   if(boss&&boss.x===px&&boss.y===py){crushPlayer();return}
   if(digSpots[k]!==undefined){startDig(k);return}
 }
 function lionHit(L){
-  loseLife('ðŸ¦ The lion mauled you! -1 life');
+  loseLife('🦁 The lion mauled you! -1 life');
   if(lives<=0)return;
   const N=STAGES[curStage-1].size;
   const bx=L.x+Math.sign(L.x-px)||L.x,by=L.y+Math.sign(L.y-py)||L.y;
@@ -856,8 +856,8 @@ function lionHit(L){
 }
 function snakeBite(S){
   playHiss();
-  if(inventory.antivenom>0){inventory.antivenom--;saveEco();playCure();toast('ðŸ Snake bite! ðŸ’§ Anti-venom used â€” cured!')}
-  else{venomUntil=Date.now()+12000;toastOnce('ðŸ Venom! Buy ðŸ’§ anti-venom or lose a life in 12s')}
+  if(inventory.antivenom>0){inventory.antivenom--;saveEco();playCure();toast('🐍 Snake bite! 💧 Anti-venom used — cured!')}
+  else{venomUntil=Date.now()+12000;toastOnce('🐍 Venom! Buy 💧 anti-venom or lose a life in 12s')}
   upd();
   const N=STAGES[curStage-1].size;
   const bx=S.x-Math.sign(S.x-px)||S.x,by=S.y-Math.sign(S.y-py)||S.y;
@@ -874,9 +874,9 @@ function startBoss(){
   model.scale.set(1.9,1.9,1.9);
   const w=worldOf(x,y,N);model.position.set(w.x,0.25,w.z);mobGroup.add(model);
   addRing(model,'#ff3030',0.5,0.55);
-  boss={g:model,x,y,badge:hasGL?makeBadge('ðŸ‘¹'):null};
+  boss={g:model,x,y,badge:hasGL?makeBadge('👹'):null};
   running=true;paused=false;document.getElementById('overlay').style.display='none';
-  toast('âš”ï¸ BOSS: '+name+' appeared! Hit it with ðŸ”¨/ðŸ”ª x'+bossHp+' to win!');playRoar();
+  toast('⚔️ BOSS: '+name+' appeared! Hit it with 🔨/🔪 x'+bossHp+' to win!');playRoar();
   startAmbient();
   if(bossTimer)clearInterval(bossTimer);
   bossTimer=setInterval(()=>{if(!running||paused||digging||!boss)return;bossStep()},800);
@@ -897,7 +897,7 @@ function bossStep(){
   if(dg<=2&&Math.random()<0.45)playGrowl();
   if(boss.x===px&&boss.y===py)crushPlayer();
 }
-function crushPlayer(){loseLife('âš”ï¸ The '+STAGES[curStage-1].boss+' crushed you! -1 life')}
+function crushPlayer(){loseLife('⚔️ The '+STAGES[curStage-1].boss+' crushed you! -1 life')}
 function hitBoss(){
   if(!boss)return false;
   const[tx,ty]=facingCell();
@@ -909,9 +909,9 @@ function hitBoss(){
     fxBurst(boss.g.position.x,boss.g.position.z,'#ffd700');
     mobGroup.remove(boss.g);if(boss.badge)boss.badge.remove();
     boss=null;bossDone=true;
-    totalScore+=100;addCoins(50);toast('âœ… '+name+' defeated! +ðŸ’°50 (+score)');upd();
+    totalScore+=100;addCoins(50);toast('✅ '+name+' defeated! +💰50 (+score)');upd();
     setTimeout(()=>{if(running)endGame(true)},700);
-  }else toast('ðŸ’¥ '+bossHp+' more hit'+(bossHp>1?'s':'')+' to fell it!');
+  }else toast('💥 '+bossHp+' more hit'+(bossHp>1?'s':'')+' to fell it!');
   return true;
 }
 // ===== BOARD MORPH =====
@@ -936,7 +936,7 @@ function morphBoard(){
   if(!Object.keys(digSpots).every(k2=>seen.has(k2))){wallsSet.delete(f);wallsSet.add(wOld);return}
   buildWorld(N);
   if(stageMapUsed)Object.values(mounds).forEach(m=>m.userData.pin=true);
-  shake=0.35;playTrap();toast('ðŸŒ‹ The earth shifts â€” walls rearranged!');
+  shake=0.35;playTrap();toast('🌋 The earth shifts — walls rearranged!');
 }
 function lionThink(L){
   const N=STAGES[curStage-1].size;
@@ -954,7 +954,7 @@ function lionMove(L,dx,dy,N){
   if(lions.some(o=>o!==L&&o.x===nx&&o.y===ny))return;
   L.x=nx;L.y=ny;
   moveMob(L.g,nx,ny,0.32);
-  if(trapsSet.has(kOf(nx,ny))){killMob(lions,lions.indexOf(L),15,'#ffb400');totalScore+=10;upd();toast('ðŸª¤ The lion fell into a trap! +ðŸ’°15')}
+  if(trapsSet.has(kOf(nx,ny))){killMob(lions,lions.indexOf(L),15,'#ffb400');totalScore+=10;upd();toast('🪤 The lion fell into a trap! +💰15')}
 }
 // creature tween integration
 const _lionTweenTick=()=>{
@@ -970,7 +970,7 @@ setInterval(_lionTweenTick,16);
 // ===== ATTACK =====
 function facingCell(){return[px+lastDir[0],py+lastDir[1]]}
 function useSpear(){
-  if(inventory.spear<1){toast('No ðŸ”¨ spear â€” buy one in the shop (B)');return}
+  if(inventory.spear<1){toast('No 🔨 spear — buy one in the shop (B)');return}
   const N=STAGES[curStage-1].size;
   const[tx,ty]=facingCell();
   const w1=worldOf(px,py,N),w2=worldOf(Math.max(0,Math.min(N-1,tx)),Math.max(0,Math.min(N-1,ty)),N);
@@ -980,12 +980,12 @@ function useSpear(){
   playSwish();
   const c=creatureAt(tx,ty);
   inventory.spear--;saveEco();
-  if(c){playRoar();totalScore+=c.list==='lions'?20:15;killMob(c.list==='lions'?lions:snakes,c.i,c.list==='lions'?25:15,c.list==='lions'?'#ff8040':'#60ff60');toast(c.list==='lions'?'ðŸ”¨ Spear floored the lion! +ðŸ’°25 (+score)':'ðŸ”¨ Spear floored the snake! +ðŸ’°15 (+score)');upd()}
+  if(c){playRoar();totalScore+=c.list==='lions'?20:15;killMob(c.list==='lions'?lions:snakes,c.i,c.list==='lions'?25:15,c.list==='lions'?'#ff8040':'#60ff60');toast(c.list==='lions'?'🔨 Spear floored the lion! +💰25 (+score)':'🔨 Spear floored the snake! +💰15 (+score)');upd()}
   else if(hitBoss()){}
-  else toastOnce('ðŸ”¨ Nothing there â€” face your target');
+  else toastOnce('🔨 Nothing there — face your target');
 }
 function useMachete(){
-  if(inventory.machete<1){toast('No ðŸ”ª machete â€” buy one in the shop (B)');return}
+  if(inventory.machete<1){toast('No 🔪 machete — buy one in the shop (B)');return}
   const N=STAGES[curStage-1].size;
   const[tx,ty]=facingCell();
   const k=kOf(tx,ty);
@@ -993,26 +993,26 @@ function useMachete(){
   if(thornsSet.has(k)){
     thornsSet.delete(k);inventory.machete--;saveEco();addCoins(5);totalScore+=5;
     if(thornMeshes[k]){boardGroup.remove(thornMeshes[k]);delete thornMeshes[k]}
-    toast('ðŸ”ª Thorn patch cleared! +ðŸ’°5');upd();return;
+    toast('🔪 Thorn patch cleared! +💰5');upd();return;
   }
   const c=creatureAt(tx,ty);
-  if(c&&c.list==='snakes'){inventory.machete--;saveEco();totalScore+=15;killMob(snakes,c.i,15,'#60ff60');toast('ðŸ”ª Snake dispatched! +ðŸ’°15');upd();return}
-  if(c&&c.list==='lions'){toast('ðŸ¦ Too strong for a machete â€” use the ðŸ”¨ spear');return}
+  if(c&&c.list==='snakes'){inventory.machete--;saveEco();totalScore+=15;killMob(snakes,c.i,15,'#60ff60');toast('🔪 Snake dispatched! +💰15');upd();return}
+  if(c&&c.list==='lions'){toast('🦁 Too strong for a machete — use the 🔨 spear');return}
   if(!c&&hitBoss()){inventory.machete--;saveEco();return}
-  toastOnce('ðŸ”ª Nothing to cut â€” face a thorn or snake');
+  toastOnce('🔪 Nothing to cut — face a thorn or snake');
 }
 function useTorch(){
-  if(inventory.torch<1){toast('No ðŸ”¥ torch â€” buy one in the shop (B)');return}
+  if(inventory.torch<1){toast('No 🔥 torch — buy one in the shop (B)');return}
   const near=lions.filter(L=>Math.abs(L.x-px)+Math.abs(L.y-py)<=2);
-  if(!near.length){toastOnce('ðŸ”¥ No lion near â€” save your torch');return}
+  if(!near.length){toastOnce('🔥 No lion near — save your torch');return}
   inventory.torch--;saveEco();
   near.forEach(L=>{L.flee=6;});
-  playRoar();toast('ðŸ”¥ The lions flee in panic!');
+  playRoar();toast('🔥 The lions flee in panic!');
 }
 function useMed(){
-  if(inventory.medkit<1){toast('No ðŸ©¹ medkit â€” buy one in the shop (B)');return}
+  if(inventory.medkit<1){toast('No 🩹 medkit — buy one in the shop (B)');return}
   if(lives>=3){toastOnce('Lives already full');return}
-  inventory.medkit--;saveEco();lives++;upd();playCure();toast('ðŸ©¹ Medkit used â€” life restored!');
+  inventory.medkit--;saveEco();lives++;upd();playCure();toast('🩹 Medkit used — life restored!');
 }
 
 // ===== DIG & DISCOVER =====
@@ -1058,14 +1058,14 @@ function showArtifactInfo(r){
   const qb=document.getElementById('quizBox');
   if(r.q){
     qb.style.display='block';
-    qb.innerHTML='<b>ðŸ§  Quiz â€” answer for +ðŸ’°15</b>'+r.q.o.map((o,i)=>'<button data-i="'+i+'">'+o+'</button>').join('');
+    qb.innerHTML='<b>🧠 Quiz — answer for +💰15</b>'+r.q.o.map((o,i)=>'<button data-i="'+i+'">'+o+'</button>').join('');
     qb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
       qb.querySelectorAll('button').forEach(x=>{x.disabled=true;x.style.pointerEvents='none'});
-      if(+b.dataset.i===r.q.a){b.classList.add('ok');totalScore+=15;addCoins(15);upd();toast('âœ… Correct! +ðŸ’°15')}
+      if(+b.dataset.i===r.q.a){b.classList.add('ok');totalScore+=15;addCoins(15);upd();toast('✅ Correct! +💰15')}
       else b.classList.add('bad');
     });
   }else qb.style.display='none';
-  document.getElementById('continueBtn').textContent=Object.keys(digSpots).length===0?'Face the Boss â†’':'Continue â†’';
+  document.getElementById('continueBtn').textContent=Object.keys(digSpots).length===0?'Face the Boss →':'Continue →';
   document.getElementById('info').classList.add('show');
   document.getElementById('continueBtn').onclick=()=>{
     document.getElementById('info').classList.remove('show');
@@ -1090,13 +1090,13 @@ function endGame(won){
     saveStars(curStage,stars);
     playFanfare();setTimeout(playHighlife,1000);
     document.getElementById('ovT').textContent='Stage Cleared! '+st.name;
-    document.getElementById('ovP').textContent='All relics found! Score: '+totalScore+' â€¢ +ðŸ’°'+bonus+' supplies bonus â€¢ Rating: '+'â­'.repeat(stars)+(stars<3?' (keep all lives for â­â­â­)':' perfect!');
+    document.getElementById('ovP').textContent='All relics found! Score: '+totalScore+' • +💰'+bonus+' supplies bonus • Rating: '+'⭐'.repeat(stars)+(stars<3?' (keep all lives for ⭐⭐⭐)':' perfect!');
   }else{
     document.getElementById('ovT').textContent='Game Over';
     document.getElementById('ovP').textContent='Out of lives or time. Score: '+totalScore+'. Buy medkits and weapons, then try again!';
   }
   addCoins(won?40+time:0);
-  document.getElementById('play').textContent=won?(curStage<5?'â–¶ Next Stage â†’':'â–¶ Play Again from Stage 1'):'â†» Try Again';
+  document.getElementById('play').textContent=won?(curStage<5?'▶ Next Stage →':'▶ Play Again from Stage 1'):'↻ Try Again';
   document.getElementById('play').onclick=()=>{clickSnd();setupStage(target);startStage()};
   saveScore();
   document.getElementById('overlay').style.display='flex';
@@ -1111,7 +1111,7 @@ function startStage(){
   if(inventory.mapitem>0){
     inventory.mapitem--;saveEco();stageMapUsed=true;
     Object.keys(mounds).forEach(k=>{mounds[k].userData.pin=true});
-    playCoinT();toast('ðŸ—ºï¸ Stage map used â€” every mound is marked!');
+    playCoinT();toast('🗺️ Stage map used — every mound is marked!');
   }
   if(st.guard)startGuard();
   if(lions.length)startLions();
@@ -1123,14 +1123,14 @@ function startStage(){
 function saveScore(){
   if(isGuest){document.getElementById('note').textContent='Sign in with start.ng to save your score on the leaderboard!';return}
   askStartNg({type:'startng:score',stats:{score:totalScore,time:Math.max(0,time)}},'startng:scoreSaved').then(r=>{
-    if(r&&r.ok){document.getElementById('note').textContent='Saved! Your best is #'+r.result.rank+(r.result.improved?' â€” new personal best! ðŸŽ‰':'');loadLB()}
+    if(r&&r.ok){document.getElementById('note').textContent='Saved! Your best is #'+r.result.rank+(r.result.improved?' — new personal best! 🎉':'');loadLB()}
     else if(r&&!r.ok){document.getElementById('note').textContent=r.error||'Could not save score.'}
   });
 }
 function loadLB(){askStartNg({type:'startng:leaderboard',limit:10},'startng:leaderboardData').then(r=>{
   const lb=document.getElementById('lb');if(!lb)return;
   if(!r||!r.ok||!r.entries||r.entries.length===0){lb.innerHTML='<li>No scores yet. Be the first!</li>';return}
-  lb.innerHTML=r.entries.map(e=>'<li>'+(playerId&&e.player_id===playerId?'ðŸ‘‰ ':'')+'#'+e.rank+' '+e.name+': '+e.score+' pts'+(e.stats&&e.stats.time!==undefined?' â€¢ '+e.stats.time+'s left':'')+'</li>').join('');
+  lb.innerHTML=r.entries.map(e=>'<li>'+(playerId&&e.player_id===playerId?'👉 ':'')+'#'+e.rank+' '+e.name+': '+e.score+' pts'+(e.stats&&e.stats.time!==undefined?' • '+e.stats.time+'s left':'')+'</li>').join('');
   document.getElementById('note').textContent='';
 })}
 
@@ -1138,11 +1138,11 @@ function loadLB(){askStartNg({type:'startng:leaderboard',limit:10},'startng:lead
 function renderGalleries(){
   let ch='',ah='';
   ARTIFACTS.forEach(a=>{const has=collected.includes(a.id);
-    ah+='<div class="gcard'+(has?'':' locked')+'"><div class="ic">'+a.icon+'</div><h3>'+a.title+'</h3><p>'+a.meta+'</p><p>'+(has?a.fact:'ðŸ”’ Find it in Stage '+a.stage+' to unlock the story.')+'</p></div>';
-    if(has)ch+='<div class="gcard"><div class="ic">'+a.icon+'</div><h3>'+a.title+'</h3><p>'+a.meta+'</p><p>'+a.fact+'</p><p style="color:#d8fd71">âœ… Collected</p></div>';
+    ah+='<div class="gcard'+(has?'':' locked')+'"><div class="ic">'+a.icon+'</div><h3>'+a.title+'</h3><p>'+a.meta+'</p><p>'+(has?a.fact:'🔒 Find it in Stage '+a.stage+' to unlock the story.')+'</p></div>';
+    if(has)ch+='<div class="gcard"><div class="ic">'+a.icon+'</div><h3>'+a.title+'</h3><p>'+a.meta+'</p><p>'+a.fact+'</p><p style="color:#d8fd71">✅ Collected</p></div>';
   });
   document.getElementById('allGrid').innerHTML=ah;
-  document.getElementById('collGrid').innerHTML=ch||'<p style="opacity:.7">Nothing yet â€” go dig in Stage 1!</p>';
+  document.getElementById('collGrid').innerHTML=ch||'<p style="opacity:.7">Nothing yet — go dig in Stage 1!</p>';
 }
 
 // ===== CONTROLS =====
