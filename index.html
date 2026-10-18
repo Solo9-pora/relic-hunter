@@ -21,12 +21,17 @@ button{-webkit-tap-highlight-color:transparent}
 #upBtn{grid-area:1/2}#leftBtn{grid-area:2/1}#downBtn{grid-area:2/2}#rightBtn{grid-area:2/3}
 #padL button{border:0;border-radius:14px;background:#1e1a0fb8;color:#fff;font-size:20px;cursor:pointer;font-weight:800;touch-action:none;backdrop-filter:blur(2px)}
 #padR{right:10px;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+#zoomRow{display:flex;gap:4px}
+#zoomRow button{width:38px;height:38px;border-radius:50%;border:1px solid #ffffff33;background:#1e1a0fb8;color:#fff;font-size:15px;cursor:pointer;touch-action:none;font-weight:800}
 #atkBtn{width:66px;height:66px;border-radius:50%;border:2px solid var(--acc);background:#1e1a0fd9;color:#fff;font-size:26px;font-weight:800;cursor:pointer;touch-action:none;backdrop-filter:blur(2px)}
 #toolRow{display:flex;gap:5px}
 #toolRow button{position:relative;width:48px;height:48px;border-radius:50%;border:0;background:#1e1a0fb8;color:#fff;font-size:19px;cursor:pointer;touch-action:none;backdrop-filter:blur(2px)}
 #toolRow button:disabled{opacity:.35}
 #toolRow button:disabled i{display:none}
 #toolRow i{position:absolute;bottom:-3px;right:-3px;background:#ffd700;color:#111;font-size:10px;font-weight:800;border-radius:999px;padding:1px 4px;font-style:normal}
+#fsBtn{border:0;background:#2e2a1a;color:#fff;border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:14px;flex:none}
+#digBarWrap{position:absolute;left:50%;bottom:130px;transform:translateX(-50%);width:190px;background:#000a;border-radius:999px;padding:4px;display:none;z-index:10}
+#digBar{height:10px;background:var(--acc);border-radius:999px;width:0%}
 #overlay{position:absolute;inset:0;background:#000bcc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;z-index:9;padding:16px}
 #overlay h2{font-size:22px}
 #info{position:absolute;inset:0;background:#000d99;display:none;align-items:center;justify-content:center;z-index:11;padding:14px}
@@ -79,13 +84,14 @@ h1{font-size:20px}h1 span{color:var(--acc)}
 </style></head><body>
 <div id="viewGame">
 <div class="hud"><div class="grp"><button id="menuBtn">☰ Menu</button><span id="stageName">Stage 1: Nok</span></div>
-<div class="grp"><span id="coins">💰 100</span><span id="lives">❤️❤️❤️</span><span id="score">0</span><span id="time">⏱ 90s</span></div></div>
+<div class="grp"><span id="coins">💰 100</span><span id="lives">❤️❤️❤️</span><span id="score">0</span><span id="time">⏱ 90s</span><button id="fsBtn" title="Fullscreen">⛶</button></div></div>
 <div id="grid">
 <canvas id="scene"></canvas>
 <div id="foundWrap">🏺 <span id="found">0/3</span></div>
 <div id="venom">☠️ Venom ticking…</div>
 <div id="padL"><button id="upBtn">⬆️</button><button id="leftBtn">⬅️</button><button id="downBtn">⬇️</button><button id="rightBtn">➡️</button></div>
-<div id="padR"><button id="atkBtn">⚔️</button><div id="toolRow"><button id="hbSpear">🔨<i id="cSpear">0</i></button><button id="hbMachete">🔪<i id="cMachete">0</i></button><button id="hbTorch">🔥<i id="cTorch">0</i></button><button id="hbMed">🩹<i id="cMed">0</i></button><button id="hbShop">🛒</button></div></div>
+<div id="padR"><div id="zoomRow"><button id="zoomIn">＋</button><button id="zoomOut">－</button></div><button id="atkBtn">⚔️</button><div id="toolRow"><button id="hbSpear">🔨<i id="cSpear">0</i></button><button id="hbMachete">🔪<i id="cMachete">0</i></button><button id="hbTorch">🔥<i id="cTorch">0</i></button><button id="hbMed">🩹<i id="cMed">0</i></button><button id="hbShop">🛒</button></div></div>
+<div id="digBarWrap"><div id="digBar"></div></div>
 <div id="overlay"><h2 id="ovT">Stage 1: Nok, Plateau State</h2><p id="ovP">Find 3 Nok artifacts in 90s. Avoid traps.</p>
 <div><button class="big" id="play">▶ Start Stage 1</button></div>
 <p style="font-size:12px;opacity:.7;max-width:320px">D-pad = move • ⚔️ = attack • 🛒 = shop • ☰ = map &amp; gear</p></div>
@@ -122,9 +128,11 @@ h1{font-size:20px}h1 span{color:var(--acc)}
 <div class="modal" id="helpModal"><div class="mbox"><button class="close" data-close="helpModal">✕</button><h2>❓ How to play</h2><div class="guide">
 <p><b class="g">Goal</b> — every stage buries its relics under soil mounds. Step on a mound and your explorer digs it up. Find them all before time runs out, keeping your 3 lives.</p>
 <p><b class="g">Move</b> with Arrow keys / WASD / D-pad. <b class="g">Drag</b> the scene to orbit the camera and <b class="g">scroll</b> to zoom — your keys follow what the camera sees. Face a beast, then press <span class="kitem">Space</span> or ⚔️ to attack whatever is one step in front of you.</p>
-<p><b class="g">Coins 💰</b> start at 100. Earn more: dig an artifact <b>+30</b>, kill a lion <b>+25</b>, kill a snake <b>+15</b>, cut thorns <b>+5</b> each, a beast caught in a trap <b>+15</b>, stage clear <b>+40</b> plus 1 per second left. Coins and gear are saved on this device.</p>
+<p><b class="g">Coins 💰</b> start at 100. Earn more: dig an artifact <b>+30</b>, golden coins lying in the field <b>+5</b> each, kill a lion <b>+25</b>, kill a snake <b>+15</b>, cut thorns <b>+5</b> each, a beast caught in a trap <b>+15</b>, stage clear <b>+40</b> plus 1 per second left. Coins and gear are saved on this device.</p>
 <p><b class="g">Hazards</b> — 🦁 <b>Lions</b> wander the dig site, chase you when you get close, and cost 1 life on contact (they back off after). 🐍 <b>Snakes</b> rest beside mounds; step on one and it bites — venom kills in 12s unless you cure it. 🥀 <b>Thorns</b> block paths like walls; a machete cuts through. 🪤 <b>Traps</b> cost a life and send you back to the start. On stages 4–5 the 👹 <b>palace Guard</b> hunts you too.</p>
-<p><b class="g">Your gear</b> — open the 🛒 shop any time (pauses the action) or press <span class="kitem">B</span>: 🔨 <b>Spear</b> (💰80) kills a lion or snake one step ahead — 3 throws each purchase. 🔪 <b>Machete</b> (💰60) kills snakes and cuts thorns in front. 🔥 <b>Torch</b> (💰40) panics the nearest lion into fleeing. 🩹 <b>Medkit</b> (💰90): press <span class="kitem">H</span> to restore a life. 💧 <b>Anti-venom</b> (💰70) auto-cures a snake bite. 📡 <b>Metal detector</b> (💰120): mounds within 2 steps glow while you own it. 🗺️ <b>Stage map</b> (💰150): consumed at stage start and marks every mound. ⛏️ <b>Steel shovel</b> (💰140): digs take 0.6s instead of 1.25s, forever.</p>
+<p><b class="g">Digging &amp; hints</b> — digging by hand takes a slow 1.9s (watch the bar); a ⛏️ steel shovel cuts it to 0.6s. You get <b>2 free shimmer hints</b> per stage; after that the mounds stay dark — buy the 🗺️ Stage map so every mound is marked and hinted for the whole stage, or guess by watching where animals gather.</p>
+<p><b class="g">Your gear</b> — open the 🛒 shop any time (pauses the action) or press <span class="kitem">B</span>: 🔨 <b>Spear</b> (💰80) kills a lion or snake one step ahead — 3 throws each purchase. 🔪 <b>Machete</b> (💰60) kills snakes and cuts thorns in front. 🔥 <b>Torch</b> (💰40) panics the nearest lion into fleeing. 🩹 <b>Medkit</b> (💰90): press <span class="kitem">H</span> to restore a life. 💧 <b>Anti-venom</b> (💰70) auto-cures a snake bite. 📡 <b>Metal detector</b> (💰120): mounds within 2 steps glow while you own it. 🗺️ <b>Stage map</b> (💰150): consumed at stage start and marks every mound with continuous hints. ⛏️ <b>Steel shovel</b> (💰140): digs take 0.6s instead of 1.9s, forever.</p>
+<p><b class="g">Camera &amp; screen</b> — drag the scene to orbit, pinch (or ＋／－ buttons, or scroll) to zoom, and tap ⛶ in the top bar for fullscreen on mobile. Lions and snakes are marked with glowing rings; thorns blaze orange-red.</p>
 <p><b class="g">Leaderboard</b> — sign in with start.ng. Each cleared stage saves your best <b>Score</b> (100 points per artifact + 10 per second remaining) and <b>time left</b> to the shared board. Guests play everything but scores only save when signed in.</p>
 <p><b class="g">The journey</b> — Stage 1 Nok (~1000 BCE terracotta & iron) → 2 Ife (12th–15th C royal bronzes) → 3 Igbo-Ukwu (9th C bronze hoard) → 4 Benin (15th C palace bronzes, the Guard!) → 5 Esie & Owo (soapstone & terracotta). Every artifact card tells the true story.</p>
 </div></div></div>
@@ -204,8 +212,8 @@ const SHOP=[
 {id:'medkit',ic:'🩹',name:'Medic kit',price:90,desc:'Press H to restore 1 life. Stack up to 3.'},
 {id:'antivenom',ic:'💧',name:'Anti-venom',price:70,desc:'Auto-cures a snake bite. Stack up to 3.'},
 {id:'detector',ic:'📡',name:'Metal detector',price:120,desc:'While owned, mounds within 2 steps of you glow. Keep forever.'},
-{id:'mapitem',ic:'🗺️',name:'Stage map',price:150,desc:'Used automatically at stage start: every mound is marked exactly.'},
-{id:'shovel',ic:'⛏️',name:'Steel shovel',price:140,desc:'Digging takes 0.6s instead of 1.25s. Keep forever.'},
+{id:'mapitem',ic:'🗺️',name:'Stage map',price:150,desc:'Used automatically at stage start: every mound is marked AND hinted continuously all stage long.'},
+{id:'shovel',ic:'⛏️',name:'Steel shovel',price:140,desc:'Digging takes 0.6s instead of 1.9s. Keep forever.'},
 ];
 function updEco(){
   document.getElementById('coins').textContent='💰 '+coins;
@@ -280,7 +288,7 @@ const STAGES=[
 ];
 
 let curStage=1,unlocked=+(localStorage.getItem('rh_unlocked')||1),collected=JSON.parse(localStorage.getItem('rh_collected')||'[]');
-let totalScore=0,lives=3,px=0,py=0,pox=0,poy=0,gx=0,gy=0,running=false,paused=false,time=90,lastDir=[0,1];
+let totalScore=0,lives=3,px=0,py=0,pox=0,poy=0,gx=0,gy=0,running=false,paused=false,time=90,lastDir=[0,1],hintsUsed=0,stageMapUsed=false;
 let timer=null,guardTimer=null,lionTimer=null,shimmerTimer=null,venomTimer=null,digging=false,venomUntil=0;
 let digSpots={},mounds={},trapsSet=new Set(),wallsSet=new Set(),thornsSet=new Set(),thornMeshes={},stageRelics=[];
 
@@ -310,7 +318,7 @@ if(!renderer){
 }else{renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap}
 const scene=new THREE.Scene();
 scene.background=new THREE.Color('#1c150c');
-scene.fog=new THREE.Fog('#1c150c',18,46);
+scene.fog=new THREE.Fog('#1c150c',20,70);
 const camera=new THREE.PerspectiveCamera(50,1,0.1,120);
 scene.add(new THREE.HemisphereLight('#ffe2b0','#241a08',1.15));
 const sun=new THREE.DirectionalLight('#ffd9a0',2.4);sun.position.set(9,15,6);sun.castShadow=true;
@@ -327,7 +335,7 @@ function buildWorld(N){
   disposeGroup(boardGroup);
   boardGroup=new THREE.Group();scene.add(boardGroup);
   const bio=STAGES[curStage-1].bio||STAGES[0].bio;
-  const ground=new THREE.Mesh(new THREE.BoxGeometry(60,0.2,60),new THREE.MeshStandardMaterial({color:bio.ground||'#332612',roughness:1}));
+  const ground=new THREE.Mesh(new THREE.BoxGeometry(90,0.2,90),new THREE.MeshStandardMaterial({color:bio.ground||'#332612',roughness:1}));
   ground.position.y=-0.3;ground.receiveShadow=true;boardGroup.add(ground);
   const rim=new THREE.Mesh(new THREE.BoxGeometry(N+2.3,0.28,N+2.3),new THREE.MeshStandardMaterial({color:bio.rim||'#241a0d',roughness:1}));
   rim.position.y=-0.14;rim.receiveShadow=true;boardGroup.add(rim);
@@ -376,11 +384,14 @@ function addTrap(x,y,N){
 function addThorn(x,y,N){
   const p=worldOf(x,y,N),g=new THREE.Group();
   for(let i=0;i<6;i++){
-    const sp=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.34+Math.random()*0.2,5),new THREE.MeshStandardMaterial({color:noiseTileColor('#3a2a10',0.05),roughness:0.9}));
+    const sp=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.34+Math.random()*0.2,5),new THREE.MeshStandardMaterial({color:'#c0561e',roughness:0.9,emissive:'#a03408',emissiveIntensity:0.5}));
     sp.position.set((Math.random()-0.5)*0.62,0.67,(Math.random()-0.5)*0.62);
     sp.rotation.set((Math.random()-0.5)*0.7,Math.random()*Math.PI,(Math.random()-0.5)*0.7);
     sp.castShadow=true;g.add(sp);
   }
+  const glowRing=new THREE.Mesh(new THREE.RingGeometry(0.3,0.42,20),new THREE.MeshBasicMaterial({color:'#e06010',transparent:true,opacity:0.4,side:THREE.DoubleSide}));
+  glowRing.rotation.x=-Math.PI/2;glowRing.position.y=0.52;
+  g.add(glowRing);
   g.position.set(p.x,0,p.z);boardGroup.add(g);thornMeshes[kOf(x,y)]=g;
 }
 function addScenery(N){
@@ -482,6 +493,8 @@ function buildGuard(){
 function buildLion(){
   const g=new THREE.Group();
   const bodyM=mM('#c98a3d'),maneM=mM('#8a4b1f'),darkM=mM('#1a1208');
+  bodyM.emissive=new THREE.Color('#4a2400');bodyM.emissiveIntensity=0.35;
+  maneM.emissive=new THREE.Color('#5a2400');maneM.emissiveIntensity=0.5;
   const add=(mesh,x,y,z)=>{mesh.position.set(x,y,z);g.add(mesh);return mesh};
   add(new THREE.Mesh(new THREE.BoxGeometry(0.62,0.3,0.3),bodyM),0,0.34,0);
   [[-0.22,0.11],[0.22,0.11],[-0.22,-0.11],[0.22,-0.11]].forEach(p=>{add(new THREE.Mesh(new THREE.BoxGeometry(0.1,0.3,0.1),darkM),p[0],0.15,p[1]);});
@@ -496,6 +509,8 @@ function buildLion(){
 function buildSnake(){
   const g=new THREE.Group();
   const bodyM=mM('#2f6b2f',0.7),headM=mM('#3f7f3f',0.7);
+  bodyM.emissive=new THREE.Color('#1c4d1c');bodyM.emissiveIntensity=0.5;
+  headM.emissive=new THREE.Color('#1c5a1c');headM.emissiveIntensity=0.55;
   const coil=new THREE.Mesh(new THREE.TorusGeometry(0.17,0.07,8,14),bodyM);
   coil.rotation.x=Math.PI/2;coil.position.y=0.1;g.add(coil);
   const neck=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.06,0.3,6),bodyM);
@@ -510,13 +525,14 @@ function buildSnake(){
 }
 
 // actors
-let player3D=null,guard3D=null,lions=[],snakes=[];
+let player3D=null,guard3D=null,lions=[],snakes=[],bonusCoins=[];
 let playerTween=null,guardTween=null,digAnim=0,revealList=[],flyers=[],shake=0,facing=0;
+function addRing(g,color,r1,y=0.45){const ring=new THREE.Mesh(new THREE.RingGeometry(r1*0.72,r1,22),new THREE.MeshBasicMaterial({color,transparent:true,opacity:0.6,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=y;g.add(ring);return ring}
 function createActorHolder(){const mesh=new THREE.Group();const fig=buildMinifig(style);mesh.add(fig);scene.add(mesh);return{mesh,fig}}
 function rebuildPlayer(){if(!player3D)return;const pos=player3D.group.position.clone();scene.remove(player3D.group);const h=createActorHolder();h.mesh.position.copy(pos);player3D={group:h.mesh,fig:h.fig}}
 
 // camera follow
-let camTheta=Math.PI*0.22,sphere=10.5,camTarget=new THREE.Vector3(0,0,0);
+let camTheta=Math.PI*0.22,sphere=11.5,camTarget=new THREE.Vector3(0,0,0);
 const pts=new Map();let pinchD=0;
 canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size===1)canvas._d={x:e.clientX,y:e.clientY};else canvas._d=null});
 canvas.addEventListener('pointermove',e=>{
@@ -527,7 +543,7 @@ canvas.addEventListener('pointermove',e=>{
 });
 const ptrEnd=e=>{pts.delete(e.pointerId);if(pts.size<2)pinchD=0;if(!pts.size)canvas._d=null};
 canvas.addEventListener('pointerup',ptrEnd);canvas.addEventListener('pointercancel',ptrEnd);
-canvas.addEventListener('wheel',e=>{e.preventDefault();sphere=Math.min(20,Math.max(6.5,sphere+e.deltaY*0.01))},{passive:false});
+canvas.addEventListener('wheel',e=>{e.preventDefault();sphere=Math.min(30,Math.max(6.5,sphere+e.deltaY*0.01))},{passive:false});
 function resize3D(){if(!renderer)return;const c=canvas.parentElement;const w=c.clientWidth,h=c.clientHeight||w*0.625;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
 window.addEventListener('resize',resize3D);
 
@@ -547,6 +563,7 @@ function loop(){
     L.g.rotation.y=clock.elapsedTime*0.5+L.x;
   }
   snakes.forEach(S=>{S.g.userData.coil.rotation.z+=dt*2;});
+  bonusCoins.forEach(C=>{C.g.rotation.y+=dt*3});
   if(guard3D&&guardTween){guardTween.t+=dt;const p=Math.min(1,guardTween.t/guardTween.dur);guard3D.position.lerpVectors(guardTween.from,guardTween.to,p);if(p>=1)guardTween=null}
   for(const k in mounds){const m=mounds[k];
     if(owned.detector&&running){const[mx,my]=k.split(',').map(Number);const d=Math.abs(mx-px)+Math.abs(my-py);if(d<=2)m.userData.glow=Math.max(m.userData.glow||0,0.35)}
@@ -579,7 +596,7 @@ function setupStage(n){
   wallsSet=new Set();while(wallsSet.size<st.walls){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&k!=='0,'+(N-1))wallsSet.add(k)}
   trapsSet=new Set();while(trapsSet.size<st.traps){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&!wallsSet.has(k)&&k!=='0,'+(N-1))trapsSet.add(k)}
   thornsSet=new Set();while(thornsSet.size<st.thorns){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&!wallsSet.has(k)&&!trapsSet.has(k)&&k!=='0,'+(N-1)&&k!=='0,0'&&k!==(N-1)+',0')thornsSet.add(k)}
-  time=st.time;running=false;paused=false;digging=false;
+  time=st.time;running=false;paused=false;digging=false;hintsUsed=0;stageMapUsed=false;bonusCoins=[];
   tiles={};
   if(hasGL){
     buildWorld(N);
@@ -590,13 +607,26 @@ function setupStage(n){
       let x,y,tries=0;
       do{x=Math.floor(Math.random()*N);y=Math.floor(Math.random()*N);tries++}while(taken(x,y)&&tries<300);
       const g=buildLion();const w=worldOf(x,y,N);g.position.set(w.x,0.05,w.z);mobGroup.add(g);
+      addRing(g,'#ff9a3d',0.42);
       lions.push({g,x,y,tween:null,flee:0});
     }
     for(let i=0;i<st.snakes;i++){
       let x,y,tries=0;
       do{x=Math.floor(Math.random()*N);y=Math.floor(Math.random()*N);tries++}while((taken(x,y)||snakes.some(S=>S.x===x&&S.y===y)||lions.some(L=>L.x===x&&L.y===y))&&tries<300);
       const g=buildSnake();const w=worldOf(x,y,N);g.position.set(w.x,0.28,w.z);mobGroup.add(g);
+      addRing(g,'#ff4444',0.32,0.26);
       snakes.push({g,x,y});
+    }
+    bonusCoins=[];
+    const coinMat=new THREE.MeshStandardMaterial({color:'#ffd700',metalness:0.7,roughness:0.3,emissive:'#8a6a00',emissiveIntensity:0.55});
+    for(let i=0;i<6;i++){
+      let x,y,tries=0;
+      do{x=Math.floor(Math.random()*N);y=Math.floor(Math.random()*N);tries++}
+      while((taken(x,y)||lions.some(L=>L.x===x&&L.y===y)||snakes.some(S=>S.x===x&&S.y===y)||bonusCoins.some(C=>C.x===x&&C.y===y))&&tries<300);
+      const cg=new THREE.Group();
+      const cm=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.11,0.035,12),coinMat);cm.rotation.x=Math.PI/2;cm.castShadow=true;cg.add(cm);
+      const cw=worldOf(x,y,N);cg.position.set(cw.x,0.62,cw.z);mobGroup.add(cg);
+      bonusCoins.push({g:cg,x,y});
     }
     if(!player3D){const h=createActorHolder();player3D={group:h.mesh,fig:h.fig}}
     if(!guard3D){guard3D=buildGuard();scene.add(guard3D)}
@@ -650,7 +680,16 @@ function startTimer(){if(timer)clearInterval(timer);timer=setInterval(()=>{if(pa
 function startVenom(){if(venomTimer)clearInterval(venomTimer);venomTimer=setInterval(()=>{if(!running||paused||venomUntil<=0)return;if(Date.now()>=venomUntil){venomUntil=0;if(inventory.antivenom>0){inventory.antivenom--;saveEco();playCure();toast('💧 Anti-venom used — cured!')}else{loseLife('☠️ The venom got you!')}}upd()},1000)}
 function startGuard(){if(guardTimer)clearInterval(guardTimer);const gap=curStage===5?700:850;guardTimer=setInterval(()=>{if(!running||paused||digging||!guard3D.visible)return;guardStep()},gap)}
 function startLions(){if(lionTimer)clearInterval(lionTimer);lionTimer=setInterval(()=>{if(!running||paused||digging)return;lions.forEach(lionThink)},620)}
-function startShimmer(){if(shimmerTimer)clearInterval(shimmerTimer);shimmerTimer=setInterval(()=>{if(!running||paused)return;const ks=Object.keys(digSpots).filter(k=>mounds[k]&&!mounds[k].userData.pin);if(!ks.length)return;mounds[ks[Math.floor(Math.random()*ks.length)]].userData.glow=0.9;if(Math.random()<0.4)playShovel()},3800)}
+function startShimmer(){if(shimmerTimer)clearInterval(shimmerTimer);shimmerTimer=setInterval(()=>{
+  if(!running||paused)return;
+  if(!stageMapUsed&&hintsUsed>=2)return;
+  const ks=Object.keys(digSpots).filter(k=>mounds[k]&&!mounds[k].userData.pin);
+  if(!ks.length)return;
+  hintsUsed++;
+  mounds[ks[Math.floor(Math.random()*ks.length)]].userData.glow=0.9;
+  if(Math.random()<0.4)playShovel();
+  if(hintsUsed===2&&!stageMapUsed)toastOnce('⚡ Free hints are used up! Buy a 🗺️ Stage map (🛒 Shop) for always-on hints');
+},3800)}
 
 // ===== GUARD =====
 function guardStep(){
@@ -700,6 +739,8 @@ function move(dx,dy){
   if(trapsSet.has(k)){loseLife('🪤 A trap! -1 life');return}
   const c=creatureAt(nx,ny);
   if(c){if(c.list==='snakes')snakeBite(snakes[c.i]);else lionHit(lions[c.i]);return}
+  const ci=bonusCoins.findIndex(C=>C.x===nx&&C.y===ny);
+  if(ci>=0){const C=bonusCoins[ci];mobGroup.remove(C.g);bonusCoins.splice(ci,1);totalScore+=5;addCoins(5);fxBurst(C.g.position.x,C.g.position.z,'#ffd700');toastOnce('💰 Bonus coin +5');upd()}
   if(gx===px&&gy===py){caughtBy('👹 The Guard caught you! -1 life');return}
   if(digSpots[k]!==undefined){startDig(k);return}
 }
@@ -799,11 +840,16 @@ function useMed(){
 // ===== DIG & DISCOVER =====
 function startDig(k){
   digging=true;paused=true;
-  const dur=owned.shovel?600:1150;
+  const dur=owned.shovel?600:1900;
   digAnim=dur/1000;
   const sh=setInterval(playShovel,200);
+  const bw=document.getElementById('digBarWrap'),bar=document.getElementById('digBar');
+  bar.style.width='0%';bw.style.display='block';
+  const t0=Date.now();
+  const prog=setInterval(()=>{bar.style.width=(Math.min(1,(Date.now()-t0)/dur)*100)+'%'},50);
   setTimeout(()=>{
-    clearInterval(sh);
+    clearInterval(sh);clearInterval(prog);
+    bw.style.display='none';
     digging=false;
     const r=digSpots[k];delete digSpots[k];
     const m=mounds[k];
@@ -870,7 +916,7 @@ function startStage(){
   document.getElementById('info').classList.remove('show');
   const st=STAGES[curStage-1];
   if(inventory.mapitem>0){
-    inventory.mapitem--;saveEco();
+    inventory.mapitem--;saveEco();stageMapUsed=true;
     Object.keys(mounds).forEach(k=>{mounds[k].userData.pin=true});
     playCoinT();toast('🗺️ Stage map used — every mound is marked!');
   }
@@ -920,6 +966,14 @@ const dMove=(sx,sy)=>()=>{const a=camAxes();move(sx*a.up.x+sy*a.right.x,sx*a.up.
 bindHold('upBtn',dMove(1,0));bindHold('downBtn',dMove(-1,0));
 bindHold('rightBtn',dMove(0,1));bindHold('leftBtn',dMove(0,-1));
 bindTap('atkBtn',attack);bindTap('hbSpear',useSpear);bindTap('hbMachete',useMachete);bindTap('hbTorch',useTorch);bindTap('hbMed',useMed);bindTap('hbShop',()=>toggleModal('shopModal',true));
+bindTap('zoomIn',()=>{sphere=Math.max(6.5,sphere-1.4);clickSnd()});
+bindTap('zoomOut',()=>{sphere=Math.min(30,sphere+1.4);clickSnd()});
+const fsBtn=document.getElementById('fsBtn');
+fsBtn.onclick=()=>{clickSnd();const d=document;
+  const el=d.fullscreenElement||d.webkitFullscreenElement;
+  if(el){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}
+  else{const rf=d.documentElement.requestFullscreen||d.documentElement.webkitRequestFullscreen;if(rf)rf.call(d.documentElement)}};
+['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{setTimeout(resize3D,80);setTimeout(resize3D,400)}));
 addEventListener('keydown',e=>{
   const k=e.key.toLowerCase();
   if(k==='escape'){toggleModal('helpModal',false);toggleModal('shopModal',false);closeMenu();return}
