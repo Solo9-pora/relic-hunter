@@ -34,10 +34,13 @@ button{-webkit-tap-highlight-color:transparent}
 #digBar{height:10px;background:var(--acc);border-radius:999px;width:0%}
 #overlay{position:absolute;inset:0;background:linear-gradient(rgba(2,4,40,.45),rgba(0,11,204,.82)),#000bcc url(cover.jpg) center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;z-index:9;padding:16px}
 #overlay h2{font-size:22px;text-shadow:0 1px 8px #000c}
-#info{position:absolute;inset:0;background:#000d99;display:none;align-items:center;justify-content:center;z-index:11;padding:14px}
+#info{position:absolute;inset:0;background:rgba(3,6,45,.38);display:none;align-items:center;justify-content:center;z-index:11;padding:10px}
+
+.ibox{background:rgba(30,26,15,.86);border:2px solid var(--acc);border-radius:16px;max-width:340px;width:100%;max-height:82vh;overflow:auto;padding:12px 14px;text-align:center;font-size:13px}
+.ibox p{font-size:12.5px}
+.ibox .big{padding:9px 18px;font-size:14px}
 #info.show{display:flex}
-.ibox{background:#1e1a0f;border:2px solid var(--acc);border-radius:16px;max-width:430px;width:100%;max-height:88vh;overflow:auto;padding:16px;text-align:center}
-.ibox #infoIcon{font-size:42px}
+.ibox #infoIcon{font-size:34px}
 .ibox p{font-size:13.5px;line-height:1.55;text-align:left;margin:7px 0;opacity:.95}
 button.big{background:var(--acc);border:0;padding:12px 22px;border-radius:999px;font-weight:800;cursor:pointer;font-size:16px;margin:4px}
 .page{position:fixed;inset:0;background:var(--bg);z-index:20;display:none;overflow-y:auto;padding:max(12px,env(safe-area-inset-top)) 14px 14px}
@@ -55,7 +58,7 @@ button.big{background:var(--acc);border:0;padding:12px 22px;border-radius:999px;
 .tabs button.active{background:var(--acc);color:#111}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:99;padding:14px}
 .modal.show{display:flex}
-.mbox{background:#1e1a0f;border:2px solid var(--acc);border-radius:16px;max-width:600px;width:100%;max-height:84vh;overflow:auto;padding:18px}
+.mbox{background:rgba(30,26,15,.94);border:2px solid var(--acc);border-radius:16px;max-width:480px;width:100%;max-height:84vh;overflow:auto;padding:16px}
 .mbox h2{margin:0 0 8px;font-size:20px}
 .mbox .close{float:right;border:0;background:#2e2a1a;color:#fff;border-radius:999px;width:32px;height:32px;font-size:16px;cursor:pointer}
 .shopItem{display:flex;gap:10px;align-items:center;background:#2a2413;padding:10px 12px;border-radius:12px;margin:8px 0}
@@ -86,12 +89,21 @@ h1{font-size:20px}h1 span{color:var(--acc)}
 body.photo .hud,body.photo #padL,body.photo #padR,body.photo #foundWrap,body.photo #digBarWrap,body.photo #photoBtn,body.photo #fsBtn{display:none!important}
 body.photo #photoBar{display:flex}
 body.photo #overlay,body.photo #info{background:#000a}
+#rotateFix{position:fixed;inset:0;z-index:97;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:22px;background:linear-gradient(rgba(2,4,40,.55),rgba(0,11,204,.85)),#000bcc url(cover.jpg) center/cover no-repeat}
+#rotateFix h3{font-size:19px;text-shadow:0 1px 8px #000c}
+#rotateFix .big{border:0;background:var(--acc);color:#111;font-weight:800;border-radius:999px;padding:11px 20px;cursor:pointer;font-size:15px}
+#rotateFix #rotSkip{background:none;border:0;color:#fff;opacity:.85;text-decoration:underline;cursor:pointer;font-size:13px}
+@media (orientation:portrait) and (pointer:coarse){#rotateFix{display:flex}}
+@media (orientation:portrait) and (pointer:coarse){body.portrait-ok #rotateFix{display:none}}
 .mobBadge{position:absolute;transform:translate(-50%,-100%);pointer-events:none;font-size:15px;z-index:3;text-shadow:0 1px 3px #000;display:none}
 #quizBox{background:#2a2413;padding:10px;border-radius:10px;margin-top:6px;text-align:left}
 #quizBox b{font-size:13px}
 #quizBox button{display:block;width:100%;margin:5px 0;border:0;background:#2e2a1a;color:#fff;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700;font-size:13px;text-align:left}
 #quizBox button.ok{background:#008751}
 #quizBox button.bad{background:#7a1f1f;opacity:.85}
+#bossHpBar{position:absolute;display:none;z-index:7;width:130px;height:11px;background:#000b;border:1px solid #ffffff55;border-radius:999px;transform:translate(-50%,-50%);pointer-events:none}
+#bossHpBar #bossHpFill{height:100%;width:100%;background:linear-gradient(90deg,#ff4040,#ffb020);border-radius:999px;transition:width .25s}
+#bossHpName{position:absolute;top:-16px;left:0;width:100%;text-align:center;font-size:10px;font-weight:800;color:#ffd9a0;text-shadow:0 1px 2px #000}
 @media (max-width:520px){
   .hud{font-size:11.5px;padding:6px 8px}
   .hud .grp{gap:6px}
@@ -119,11 +131,12 @@ body.photo #overlay,body.photo #info{background:#000a}
 <canvas id="scene"></canvas>
 <div id="foundWrap">🏺 <span id="found">0/3</span></div>
 <div id="venom">☠️ Venom ticking…</div>
+<div id="bossHpBar"><div id="bossHpName">BOSS</div><div id="bossHpFill"></div></div>
 <div id="padL"><button id="upBtn">⬆️</button><button id="leftBtn">⬅️</button><button id="downBtn">⬇️</button><button id="rightBtn">➡️</button></div>
 <div id="padR"><div id="zoomRow"><button id="zoomIn">＋</button><button id="zoomOut">－</button></div><button id="atkBtn">⚔️</button><div id="toolRow"><button id="hbSpear">🔨<i id="cSpear">0</i></button><button id="hbMachete">🔪<i id="cMachete">0</i></button><button id="hbTorch">🔥<i id="cTorch">0</i></button><button id="hbMed">🩹<i id="cMed">0</i></button><button id="hbShop">🛒</button></div></div>
 <div id="digBarWrap"><div id="digBar"></div></div>
 <div id="photoBar"><button id="phSh">📸 Save</button><button id="phRot">↻ Rotate</button><button id="phZIn">🔍＋</button><button id="phZOut">🔍－</button><button id="phDone">✅ Done</button></div>
-<div id="overlay"><h2 id="ovT">Stage 1: Nok, Plateau State</h2><p id="ovP">Find 3 Nok artifacts in 90s. Avoid traps.</p>
+<div id="overlay"><h2 id="ovT">Stage 1: Nok, Plateau State</h2><p id="ovP">Three relics sleep beneath the red earth. Ninety seconds. Go.</p>
 <div><button class="big" id="play">▶ Start Stage 1</button></div>
 <p style="font-size:12px;opacity:.7;max-width:320px">D-pad = move • ⚔️ = attack • 🛒 = shop • ☰ = map &amp; gear</p></div>
 <div id="info"><div class="ibox"><div id="infoIcon">🗿</div><h3 id="infoTitle"></h3><p><b id="infoMeta"></b></p><p id="infoFact"></p><p id="infoQuiz" style="background:#2a2413;padding:10px;border-radius:10px"></p><div id="quizBox"></div><button class="big" id="continueBtn">Continue →</button></div></div>
@@ -134,7 +147,7 @@ body.photo #overlay,body.photo #info{background:#000a}
 <div class="mhead"><button id="menuBack">← Back to game</button>
 <div style="display:flex;gap:8px;align-items:center"><div class="card"><img id="face" alt="face"><div><b id="name">Guest</b><span id="acct">Not signed in</span></div><button id="signin">Sign in</button></div><button class="soundBtn" id="soundBtn">🔊 Sound: On</button></div></div>
 <h1 style="font-size:18px;text-align:center">🏺 Relic Hunter: <span>Nigeria Edition</span></h1>
-<p style="font-size:12px;opacity:.75;text-align:center;margin:4px 0 0">Travel through 5 ancient kingdoms. Fight wildlife, dig relics, spend coins on gear.</p>
+<p style="font-size:12px;opacity:.75;text-align:center;margin:4px 0 0">Cross five ancient kingdoms. Outwit beasts, unearth the masterpieces of our ancestors, rise as the greatest relic hunter the savanna has known.</p>
 <div class="tabs"><button id="tabMap" class="active">🗺️ Map</button><button id="tabColl">🏺 Collection (<span id="collCount">0</span>/16)</button><button id="tabInfo">📚 Artifacts</button><button id="tabBoard">🏆 Leaderboard</button><button id="tabHelp">❓ How to play</button></div>
 <div id="viewMap"><div class="mapBox"><h2 style="margin:0">🗺️ Your Journey Across Nigeria</h2><p style="opacity:.8;font-size:12px">True-to-life geography: Nok (Plateau) → Ife (Osun) → Igbo-Ukwu (Anambra) → Benin City (Edo) → Esie (Kwara) &amp; Owo (Ondo). Tap a dot to play.</p>
 <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
@@ -156,6 +169,7 @@ body.photo #overlay,body.photo #info{background:#000a}
 <div id="viewBoard" style="display:none"><h2>🏆 Leaderboard</h2><div id="board"><ol id="lb"></ol><div id="note" style="font-size:12px;opacity:.7"></div></div></div>
 </div>
 <div id="toast"></div>
+<div id="rotateFix"><div style="font-size:44px">📐</div><h3>Turn your phone sideways!</h3><p style="max-width:300px;opacity:.9">The savanna is wide. <b>Naija Relic Hunter</b> digs best in landscape — foundations, beasts and treasure all fit the view.</p><button class="big" id="rotGo">📐 Go Landscape</button><button id="rotSkip">Continue in portrait</button></div>
 <div class="modal" id="helpModal"><div class="mbox"><button class="close" data-close="helpModal">✕</button><h2>❓ How to play</h2><div class="guide">
 <p><b class="g">Goal</b> — every stage buries its relics under soil mounds. Step on a mound and your explorer digs it up. Find them all before time runs out, keeping your 3 lives.</p>
 <p><b class="g">Move</b> with Arrow keys / WASD / D-pad. <b class="g">Drag</b> the scene to orbit the camera and <b class="g">scroll</b> to zoom — your keys follow what the camera sees. Face a beast, then press <span class="kitem">Space</span> or ⚔️ to attack whatever is one step in front of you.</p>
@@ -165,8 +179,8 @@ body.photo #overlay,body.photo #info{background:#000a}
 <p><b class="g">Your gear</b> — open the 🛒 shop any time (pauses the action) or press <span class="kitem">B</span>: 🔨 <b>Spear</b> (💰80) kills a lion or snake one step ahead — 3 throws each purchase. 🔪 <b>Machete</b> (💰60) kills snakes and cuts thorns in front. 🔥 <b>Torch</b> (💰40) panics the nearest lion into fleeing. 🩹 <b>Medkit</b> (💰90): press <span class="kitem">H</span> to restore a life. 💧 <b>Anti-venom</b> (💰70) auto-cures a snake bite. 📡 <b>Metal detector</b> (💰120): mounds within 2 steps glow while you own it. 🗺️ <b>Stage map</b> (💰150): consumed at stage start and marks every mound with continuous hints. ⛏️ <b>Steel shovel</b> (💰140): digs take 0.6s instead of 1.9s, forever.</p>
 <p><b class="g">Camera &amp; screen</b> — drag the scene to orbit, pinch (or ＋／－ buttons, or scroll) to zoom, and tap ⛶ in the top bar for fullscreen on mobile. Lions and snakes are marked with glowing rings; thorns blaze orange-red.</p>
 <p><b class="g">Leaderboard &amp; stars</b> — sign in with start.ng. Each cleared stage saves your best <b>Score</b> (100 points per artifact + 10 per second remaining) and <b>time left</b> to the shared board. Stars ⭐ rate your stage: keep all 3 lives for ⭐⭐⭐, ⭐⭐ with two, ⭐ with one.</p>
-<p><b class="g">BOSS fight!</b> — dig the final artifact of any stage and its guardian awakens: the <b class="g">Stone Beast of Nok</b>, the <b class="g">Roaring Titan of Ife</b>, the <b class="g">River Serpent Lord</b>, the <b class="g">Palace Warden</b>, or the <b class="g">Esie Stone Golem</b>. Face it and hit with 🔨 spear (or 🔪 machete) 2–3 times before it crushes you. Beating it is worth +💰50 and finishes the stage.</p>
-<p><b class="g">Extras</b> — ancient quizzes after each dig earn +💰15. Floating emojis 😡😴😱 show what every beast is up to. The board sometimes 🌋 <b>rearranges its walls</b> mid-stage, so rethink your route! Tap 📷 in the top bar for <b>photo mode</b> (rotate, zoom, save a PNG with your explorer and relic). Listen for the savanna wind, chirping birds, drums — and your heartbeat when danger is one step away. The highlife jingle plays when you clear a stage!</p>
+<p><b class="g">BOSS fight!</b> — dig the final artifact of any stage and its guardian awakens: the <b class="g">Stone Beast of Nok</b>, the <b class="g">Roaring Titan of Ife</b>, the <b class="g">River Serpent Lord</b>, the <b class="g">Palace Warden</b>, or the <b class="g">Esie Stone Golem</b>. Before each beast you get one last moment to grab 🔨 spears / 🔪 machetes from the 🛒 market. The boss stalks the field with a <b class="g">life bar over its head</b>; before every attack the ground <b class="g">GLOWS</b> — red = fist slam, orange = fire (it burns for a while, don't step in it!), gold = a ring of stone spikes (5 tiles — get out of the zone). Step clear during the glow and you <b class="g">dodge</b> (+10 score). Strike it with 🔨/🔪 as many hits as the bar shows; a landed blow staggers the beast back. It gets faster and deadlier every stage.</p>
+<p><b class="g">Extras</b> — answer the 🧠 <b>Trials</b> at the end of every stage for +💰15 a piece. Floating emojis 😡😴😱 show what every beast is up to. The board sometimes 🌋 <b>rearranges its walls</b> mid-stage, so rethink your route! Tap 📷 in the top bar for <b>photo mode</b> (rotate, zoom, save a PNG with your explorer and relic). Listen for the savanna wind, chirping birds, drums — and your heartbeat when danger is one step away. The highlife jingle plays when you clear a stage!</p>
 <p><b class="g">The journey</b> — Stage 1 Nok (~1000 BCE terracotta & iron) → 2 Ife (12th–15th C royal bronzes) → 3 Igbo-Ukwu (9th C bronze hoard) → 4 Benin (15th C palace bronzes, the Guard!) → 5 Esie & Owo (soapstone & terracotta). Every artifact card tells the true story.</p>
 </div></div></div>
 <div class="modal" id="shopModal"><div class="mbox"><button class="close" data-close="shopModal">✕</button><h2>🛒 Safari Supply Store — <span id="shopCoins">💰 100</span></h2><p style="font-size:12px;opacity:.75;margin-top:0">Gear is saved on this device. Weapons use one charge per strike.</p><div id="shopList"></div></div></div>
@@ -330,15 +344,15 @@ const ARTIFACTS=[
 {id:'tada-figure',stage:5,icon:'🥉',title:'Tada Bronze Figure',meta:'Tada • Niger • ~13th-14th C • Bronze',fact:'Tada bronzes in Nupe land show advanced casting and connections across Nigeria long before modern borders.',quiz:'🧠 Tada proves bronze art was not limited to one kingdom.',q:{c:'Tada bronzes come from…',o:['Nupe land, Niger State','Lagos Island','Mount Kilimanjaro'],a:0}},
 ];
 const STAGES=[
-{num:1,name:'Nok',place:'Plateau State',size:8,time:90,traps:4,walls:4,lions:0,snakes:0,thorns:2,guard:false,boss:'Stone Beast of Nok',desc:'Find 3 Nok artifacts in 90s. A calm safari.',
+{num:1,name:'Nok',place:'Plateau State',size:8,time:90,traps:4,walls:4,lions:0,snakes:0,thorns:2,guard:false,boss:'Stone Beast of Nok',desc:'Ninety seconds. Three relics sleep beneath the red earth of the first ironmasters. The savanna sleeps… mostly.',
  bio:{soil:'#7a5a33',ground:'#3e2c15',rim:'#2c1f0f',grass:'#6e6b2f',grassC:.35,leaf:'#5c6b2a',trunk:'#6b4d2a',rock:'#665c48',trees:15,rocks:14,tufts:46,acacia:true,fog:'#2a1f0e'}},
-{num:2,name:'Ife',place:'Osun State',size:9,time:80,traps:6,walls:6,lions:1,snakes:1,thorns:4,guard:false,boss:'Roaring Titan of Ife',desc:'Find 3 Ife artifacts in 80s. A lion prowls here.',
+{num:2,name:'Ife',place:'Osun State',size:9,time:80,traps:6,walls:6,lions:1,snakes:1,thorns:4,guard:false,boss:'Roaring Titan of Ife',desc:'Eighty seconds. Three sacred bronzes hidden by kings of old. A lion prowls the sacred grove — walk softly.',
  bio:{soil:'#4a3b24',ground:'#1f1a0c',rim:'#241d0e',grass:'#2f4a1d',grassC:.5,leaf:'#26421a',trunk:'#4a3320',rock:'#4a4440',trees:32,rocks:6,tufts:60,fog:'#141f0d'}},
-{num:3,name:'Igbo-Ukwu',place:'Anambra State',size:10,time:75,traps:8,walls:8,lions:1,snakes:2,thorns:5,guard:false,boss:'River Serpent Lord',desc:'3 Igbo-Ukwu relics in 75s. Snakes carry venom.',
+{num:3,name:'Igbo-Ukwu',place:'Anambra State',size:10,time:75,traps:8,walls:8,lions:1,snakes:2,thorns:5,guard:false,boss:'River Serpent Lord',desc:'Seventy-five seconds. Treasure of a lost bronze age lies in the wet earth. The snakes are patient. The river is not.',
  bio:{soil:'#4f4434',ground:'#17211d',rim:'#1c2a25',grass:'#31513c',grassC:.45,leaf:'#2d5238',trunk:'#5a4630',rock:'#4d5a50',trees:22,rocks:12,tufts:40,water:'#2b5b54',fog:'#10201c'}},
-{num:4,name:'Benin',place:'Edo State',size:10,time:65,traps:9,walls:9,lions:2,snakes:2,thorns:7,guard:true,boss:'Palace Warden',desc:'4 bronzes in 65s — and the palace Guard hunts you!',
+{num:4,name:'Benin',place:'Edo State',size:10,time:65,traps:9,walls:9,lions:2,snakes:2,thorns:7,guard:true,boss:'Palace Warden',desc:'Sixty-five seconds for four royal bronzes. The Warden walks the old walls of Benin — and he does not forgive.',
  bio:{soil:'#6b3320',ground:'#38130a',rim:'#4a1c10',grass:'#3f471c',grassC:.18,leaf:'#3a4a1e',trunk:'#5b3423',rock:'#5c3a2a',trees:14,rocks:10,tufts:26,fog:'#220f07'}},
-{num:5,name:'Esie & Owo',place:'Kwara & Ondo',size:11,time:55,traps:10,walls:10,lions:2,snakes:3,thorns:8,guard:true,boss:'Esie Stone Golem',desc:'Final: 3 treasures in 55s. Everything hunts you.',
+{num:5,name:'Esie & Owo',place:'Kwara & Ondo',size:11,time:55,traps:10,walls:10,lions:2,snakes:3,thorns:8,guard:true,boss:'Esie Stone Golem',desc:'The final plea: three last treasures under the stone of Esie, in fifty-five seconds. Here, everything that breathes is hunting you.',
  bio:{soil:'#635c52',ground:'#22201c',rim:'#33302b',grass:'#565a41',grassC:.12,leaf:'#4c562e',trunk:'#56483a',rock:'#6f6a62',trees:10,rocks:24,tufts:24,fog:'#1d1c19'}},
 ];
 
@@ -360,6 +374,29 @@ function setPhoto(on){
 }
 document.getElementById('photoBtn').onclick=()=>setPhoto(!photoOn);
 document.getElementById('phDone').onclick=()=>setPhoto(false);
+
+// ===== MOBILE LANDSCAPE (notify + best-effort enforcement) =====
+const PORTRAIT_SM=(typeof window.matchMedia==='function')?window.matchMedia('(orientation:portrait) and (pointer:coarse)'):{matches:false,addEventListener(){},addListener(){}};
+function tryLandscapeFS(){
+  const d=document.documentElement;
+  try{
+    if(document.fullscreenElement)return Promise.resolve();
+    if(d.requestFullscreen){const p=d.requestFullscreen();return p&&p.then?p.catch(()=>{}):Promise.resolve()}
+  }catch(e){}
+  return Promise.resolve();
+}
+function lockLandscape(){
+  try{if(screen.orientation&&screen.orientation.lock){const p=screen.orientation.lock('landscape');if(p&&p.catch)p.catch(()=>{})}}catch(e){}
+}
+document.getElementById('rotGo').onclick=()=>{clickSnd();document.body.classList.add('portrait-ok');tryLandscapeFS().then(lockLandscape)};
+document.getElementById('rotSkip').onclick=()=>{clickSnd();document.body.classList.add('portrait-ok')};
+let rotWasPaused=null;
+function syncRotateFix(){
+  const shown=PORTRAIT_SM.matches&&!document.body.classList.contains('portrait-ok');
+  if(shown){if(running){rotWasPaused=paused;paused=true}}
+  else if(rotWasPaused!==null){if(running)paused=rotWasPaused;rotWasPaused=null}
+}
+try{PORTRAIT_SM.addEventListener('change',syncRotateFix)}catch(e){if(PORTRAIT_SM.addListener)PORTRAIT_SM.addListener(syncRotateFix)}
 document.getElementById('phRot').onclick=()=>{camTheta+=0.5;clickSnd()};
 document.getElementById('phZIn').onclick=()=>{sphere=Math.max(6.5,sphere-1.4)};
 document.getElementById('phZOut').onclick=()=>{sphere=Math.min(30,sphere+1.4)};
@@ -611,8 +648,16 @@ function buildSnake(){
 }
 
 // actors
-let player3D=null,guard3D=null,lions=[],snakes=[],bonusCoins=[],boss=null,bossHp=0,bossDone=false,bossTimer=null;
-let playerTween=null,guardTween=null,digAnim=0,revealList=[],flyers=[],shake=0,facing=0;
+let player3D=null,guard3D=null,lions=[],snakes=[],bonusCoins=[],boss=null,bossHp=0,bossDone=false,bossTimer=null,bossState='idle',bossNext=0,bossWindupEnd=0,bossAttack=null,bossTarget=null,atkUntil=0;
+function bossHpMax(){return[curStage===1?1:curStage<=2?2:curStage<=4?3:4][0]}
+function bossSpeed(){return[0,950,780,660,560,480][curStage]}
+function bossWindup(){return[0,1150,1000,880,760,700][curStage]}
+function pickBossAttack(){
+  if(curStage<=2)return'melee';
+  if(curStage===3)return Math.random()<0.55?'melee':'fire';
+  return['melee','melee','fire','spikes'][Math.floor(Math.random()*4)];
+}
+let playerTween=null,guardTween=null,digAnim=0,revealList=[],flyers=[],shake=0,facing=0,telegraphList=[],fireList=[],slashList=[];
 function addRing(g,color,r1,y=0.45){const ring=new THREE.Mesh(new THREE.RingGeometry(r1*0.72,r1,22),new THREE.MeshBasicMaterial({color,transparent:true,opacity:0.6,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=y;g.add(ring);return ring}
 const badgeVec=new THREE.Vector3();
 function makeBadge(txt){const d=document.createElement('div');d.className='mobBadge';d.textContent=txt;document.getElementById('grid').appendChild(d);return d}
@@ -661,6 +706,9 @@ function loop(){
   }
   for(let i=revealList.length-1;i>=0;i--){const r=revealList[i];r.life-=dt;r.mesh.rotation.y+=dt*3;r.mesh.position.y=r.baseY+Math.sin(r.life*6)*0.08+((1.3-r.life)*0.3);r.light.intensity=Math.max(0,r.life)*2;if(r.life<=0){boardGroup.remove(r.mesh);scene.remove(r.light);revealList.splice(i,1)}}
   for(let i=flyers.length-1;i>=0;i--){const f=flyers[i];f.t+=dt;const p=Math.min(1,f.t/f.dur);f.mesh.position.lerpVectors(f.from,f.to,p);f.mesh.lookAt(f.to);f.mesh.rotateX(Math.PI/2);if(p>=1){scene.remove(f.mesh);f.mesh.geometry.dispose();flyers.splice(i,1)}}
+  for(let i=telegraphList.length-1;i>=0;i--){const T=telegraphList[i];T.t+=dt;T.mesh.material.opacity=0.3+0.3*Math.sin(T.t*14);T.mesh.scale.setScalar(1+0.12*Math.sin(T.t*14));if(T.t>=T.ttl){boardGroup.remove(T.mesh);T.mesh.geometry.dispose();T.mesh.material.dispose();telegraphList.splice(i,1)}}
+  for(let i=fireList.length-1;i>=0;i--){const F=fireList[i];F.t=(F.t||0)+dt;const pop=Math.min(1,F.t/0.12);F.g.scale.setScalar(F.kind==='spike'?0.3+0.7*pop:1+0.16*Math.sin(F.t*16));if(F.kind==='fire'){F.g.material.emissiveIntensity=0.6+0.35*Math.sin(F.t*13);if(F.light)F.light.intensity=1.2+0.5*Math.sin(F.t*9)}if(Date.now()>=F.until){boardGroup.remove(F.g);if(F.light)boardGroup.remove(F.light);F.g.geometry.dispose();F.g.material.dispose();fireList.splice(i,1)}}
+  for(let i=slashList.length-1;i>=0;i--){const s=slashList[i];s.t+=dt;s.mesh.rotation.z+=dt*11;s.mesh.material.opacity=Math.max(0,0.9*(1-s.t/0.35));if(s.t>=0.35){boardGroup.remove(s.mesh);s.mesh.geometry.dispose();s.mesh.material.dispose();slashList.splice(i,1)}}
   if(player3D)camTarget.lerp(player3D.group.position,Math.min(1,dt*4));
   const off=new THREE.Vector3(Math.sin(camTheta)*sphere,sphere*0.95,Math.cos(camTheta)*sphere);
   camera.position.copy(camTarget).add(off);
@@ -677,7 +725,14 @@ function loop(){
   for(const L of lions)updBadge(L.badge,L.g,L.flee>0?'😱':(Math.abs(px-L.x)+Math.abs(py-L.y)<=3?'😡':'😴'));
   for(const S of snakes)updBadge(S.badge,S.g,'🐍');
   if(guard3D)updBadge(guard3D.badge,guard3D,'👹');
-  if(boss)updBadge(boss.badge,boss.g,'👹');
+  if(boss)updBadge(boss.badge,boss.g,bossState==='windup'?'😡':(bossState==='recover'?'😵':'👹'));
+  const hpb=document.getElementById('bossHpBar');
+  if(boss&&hpb&&showB){
+    badgeVec.set(boss.g.position.x,boss.g.position.y+2.05,boss.g.position.z).project(camera);
+    if(badgeVec.z>1||!bw)hpb.style.display='none';
+    else{hpb.style.display='block';hpb.style.left=Math.round((badgeVec.x*0.5+0.5)*bw)+'px';hpb.style.top=Math.round((-badgeVec.y*0.5+0.5)*bh)+'px'}
+    document.getElementById('bossHpFill').style.width=Math.max(0,bossHp/bossHpMax()*100)+'%';
+  }else if(hpb)hpb.style.display='none';
   renderer.render(scene,camera);
 }
 loop();
@@ -697,7 +752,7 @@ function setupStage(n){
   wallsSet=new Set();while(wallsSet.size<st.walls){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&k!=='0,'+(N-1))wallsSet.add(k)}
   trapsSet=new Set();while(trapsSet.size<st.traps){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&!wallsSet.has(k)&&k!=='0,'+(N-1))trapsSet.add(k)}
   thornsSet=new Set();while(thornsSet.size<st.thorns){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&!wallsSet.has(k)&&!trapsSet.has(k)&&k!=='0,'+(N-1)&&k!=='0,0'&&k!==(N-1)+',0')thornsSet.add(k)}
-  time=st.time;running=false;paused=false;digging=false;hintsUsed=0;stageMapUsed=false;bonusCoins=[];boss=null;bossDone=false;
+  time=st.time;running=false;paused=false;digging=false;hintsUsed=0;stageMapUsed=false;bonusCoins=[];boss=null;bossDone=false;bossState='idle';bossTarget=null;bossAttack=null;telegraphList.length=0;fireList.length=0;slashList.length=0;
   if(hasGL)removeBadges();if(bossTimer){clearInterval(bossTimer);bossTimer=null}
   tiles={};
   if(hasGL){
@@ -844,7 +899,8 @@ function move(dx,dy){
   const ci=bonusCoins.findIndex(C=>C.x===nx&&C.y===ny);
   if(ci>=0){const C=bonusCoins[ci];mobGroup.remove(C.g);bonusCoins.splice(ci,1);totalScore+=5;addCoins(5);fxBurst(C.g.position.x,C.g.position.z,'#ffd700');toastOnce('💰 Bonus coin +5');upd()}
   if(gx===px&&gy===py){caughtBy('👹 The Guard caught you! -1 life');return}
-  if(boss&&boss.x===px&&boss.y===py){crushPlayer();return}
+  const fb=fireList.find(F=>F.x===px&&F.y===py);
+  if(fb&&!fb._hit){fb._hit=true;loseLife('🔥 You stepped into the '+STAGES[curStage-1].boss+' fire! -1 life');return}
   if(digSpots[k]!==undefined){startDig(k);return}
 }
 function lionHit(L){
@@ -866,7 +922,7 @@ function snakeBite(S){
 
 function startBoss(){
   const N=STAGES[curStage-1].size,name=STAGES[curStage-1].boss;
-  bossHp=curStage<=2?2:3;
+  bossHp=bossHpMax();
   let x,y,tries=0;
   do{x=Math.floor(Math.random()*N);y=Math.floor(Math.random()*N);tries++}
   while((blocked(x,y,N)||Math.abs(x-px)+Math.abs(y-py)<4)&&tries<300);
@@ -875,43 +931,112 @@ function startBoss(){
   const w=worldOf(x,y,N);model.position.set(w.x,0.25,w.z);mobGroup.add(model);
   addRing(model,'#ff3030',0.5,0.55);
   boss={g:model,x,y,badge:hasGL?makeBadge('👹'):null};
+  bossState='chase';bossNext=Date.now()+500;bossTarget=null;
   running=true;paused=false;document.getElementById('overlay').style.display='none';
-  toast('⚔️ BOSS: '+name+' appeared! Hit it with 🔨/🔪 x'+bossHp+' to win!');playRoar();
-  startAmbient();
+  document.getElementById('bossHpBar').style.display='block';
+  document.getElementById('bossHpName').textContent=name;
+  playRoar();startAmbient();
   if(bossTimer)clearInterval(bossTimer);
-  bossTimer=setInterval(()=>{if(!running||paused||digging||!boss)return;bossStep()},800);
+  bossTimer=setInterval(bossTick,110);
+  toast('⚔️ '+name+' hunts you! The ground GLOWS before it strikes — step away to DODGE!');
 }
-function bossStep(){
-  const N=STAGES[curStage-1].size;
-  const dx=Math.sign(px-boss.x),dy=Math.sign(py-boss.y);
-  let moved=false;
-  const opts=[];
-  if(dx&&dy){opts.push(Math.abs(px-boss.x)>Math.abs(py-boss.y)?[boss.x+dx,boss.y]:[boss.x,boss.y+dy]);opts.push(Math.abs(px-boss.x)>Math.abs(py-boss.y)?[boss.x,boss.y+dy]:[boss.x+dx,boss.y])}
-  else{if(dx)opts.push([boss.x+dx,boss.y]);if(dy)opts.push([boss.x,boss.y+dy])}
-  for(const[nx,ny]of opts){
-    if(nx<0||ny<0||nx>=N||ny>=N)continue;
-    boss.x=nx;boss.y=ny;moved=true;break;
+function bossTick(){
+  if(!running||paused||digging||!boss)return;
+  const now=Date.now();
+  if(bossState==='chase'){
+    if(now<bossNext)return;
+    const N=STAGES[curStage-1].size;
+    const dg=Math.abs(px-boss.x)+Math.abs(py-boss.y);
+    if(dg<=1){startWindup(N);return}
+    const dx=Math.sign(px-boss.x),dy=Math.sign(py-boss.y);
+    const opts=[];
+    if(dx&&dy){const hori=Math.abs(px-boss.x)>Math.abs(py-boss.y);opts.push(hori?[boss.x+dx,boss.y]:[boss.x,boss.y+dy]);opts.push(hori?[boss.x,boss.y+dy]:[boss.x+dx,boss.y])}
+    else{if(dx)opts.push([boss.x+dx,boss.y]);if(dy)opts.push([boss.x,boss.y+dy])}
+    for(const[nx,ny]of opts){
+      if(nx<0||ny<0||nx>=N||ny>=N)continue;
+      if(nx===px&&ny===py)continue;
+      boss.x=nx;boss.y=ny;moveMob(boss.g,boss.x,boss.y,0.38);break;
+    }
+    if(Math.abs(px-boss.x)+Math.abs(py-boss.y)<=2&&Math.random()<0.3)playGrowl();
+    bossNext=now+bossSpeed();
+  }else if(bossState==='windup'){
+    if(now>=bossWindupEnd)bossStrike();
+  }else{
+    if(now>=bossNext){bossState='chase';bossNext=now+bossSpeed()}
   }
-  if(moved)moveMob(boss.g,boss.x,boss.y,0.4);
-  const dg=Math.abs(px-boss.x)+Math.abs(py-boss.y);
-  if(dg<=2&&Math.random()<0.45)playGrowl();
-  if(boss.x===px&&boss.y===py)crushPlayer();
 }
-function crushPlayer(){loseLife('⚔️ The '+STAGES[curStage-1].boss+' crushed you! -1 life')}
+function startWindup(N){
+  bossState='windup';
+  bossTarget={x:px,y:py};
+  bossAttack=pickBossAttack();
+  bossWindupEnd=Date.now()+bossWindup();
+  if(hasGL&&renderer){
+    const color=bossAttack==='melee'?'#ff4040':bossAttack==='fire'?'#ff7b00':'#e6d97a';
+    const w=worldOf(bossTarget.x,bossTarget.y,N);
+    const r=new THREE.Mesh(new THREE.RingGeometry(0.34,0.5,22),new THREE.MeshBasicMaterial({color,transparent:true,opacity:0.3,side:THREE.DoubleSide}));
+    r.rotation.x=-Math.PI/2;r.position.set(w.x,0.54,w.z);boardGroup.add(r);
+    telegraphList.push({mesh:r,t:0,ttl:bossWindup()/1000+0.45});
+    playGrowl();
+  }
+}
+function bossStrike(){
+  const name=STAGES[curStage-1].boss;
+  bossState='recover';bossNext=Date.now()+620;
+  const tt=bossTarget,N=STAGES[curStage-1].size;
+  const w=worldOf(tt.x,tt.y,N);
+  const dh=Math.abs(px-tt.x)+Math.abs(py-tt.y);
+  let hit=false,msg='';
+  if(bossAttack==='melee'){
+    hit=dh<=1;msg='dropped a fist of stone on you!';
+    if(hasGL&&renderer){
+      fxBurst(w.x,w.z,'#ff4040');
+      moveMob(boss.g,tt.x,tt.y,0.16);
+      setTimeout(()=>{if(boss)moveMob(boss.g,boss.x,boss.y,0.3)},320);
+    }
+    shake=0.55;
+  }else if(bossAttack==='fire'){
+    hit=(px===tt.x&&py===tt.y);msg='spat FIRE onto you!';
+    fxBurst(w.x,w.z,'#ff7b00');
+    if(hasGL&&renderer){
+      const f=new THREE.Mesh(new THREE.ConeGeometry(0.17,0.42,6),new THREE.MeshStandardMaterial({color:'#ff9a3d',emissive:'#ff6a00',emissiveIntensity:0.85,roughness:0.4}));
+      f.position.set(w.x,0.72,w.z);boardGroup.add(f);
+      const l=new THREE.PointLight('#ff7b00',1.6,3);l.position.set(w.x,1.1,w.z);boardGroup.add(l);
+      fireList.push({g:f,light:l,x:tt.x,y:tt.y,until:Date.now()+2600,kind:'fire'});
+    }
+  }else{
+    const cells=[[tt.x,tt.y],[tt.x-1,tt.y],[tt.x+1,tt.y],[tt.x,tt.y-1],[tt.x,tt.y+1]];
+    hit=cells.some(c=>c[0]===px&&c[1]===py);msg='burst stone SPIKES through you!';
+    fxBurst(w.x,w.z,'#e6d97a');
+    if(hasGL&&renderer){
+      cells.forEach(c=>{const[x,y]=c;if(x<0||y<0||x>=N||y>=N)return;const w2=worldOf(x,y,N);
+        const sp=new THREE.Mesh(new THREE.ConeGeometry(0.13,0.5,5),new THREE.MeshStandardMaterial({color:'#ded7c2',emissive:'#b98d3f',emissiveIntensity:0.5,roughness:0.7}));
+        sp.position.set(w2.x,0.7,w2.z);sp.castShadow=true;boardGroup.add(sp);
+        fireList.push({g:sp,x,y,until:Date.now()+1500,kind:'spike'})});
+    }
+  }
+  if(hit)loseLife('⚔️ '+name+' '+msg+' DODGE when the ground glows!')
+  else{totalScore+=10;upd();toastOnce('🕺 Dodged! +10 score')}
+}
 function hitBoss(){
   if(!boss)return false;
   const[tx,ty]=facingCell();
   if(boss.x!==tx||boss.y!==ty)return false;
   bossHp--;totalScore+=15;upd();
-  fxBurst(boss.g.position.x,boss.g.position.z,'#ff4040');playRoar();
+  fxBurst(boss.g.position.x,boss.g.position.z,'#ff4040');playRoar();shake=0.5;
+  bossState='recover';bossNext=Date.now()+520;
+  const N=STAGES[curStage-1].size;
+  const hx=boss.x+Math.sign(boss.x-px),ky=boss.y+Math.sign(boss.y-px);
+  const push=Math.abs(boss.x-px)>=Math.abs(boss.y-py)?[hx,boss.y]:[boss.x,ky];
+  if(push[0]>=0&&push[0]<N&&push[1]>=0&&push[1]<N&&!(push[0]===px&&push[1]===py)){boss.x=push[0];boss.y=push[1];moveMob(boss.g,boss.x,boss.y,0.28)}
   if(bossHp<=0){
     const name=STAGES[curStage-1].boss;
     fxBurst(boss.g.position.x,boss.g.position.z,'#ffd700');
     mobGroup.remove(boss.g);if(boss.badge)boss.badge.remove();
     boss=null;bossDone=true;
+    document.getElementById('bossHpBar').style.display='none';
     totalScore+=100;addCoins(50);toast('✅ '+name+' defeated! +💰50 (+score)');upd();
-    setTimeout(()=>{if(running)endGame(true)},700);
-  }else toast('💥 '+bossHp+' more hit'+(bossHp>1?'s':'')+' to fell it!');
+    setTimeout(()=>{if(running)endStageFinale()},700);
+  }else toast('💥 '+bossHp+' more hit'+(bossHp>1?'s':'')+' to fell it — dodge when the ground GLOWS!');
   return true;
 }
 // ===== BOARD MORPH =====
@@ -969,14 +1094,29 @@ setInterval(_lionTweenTick,16);
 
 // ===== ATTACK =====
 function facingCell(){return[px+lastDir[0],py+lastDir[1]]}
+function atkGate(){if(Date.now()<atkUntil)return false;atkUntil=Date.now()+330;return true}
+function slashFx(tx,ty,color){
+  if(!renderer)return;
+  const N=STAGES[curStage-1].size;
+  const w=worldOf(Math.max(0,Math.min(N-1,tx)),Math.max(0,Math.min(N-1,ty)),N);
+  const arc=new THREE.Mesh(new THREE.TorusGeometry(0.36,0.04,6,16,Math.PI*1.15),new THREE.MeshBasicMaterial({color:color||'#ffffff',transparent:true,opacity:0.92}));
+  arc.position.set(w.x,0.68,w.z);arc.castShadow=false;boardGroup.add(arc);
+  slashList.push({mesh:arc,t:0});
+}
+function fistVsBoss(){
+  const[tx,ty]=facingCell();
+  if(boss&&boss.x===tx&&boss.y===ty&&bossHp===1){slashFx(tx,ty);return hitBoss()}
+  return false;
+}
 function useSpear(){
-  if(inventory.spear<1){toast('No 🔨 spear — buy one in the shop (B)');return}
+  if(!atkGate())return;
+  if(inventory.spear<1){if(fistVsBoss())return;toast('No 🔨 spear — buy one in the shop (B)');return}
   const N=STAGES[curStage-1].size;
   const[tx,ty]=facingCell();
   const w1=worldOf(px,py,N),w2=worldOf(Math.max(0,Math.min(N-1,tx)),Math.max(0,Math.min(N-1,ty)),N);
-  const spear=new THREE.Mesh(new THREE.CylinderGeometry(0.025,0.025,0.55,6),mM('#8a5a2b',0.5));
+  const spear=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.6,6),mM('#8a5a2b',0.5));
   spear.position.set(w1.x,0.75,w1.z);scene.add(spear);
-  flyers.push({mesh:spear,from:spear.position.clone(),to:new THREE.Vector3(w2.x,0.6,w2.z),t:0,dur:0.18});
+  flyers.push({mesh:spear,from:spear.position.clone(),to:new THREE.Vector3(w2.x,0.6,w2.z),t:0,dur:0.16});
   playSwish();
   const c=creatureAt(tx,ty);
   inventory.spear--;saveEco();
@@ -985,11 +1125,12 @@ function useSpear(){
   else toastOnce('🔨 Nothing there — face your target');
 }
 function useMachete(){
-  if(inventory.machete<1){toast('No 🔪 machete — buy one in the shop (B)');return}
+  if(!atkGate())return;
+  if(inventory.machete<1){const[fx,fy]=facingCell();if(fistVsBoss())return;slashFx(fx,fy);toast('No 🔪 machete — buy one in the shop (B)');return}
   const N=STAGES[curStage-1].size;
   const[tx,ty]=facingCell();
   const k=kOf(tx,ty);
-  playSwish();
+  playSwish();slashFx(tx,ty);
   if(thornsSet.has(k)){
     thornsSet.delete(k);inventory.machete--;saveEco();addCoins(5);totalScore+=5;
     if(thornMeshes[k]){boardGroup.remove(thornMeshes[k]);delete thornMeshes[k]}
@@ -1054,30 +1195,83 @@ function showArtifactInfo(r){
   document.getElementById('infoTitle').textContent=r.title;
   document.getElementById('infoMeta').textContent=r.meta;
   document.getElementById('infoFact').textContent=r.fact;
-  document.getElementById('infoQuiz').textContent=r.quiz;
-  const qb=document.getElementById('quizBox');
-  if(r.q){
-    qb.style.display='block';
-    qb.innerHTML='<b>🧠 Quiz — answer for +💰15</b>'+r.q.o.map((o,i)=>'<button data-i="'+i+'">'+o+'</button>').join('');
-    qb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
-      qb.querySelectorAll('button').forEach(x=>{x.disabled=true;x.style.pointerEvents='none'});
-      if(+b.dataset.i===r.q.a){b.classList.add('ok');totalScore+=15;addCoins(15);upd();toast('✅ Correct! +💰15')}
-      else b.classList.add('bad');
-    });
-  }else qb.style.display='none';
-  document.getElementById('continueBtn').textContent=Object.keys(digSpots).length===0?'Face the Boss →':'Continue →';
+  document.getElementById('infoQuiz').style.display='none';
+  document.getElementById('quizBox').style.display='none';
+  const cb=document.getElementById('continueBtn');
+  cb.style.display='block';
+  cb.textContent=Object.keys(digSpots).length===0?'\u2694\ufe0f To the Beast \u2192':'Continue \u2192';
   document.getElementById('info').classList.add('show');
-  document.getElementById('continueBtn').onclick=()=>{
+  cb.onclick=()=>{
     document.getElementById('info').classList.remove('show');
     paused=false;
     if(Object.keys(digSpots).length===0){
-      if(!bossDone){startBoss();return}
-      endGame(true);
+      if(!bossDone){armBossPrompt();return}
+      endStageFinale();
     }else morphBoard();
   };
 }
+function armBossPrompt(){
+  const st=STAGES[curStage-1];
+  const armed=inventory.spear>0||inventory.machete>0;
+  paused=true;
+  document.getElementById('infoIcon').textContent='\uD83D\uDC7B';
+  document.getElementById('infoTitle').textContent=st.boss+' stirs\u2026';
+  document.getElementById('infoMeta').textContent='The guardian of '+st.name+' bars your path home.';
+  document.getElementById('infoFact').textContent=armed?'Your blades are ready: '+armStr()+' should be enough to fell it.':'You carry NO blade. The beast hits harder than any lion\u2026';
+  document.getElementById('infoQuiz').style.display='none';
+  const qb=document.getElementById('quizBox');
+  qb.style.display='block';
+  qb.innerHTML='<button id="qArm">\uD83D\uDED2 Visit the Market first</button>'+(!armed?'<button id="qGo" style="border:1px dashed #ff6b6b">\u26A0\uFE0F Brave it bare-handed</button>':'');
+  document.getElementById('info').classList.add('show');
+  const goFight=()=>{document.getElementById('info').classList.remove('show');paused=false;startBoss()};
+  const qa=document.getElementById('qArm');
+  if(qa)qa.onclick=()=>{clickSnd();toggleModal('shopModal',true)};
+  const qg=document.getElementById('qGo');
+  if(qg)qg.onclick=goFight;
+  const cb=document.getElementById('continueBtn');
+  cb.style.display='block';
+  cb.textContent=armed?'\u2694\uFE0F Stand and Fight \u2192':'\u26A0\uFE0F Fight Anyway \u2192';
+  cb.onclick=goFight;
+}
+function armStr(){
+  const a=[];
+  if(inventory.spear>0)a.push('\uD83D\uDD28 x'+inventory.spear);
+  if(inventory.machete>0)a.push('\uD83D\uDD2A x'+inventory.machete);
+  return a.join(' + ');
+}
 
 // ===== END OF STAGE =====
+function endStageFinale(){
+  const qs=stageRelics.filter(r=>collected.includes(r.id)&&r.q);
+  let i=0;
+  const run=()=>{
+    paused=true;
+    if(i>=qs.length){
+      document.getElementById('info').classList.remove('show');
+      paused=false;
+      endGame(true);
+      return;
+    }
+    const r=qs[i],q=r.q;
+    document.getElementById('infoIcon').textContent='\uD83E\uDDE0';
+    document.getElementById('infoTitle').textContent='Trial of '+STAGES[curStage-1].name;
+    document.getElementById('infoMeta').textContent='Question '+(i+1)+' / '+qs.length+' \u2022 +\uD83D\uDCB015 each';
+    document.getElementById('infoFact').textContent=q.c;
+    document.getElementById('infoQuiz').style.display='none';
+    const qb=document.getElementById('quizBox');
+    qb.style.display='block';
+    qb.innerHTML=q.o.map((o,ix)=>'<button data-i="'+ix+'">'+o+'</button>').join('');
+    qb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+      qb.querySelectorAll('button').forEach(x=>{x.disabled=true;x.style.pointerEvents='none'});
+      if(+b.dataset.i===q.a){b.classList.add('ok');totalScore+=15;addCoins(15);upd();toast('\u2705 Correct! +\uD83D\uDCB015')}
+      else b.classList.add('bad');
+      setTimeout(()=>{i++;run()},650);
+    });
+    document.getElementById('continueBtn').style.display='none';
+    document.getElementById('info').classList.add('show');
+  };
+  run();
+}
 function endGame(won){
   stopTimers();running=false;paused=false;digging=false;
   const st=STAGES[curStage-1];
@@ -1089,11 +1283,11 @@ function endGame(won){
     const stars=lives>=3?3:lives>=2?2:1;
     saveStars(curStage,stars);
     playFanfare();setTimeout(playHighlife,1000);
-    document.getElementById('ovT').textContent='Stage Cleared! '+st.name;
-    document.getElementById('ovP').textContent='All relics found! Score: '+totalScore+' • +💰'+bonus+' supplies bonus • Rating: '+'⭐'.repeat(stars)+(stars<3?' (keep all lives for ⭐⭐⭐)':' perfect!');
+    document.getElementById('ovT').textContent='\u26A1 '+st.name+' Cleared!';
+    document.getElementById('ovP').textContent='The relics of '+st.place+' ride home in glory. Score: '+totalScore+' \u2022 +\uD83D\uDCB0'+bonus+' supplies bonus \u2022 Rating: '+'\u2B50'.repeat(stars)+(stars<3?' (guard all 3 lives for \u2B50\u2B50\u2B50)':' a flawless legend!');
   }else{
-    document.getElementById('ovT').textContent='Game Over';
-    document.getElementById('ovP').textContent='Out of lives or time. Score: '+totalScore+'. Buy medkits and weapons, then try again!';
+    document.getElementById('ovT').textContent='\u2620 Game Over';
+    document.getElementById('ovP').textContent='The ground keeps its secrets one more day. Score: '+totalScore+'. Stock blades and remedies at the \uD83D\uDED2 market, and rise again!';
   }
   addCoins(won?40+time:0);
   document.getElementById('play').textContent=won?(curStage<5?'▶ Next Stage →':'▶ Play Again from Stage 1'):'↻ Try Again';
@@ -1101,9 +1295,10 @@ function endGame(won){
   saveScore();
   document.getElementById('overlay').style.display='flex';
   updateMap();renderGalleries();
-  document.getElementById('collCount').textContent=collected.length+'/16';
+document.getElementById('collCount').textContent=collected.length+'/16';
 }
 function startStage(){
+  if(PORTRAIT_SM.matches){tryLandscapeFS().then(lockLandscape)}
   running=true;paused=false;
   document.getElementById('overlay').style.display='none';
   document.getElementById('info').classList.remove('show');
@@ -1191,4 +1386,12 @@ setupStage(1);
 resize3D();
 loadP();renderGalleries();updEco();
 document.getElementById('collCount').textContent=collected.length+'/16';
+if(String(location.search).indexOf('qa')>=0){
+  window.RHQA={
+    setupStage,startStage,armBossPrompt,endStageFinale,startBoss,endGame,
+    digAll(){const ks=Object.keys(digSpots);let i=0;const t=setInterval(()=>{if(digging)return;if(i>=ks.length){clearInterval(t);return}startDig(ks[i++])},80)},
+    gear(){inventory.spear=9;inventory.machete=9;saveEco()},
+    state:()=>({found:(document.getElementById('found')||{}).textContent,info:document.getElementById('info').classList.contains('show'),title:document.getElementById('infoTitle').textContent,qb:document.getElementById('quizBox').style.display,ov:document.getElementById('overlay').style.display,over:document.getElementById('ovT').textContent,cb:document.getElementById('continueBtn').textContent,lives:document.getElementById('lives').textContent,running,paused,bossDone,px,py,bossPos:boss?{x:boss.x,y:boss.y,hp:bossHp}:null,bossState})
+  };
+}
 </script></body></html>
