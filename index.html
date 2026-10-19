@@ -30,8 +30,8 @@ button{-webkit-tap-highlight-color:transparent}
 #toolRow button:disabled i{display:none}
 #toolRow i{position:absolute;bottom:-3px;right:-3px;background:#ffd700;color:#111;font-size:10px;font-weight:800;border-radius:999px;padding:1px 4px;font-style:normal}
 #fsBtn{border:0;background:#2e2a1a;color:#fff;border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:14px;flex:none}
-#digBarWrap{position:absolute;left:50%;bottom:130px;transform:translateX(-50%);width:190px;background:#000a;border-radius:999px;padding:4px;display:none;z-index:10}
-#digBar{height:10px;background:var(--acc);border-radius:999px;width:0%}
+#digBarWrap{position:absolute;left:50%;top:48px;bottom:auto;transform:translateX(-50%);width:132px;background:#000a;border-radius:999px;padding:3px;display:none;z-index:10}
+#digBar{height:6px;background:var(--acc);border-radius:999px;width:0%}
 #overlay{position:absolute;inset:0;background:linear-gradient(rgba(2,4,40,.45),rgba(0,11,204,.82)),#000bcc url(cover.jpg) center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;z-index:9;padding:16px}
 #overlay h2{font-size:22px;text-shadow:0 1px 8px #000c}
 #info{position:absolute;inset:0;background:rgba(3,6,45,.38);display:none;align-items:center;justify-content:center;z-index:11;padding:10px}
@@ -83,7 +83,7 @@ button.big{background:var(--acc);border:0;padding:12px 22px;border-radius:999px;
 .mapLegend{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;font-size:11px;margin-top:8px}
 .mapCard{background:#2a2413;padding:10px 12px;border-radius:12px;text-align:left;margin-top:10px;font-size:13px}
 h1{font-size:20px}h1 span{color:var(--acc)}
-#toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:#1e1a0f;border:1px solid var(--acc);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;display:none;z-index:50;max-width:88vw;text-align:center}
+#toast{position:fixed;left:50%;top:46px;bottom:auto;transform:translateX(-50%);background:#1e1a0fd9;border:1px solid var(--acc);color:#fff;padding:6px 14px;border-radius:999px;font-size:12px;display:none;z-index:50;max-width:320px;text-align:center;opacity:.92}
 #photoBar{position:fixed;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:none;flex-wrap:wrap;gap:6px;background:#1e1a0fe6;z-index:60;padding:8px 10px;border-radius:999px;align-items:center}
 #photoBar button{border:0;background:#2e2a1a;color:#fff;border-radius:999px;padding:8px 12px;cursor:pointer;font-size:13px;font-weight:700}
 body.photo .hud,body.photo #padL,body.photo #padR,body.photo #foundWrap,body.photo #digBarWrap,body.photo #photoBtn,body.photo #fsBtn{display:none!important}
@@ -112,7 +112,7 @@ body.photo #overlay,body.photo #info{background:#000a}
   #atkBtn{width:58px;height:58px;font-size:22px}
   #toolRow button{width:42px;height:42px;font-size:16px}
   #zoomRow button{width:34px;height:34px;font-size:13px}
-  #digBarWrap{width:160px;bottom:110px}
+  #digBarWrap{width:118px;top:44px}
   .mobBadge{font-size:13px}
 }
 @media (max-height:420px) and (orientation:landscape){
@@ -176,7 +176,7 @@ body.photo #overlay,body.photo #info{background:#000a}
 <p><b class="g">Coins 💰</b> start at 100. Earn more: dig an artifact <b>+30</b>, golden coins lying in the field <b>+5</b> each, kill a lion <b>+25</b>, kill a snake <b>+15</b>, cut thorns <b>+5</b> each, a beast caught in a trap <b>+15</b>, stage clear <b>+40</b> plus 1 per second left. Coins and gear are saved on this device.</p>
 <p><b class="g">Hazards</b> — 🦁 <b>Lions</b> wander the dig site, chase you when you get close, and cost 1 life on contact (they back off after). 🐍 <b>Snakes</b> rest beside mounds; step on one and it bites — venom kills in 12s unless you cure it. 🥀 <b>Thorns</b> block paths like walls; a machete cuts through. 🪤 <b>Traps</b> cost a life and send you back to the start. On stages 4–5 the 👹 <b>palace Guard</b> hunts you too.</p>
 <p><b class="g">Digging &amp; hints</b> — digging by hand takes a slow 1.9s (watch the bar); a ⛏️ steel shovel cuts it to 0.6s. You get <b>2 free shimmer hints</b> per stage; after that the mounds stay dark — buy the 🗺️ Stage map so every mound is marked and hinted for the whole stage, or guess by watching where animals gather.</p>
-<p><b class="g">Your gear</b> — open the 🛒 shop any time (pauses the action) or press <span class="kitem">B</span>: 🔨 <b>Spear</b> (💰80) kills a lion or snake one step ahead — 3 throws each purchase. 🔪 <b>Machete</b> (💰60) kills snakes and cuts thorns in front. 🔥 <b>Torch</b> (💰40) panics the nearest lion into fleeing. 🩹 <b>Medkit</b> (💰90): press <span class="kitem">H</span> to restore a life. 💧 <b>Anti-venom</b> (💰70) auto-cures a snake bite. 📡 <b>Metal detector</b> (💰120): mounds within 2 steps glow while you own it. 🗺️ <b>Stage map</b> (💰150): consumed at stage start and marks every mound with continuous hints. ⛏️ <b>Steel shovel</b> (💰140): digs take 0.6s instead of 1.9s, forever.</p>
+<p><b class="g">Your gear</b> — open the 🛒 shop any time (pauses the action) or press <span class="kitem">B</span>: 🔨 <b>Spear</b> (💰80) auto-aims and flies up to <b>4 tiles</b> to floor the nearest lion, snake or boss — a point-blank kill pays a bonus 💰. 🔪 <b>Machete</b> (💰60) kills snakes and clears thorns up close, paying a close-strike bonus, and deals <b>double damage</b> to the boss while you stand beside it. 🔥 <b>Torch</b> (💰40) panics the nearest lion into fleeing. 🩹 <b>Medkit</b> (💰90): press <span class="kitem">H</span> to restore a life. 💧 <b>Anti-venom</b> (💰70) auto-cures a snake bite. 📡 <b>Metal detector</b> (💰120): mounds within 2 steps glow while you own it. 🗺️ <b>Stage map</b> (💰150): consumed at stage start and marks every mound. ⛏️ <b>Steel shovel</b> (💰140): digs take 0.6s instead of 1.9s, forever.</p>
 <p><b class="g">Camera &amp; screen</b> — drag the scene to orbit, pinch (or ＋／－ buttons, or scroll) to zoom, and tap ⛶ in the top bar for fullscreen on mobile. Lions and snakes are marked with glowing rings; thorns blaze orange-red.</p>
 <p><b class="g">Leaderboard &amp; stars</b> — sign in with start.ng. Each cleared stage saves your best <b>Score</b> (100 points per artifact + 10 per second remaining) and <b>time left</b> to the shared board. Stars ⭐ rate your stage: keep all 3 lives for ⭐⭐⭐, ⭐⭐ with two, ⭐ with one.</p>
 <p><b class="g">BOSS fight!</b> — dig the final artifact of any stage and its guardian awakens: the <b class="g">Stone Beast of Nok</b>, the <b class="g">Roaring Titan of Ife</b>, the <b class="g">River Serpent Lord</b>, the <b class="g">Palace Warden</b>, or the <b class="g">Esie Stone Golem</b>. Before each beast you get one last moment to grab 🔨 spears / 🔪 machetes from the 🛒 market. The boss stalks the field with a <b class="g">life bar over its head</b>; before every attack the ground <b class="g">GLOWS</b> — red = fist slam, orange = fire (it burns for a while, don't step in it!), gold = a ring of stone spikes (5 tiles — get out of the zone). Step clear during the glow and you <b class="g">dodge</b> (+10 score). Strike it with 🔨/🔪 as many hits as the bar shows; a landed blow staggers the beast back. It gets faster and deadlier every stage.</p>
@@ -275,8 +275,8 @@ let owned={detector:false,shovel:false,...JSON.parse(localStorage.getItem('rh_ow
 function saveEco(){localStorage.setItem('rh_coins',String(coins));localStorage.setItem('rh_inv',JSON.stringify(inventory));localStorage.setItem('rh_own',JSON.stringify(owned));updEco()}
 function addCoins(n){coins+=n;saveEco();if(n>0)playCoinT()}
 const SHOP=[
-{id:'spear',ic:'🔨',name:'Spear',price:80,desc:'Kills a lion or snake one step ahead. 3 throws per buy, keep up to 9.'},
-{id:'machete',ic:'🔪',name:'Machete',price:60,desc:'Kills snakes and cuts thorns right in front. 6 uses per buy, keep up to 9.'},
+{id:'spear',ic:'🔨',name:'Spear',price:80,desc:'Auto-aims and flies up to 4 tiles to floor the nearest lion/snake/boss. Beast right beside you? Close strike pays a 💰 bonus.'},
+{id:'machete',ic:'🔪',name:'Machete',price:60,desc:'Kills snakes and cuts thorns up close — a close-range bonus 💰 each kill. Against the boss it deals DOUBLE damage.'},
 {id:'torch',ic:'🔥',name:'Torch',price:40,desc:'Panics the nearest lion into fleeing. 3 uses per buy, keep up to 9.'},
 {id:'medkit',ic:'🩹',name:'Medic kit',price:90,desc:'Press H to restore 1 life. Stack up to 3.'},
 {id:'antivenom',ic:'💧',name:'Anti-venom',price:70,desc:'Auto-cures a snake bite. Stack up to 3.'},
@@ -649,7 +649,7 @@ function buildSnake(){
 
 // actors
 let player3D=null,guard3D=null,lions=[],snakes=[],bonusCoins=[],boss=null,bossHp=0,bossDone=false,bossTimer=null,bossState='idle',bossNext=0,bossWindupEnd=0,bossAttack=null,bossTarget=null,atkUntil=0;
-function bossHpMax(){return[curStage===1?1:curStage<=2?2:curStage<=4?3:4][0]}
+function bossHpMax(){return[0,1,2,3,4,5][curStage]}
 function bossSpeed(){return[0,950,780,660,560,480][curStage]}
 function bossWindup(){return[0,1150,1000,880,760,700][curStage]}
 function pickBossAttack(){
@@ -1017,17 +1017,17 @@ function bossStrike(){
   if(hit)loseLife('⚔️ '+name+' '+msg+' DODGE when the ground glows!')
   else{totalScore+=10;upd();toastOnce('🕺 Dodged! +10 score')}
 }
-function hitBoss(){
+function hitBoss(quiet,ranged){
   if(!boss)return false;
-  const[tx,ty]=facingCell();
-  if(boss.x!==tx||boss.y!==ty)return false;
-  bossHp--;totalScore+=15;upd();
+  if(!ranged){const[tx,ty]=facingCell();if(boss.x!==tx||boss.y!==ty)return false}
+  const dmg=ranged?1:2;
+  bossHp-=dmg;totalScore+=15;upd();
   fxBurst(boss.g.position.x,boss.g.position.z,'#ff4040');playRoar();shake=0.5;
   bossState='recover';bossNext=Date.now()+520;
   const N=STAGES[curStage-1].size;
   const hx=boss.x+Math.sign(boss.x-px),ky=boss.y+Math.sign(boss.y-px);
   const push=Math.abs(boss.x-px)>=Math.abs(boss.y-py)?[hx,boss.y]:[boss.x,ky];
-  if(push[0]>=0&&push[0]<N&&push[1]>=0&&push[1]<N&&!(push[0]===px&&push[1]===py)){boss.x=push[0];boss.y=push[1];moveMob(boss.g,boss.x,boss.y,0.28)}
+  if(push[0]>=0&&push[0]<N&&push[1]>=0&&push[1]<N&&!(push[0]===px&&push[1]===py)&&!ranged){boss.x=push[0];boss.y=push[1];moveMob(boss.g,boss.x,boss.y,0.28)}
   if(bossHp<=0){
     const name=STAGES[curStage-1].boss;
     fxBurst(boss.g.position.x,boss.g.position.z,'#ffd700');
@@ -1036,7 +1036,7 @@ function hitBoss(){
     document.getElementById('bossHpBar').style.display='none';
     totalScore+=100;addCoins(50);toast('✅ '+name+' defeated! +💰50 (+score)');upd();
     setTimeout(()=>{if(running)endStageFinale()},700);
-  }else toast('💥 '+bossHp+' more hit'+(bossHp>1?'s':'')+' to fell it — dodge when the ground GLOWS!');
+  }else toast(dmg>=2?'💥 CRUSHING close blow! '+bossHp+' hits left on the bar':'💥 '+bossHp+' more hit'+(bossHp>1?'s':'')+' to fell it — dodge when the ground GLOWS!');
   return true;
 }
 // ===== BOARD MORPH =====
@@ -1108,21 +1108,33 @@ function fistVsBoss(){
   if(boss&&boss.x===tx&&boss.y===ty&&bossHp===1){slashFx(tx,ty);return hitBoss()}
   return false;
 }
+function findSpearTarget(){
+  const cand=[];
+  lions.forEach((L,i)=>cand.push({x:L.x,y:L.y,kind:'lions',idx:i}));
+  snakes.forEach((S,i)=>cand.push({x:S.x,y:S.y,kind:'snakes',idx:i}));
+  if(boss)cand.push({x:boss.x,y:boss.y,kind:'boss'});
+  let best=null,bd=99;
+  cand.forEach(p=>{const d=Math.abs(p.x-px)+Math.abs(p.y-py);if(d>=1&&d<=4&&d<bd){best=p;bd=d}});
+  return best;
+}
 function useSpear(){
   if(!atkGate())return;
   if(inventory.spear<1){if(fistVsBoss())return;toast('No 🔨 spear — buy one in the shop (B)');return}
   const N=STAGES[curStage-1].size;
-  const[tx,ty]=facingCell();
+  const t=findSpearTarget();
+  const aim=t?[t.x,t.y]:facingCell();
+  const[tx,ty]=aim;
   const w1=worldOf(px,py,N),w2=worldOf(Math.max(0,Math.min(N-1,tx)),Math.max(0,Math.min(N-1,ty)),N);
   const spear=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.6,6),mM('#8a5a2b',0.5));
-  spear.position.set(w1.x,0.75,w1.z);scene.add(spear);
-  flyers.push({mesh:spear,from:spear.position.clone(),to:new THREE.Vector3(w2.x,0.6,w2.z),t:0,dur:0.16});
+  spear.position.set(w1.x,0.78,w1.z);scene.add(spear);
+  flyers.push({mesh:spear,from:spear.position.clone(),to:new THREE.Vector3(w2.x,0.6,w2.z),t:0,dur:Math.max(0.14,Math.min(0.4,Math.abs(tx-px)+Math.abs(ty-py)*0.05||0.16))});
   playSwish();
-  const c=creatureAt(tx,ty);
   inventory.spear--;saveEco();
-  if(c){playRoar();totalScore+=c.list==='lions'?20:15;killMob(c.list==='lions'?lions:snakes,c.i,c.list==='lions'?25:15,c.list==='lions'?'#ff8040':'#60ff60');toast(c.list==='lions'?'🔨 Spear floored the lion! +💰25 (+score)':'🔨 Spear floored the snake! +💰15 (+score)');upd()}
-  else if(hitBoss()){}
-  else toastOnce('🔨 Nothing there — face your target');
+  if(!t){toastOnce('🔨 No beast in throwing range — face one to aim');return}
+  const dist=Math.abs(t.x-px)+Math.abs(t.y-py);
+  if(t.kind==='boss'){hitBoss(false,true)}
+  else if(t.kind==='lions'){playRoar();totalScore+=20;killMob(lions,t.idx,25,'#ff8040');if(dist<=1){addCoins(10);totalScore+=10;toast('🔨 Spear floored the lion point-blank! +💰35 (+score)')}else toast('🔨 Spear threw across '+dist+' tiles and floored the lion! +💰25 (+score)');upd()}
+  else{totalScore+=15;killMob(snakes,t.idx,15,'#60ff60');if(dist<=1){addCoins(10);totalScore+=10;toast('🔨 Spear floored the snake point-blank! +💰25 (+score)')}else toast('🔨 Spear threw across '+dist+' tiles and floored the snake! +💰15 (+score)');upd()}
 }
 function useMachete(){
   if(!atkGate())return;
@@ -1137,7 +1149,7 @@ function useMachete(){
     toast('🔪 Thorn patch cleared! +💰5');upd();return;
   }
   const c=creatureAt(tx,ty);
-  if(c&&c.list==='snakes'){inventory.machete--;saveEco();totalScore+=15;killMob(snakes,c.i,15,'#60ff60');toast('🔪 Snake dispatched! +💰15');upd();return}
+  if(c&&c.list==='snakes'){inventory.machete--;saveEco();totalScore+=15;killMob(snakes,c.i,15,'#60ff60');addCoins(10);totalScore+=10;upd();toast('⚡ Close machete strike! Snake dispatched +💰25 (+score)');return}
   if(c&&c.list==='lions'){toast('🦁 Too strong for a machete — use the 🔨 spear');return}
   if(!c&&hitBoss()){inventory.machete--;saveEco();return}
   toastOnce('🔪 Nothing to cut — face a thorn or snake');
