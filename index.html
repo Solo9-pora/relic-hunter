@@ -1,10 +1,14 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kufam:wght@500;700;900&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Kufam:wght@500;700;900&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <title>Relic Hunter: Nigeria Edition - start.ng</title>
 <style>
 *{box-sizing:border-box;margin:0}
 :root{--acc:#d8fd71;--bg:#0d0b06;--panel:#1e1a0f;--panel2:#2a2413}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:#fff;-webkit-user-select:none;user-select:none}
+body{font-family:'Manrope','Segoe UI',system-ui,sans-serif;background:var(--bg);color:#fff;-webkit-user-select:none;user-select:none}
+h1,h2,h3,.mbox h2,#ovT,.mapBox h2,.ibox h3{font-family:'Kufam','Manrope',sans-serif}
 button{-webkit-tap-highlight-color:transparent}
 #viewGame{position:fixed;inset:0;display:flex;flex-direction:column}
 .hud{display:flex;justify-content:space-between;align-items:center;gap:6px;background:var(--panel);padding:7px 10px;font-weight:700;font-size:13px;z-index:5;box-shadow:0 2px 8px #0008}
@@ -32,7 +36,7 @@ button{-webkit-tap-highlight-color:transparent}
 #fsBtn{border:0;background:#2e2a1a;color:#fff;border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:14px;flex:none}
 #digBarWrap{position:absolute;left:50%;top:48px;bottom:auto;transform:translateX(-50%);width:132px;background:#000a;border-radius:999px;padding:3px;display:none;z-index:10}
 #digBar{height:6px;background:var(--acc);border-radius:999px;width:0%}
-#overlay{position:absolute;inset:0;background:linear-gradient(rgba(2,4,40,.45),rgba(0,11,204,.82)),#000bcc url(cover.jpg) center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;z-index:9;padding:16px}
+#overlay{position:absolute;inset:0;background:linear-gradient(rgba(2,4,40,.5),rgba(0,11,204,.72)),#000bcc url(cover.jpg) 50% 0/contain no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;z-index:9;padding:16px}
 #overlay h2{font-size:22px;text-shadow:0 1px 8px #000c}
 #info{position:absolute;inset:0;background:rgba(3,6,45,.38);display:none;align-items:center;justify-content:center;z-index:11;padding:10px}
 
@@ -89,12 +93,8 @@ h1{font-size:20px}h1 span{color:var(--acc)}
 body.photo .hud,body.photo #padL,body.photo #padR,body.photo #foundWrap,body.photo #digBarWrap,body.photo #photoBtn,body.photo #fsBtn{display:none!important}
 body.photo #photoBar{display:flex}
 body.photo #overlay,body.photo #info{background:#000a}
-#rotateFix{position:fixed;inset:0;z-index:97;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:22px;background:linear-gradient(rgba(2,4,40,.55),rgba(0,11,204,.85)),#000bcc url(cover.jpg) center/cover no-repeat}
-#rotateFix h3{font-size:19px;text-shadow:0 1px 8px #000c}
-#rotateFix .big{border:0;background:var(--acc);color:#111;font-weight:800;border-radius:999px;padding:11px 20px;cursor:pointer;font-size:15px}
-#rotateFix #rotSkip{background:none;border:0;color:#fff;opacity:.85;text-decoration:underline;cursor:pointer;font-size:13px}
-@media (orientation:portrait) and (pointer:coarse){#rotateFix{display:flex}}
-@media (orientation:portrait) and (pointer:coarse){body.portrait-ok #rotateFix{display:none}}
+#rotateFix{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:97;display:none;background:#000b;border:1px solid var(--acc);color:#fff;padding:6px 14px;border-radius:999px;font-size:12px;white-space:nowrap;pointer-events:none;text-shadow:0 1px 2px #000}
+@media (orientation:portrait) and (pointer:coarse){#rotateFix{display:block}}
 .mobBadge{position:absolute;transform:translate(-50%,-100%);pointer-events:none;font-size:15px;z-index:3;text-shadow:0 1px 3px #000;display:none}
 #quizBox{background:#2a2413;padding:10px;border-radius:10px;margin-top:6px;text-align:left}
 #quizBox b{font-size:13px}
@@ -145,7 +145,7 @@ body.photo #overlay,body.photo #info{background:#000a}
 
 <div id="menuPage" class="page">
 <div class="mhead"><button id="menuBack">← Back to game</button>
-<div style="display:flex;gap:8px;align-items:center"><div class="card"><img id="face" alt="face"><div><b id="name">Guest</b><span id="acct">Not signed in</span></div><button id="signin">Sign in</button></div><button class="soundBtn" id="soundBtn">🔊 Sound: On</button></div></div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div class="card"><img id="face" alt="face"><div><b id="name">Guest</b><span id="acct">Not signed in</span></div></div><button id="signin">Sign in</button><button id="plSwitch" class="soundBtn" style="padding:10px 14px">👥 Players</button><button id="plSignout" class="soundBtn" style="padding:10px 14px;color:#ffb0b0" hidden>🚪 Log out</button><button class="soundBtn" id="soundBtn">🔊 Sound: On</button></div></div>
 <h1 style="font-size:18px;text-align:center">🏺 Relic Hunter: <span>Nigeria Edition</span></h1>
 <p style="font-size:12px;opacity:.75;text-align:center;margin:4px 0 0">Cross five ancient kingdoms. Outwit beasts, unearth the masterpieces of our ancestors, rise as the greatest relic hunter the savanna has known.</p>
 <div class="tabs"><button id="tabMap" class="active">🗺️ Map</button><button id="tabColl">🏺 Collection (<span id="collCount">0</span>/16)</button><button id="tabInfo">📚 Artifacts</button><button id="tabBoard">🏆 Leaderboard</button><button id="tabHelp">❓ How to play</button></div>
@@ -169,7 +169,7 @@ body.photo #overlay,body.photo #info{background:#000a}
 <div id="viewBoard" style="display:none"><h2>🏆 Leaderboard</h2><div id="board"><ol id="lb"></ol><div id="note" style="font-size:12px;opacity:.7"></div></div></div>
 </div>
 <div id="toast"></div>
-<div id="rotateFix"><div style="font-size:44px">📐</div><h3>Turn your phone sideways!</h3><p style="max-width:300px;opacity:.9">The savanna is wide. <b>Naija Relic Hunter</b> digs best in landscape — foundations, beasts and treasure all fit the view.</p><button class="big" id="rotGo">📐 Go Landscape</button><button id="rotSkip">Continue in portrait</button></div>
+<div id="rotateFix">📐 Best experienced in landscape view</div>
 <div class="modal" id="helpModal"><div class="mbox"><button class="close" data-close="helpModal">✕</button><h2>❓ How to play</h2><div class="guide">
 <p><b class="g">Goal</b> — every stage buries its relics under soil mounds. Step on a mound and your explorer digs it up. Find them all before time runs out, keeping your 3 lives.</p>
 <p><b class="g">Move</b> with Arrow keys / WASD / D-pad. <b class="g">Drag</b> the scene to orbit the camera and <b class="g">scroll</b> to zoom — your keys follow what the camera sees. Face a beast, then press <span class="kitem">Space</span> or ⚔️ to attack whatever is one step in front of you.</p>
@@ -180,10 +180,14 @@ body.photo #overlay,body.photo #info{background:#000a}
 <p><b class="g">Camera &amp; screen</b> — drag the scene to orbit, pinch (or ＋／－ buttons, or scroll) to zoom, and tap ⛶ in the top bar for fullscreen on mobile. Lions and snakes are marked with glowing rings; thorns blaze orange-red.</p>
 <p><b class="g">Leaderboard &amp; stars</b> — sign in with start.ng. Each cleared stage saves your best <b>Score</b> (100 points per artifact + 10 per second remaining) and <b>time left</b> to the shared board. Stars ⭐ rate your stage: keep all 3 lives for ⭐⭐⭐, ⭐⭐ with two, ⭐ with one.</p>
 <p><b class="g">BOSS fight!</b> — dig the final artifact of any stage and its guardian awakens: the <b class="g">Stone Beast of Nok</b>, the <b class="g">Roaring Titan of Ife</b>, the <b class="g">River Serpent Lord</b>, the <b class="g">Palace Warden</b>, or the <b class="g">Esie Stone Golem</b>. Before each beast you get one last moment to grab 🔨 spears / 🔪 machetes from the 🛒 market. The boss stalks the field with a <b class="g">life bar over its head</b>; before every attack the ground <b class="g">GLOWS</b> — red = fist slam, orange = fire (it burns for a while, don't step in it!), gold = a ring of stone spikes (5 tiles — get out of the zone). Step clear during the glow and you <b class="g">dodge</b> (+10 score). Strike it with 🔨/🔪 as many hits as the bar shows; a landed blow staggers the beast back. It gets faster and deadlier every stage.</p>
-<p><b class="g">Extras</b> — answer the 🧠 <b>Trials</b> at the end of every stage for +💰15 a piece. Floating emojis 😡😴😱 show what every beast is up to. The board sometimes 🌋 <b>rearranges its walls</b> mid-stage, so rethink your route! Tap 📷 in the top bar for <b>photo mode</b> (rotate, zoom, save a PNG with your explorer and relic). Listen for the savanna wind, chirping birds, drums — and your heartbeat when danger is one step away. The highlife jingle plays when you clear a stage!</p>
+<p><b class="g">Extras</b> — answer the 🧠 <b>Trials</b> at the end of every stage for +💰15 a piece. Floating emojis 😡😴😱 show what every beast is up to. The board sometimes 🌋 <b>rearranges its walls</b> mid-stage, so rethink your route! Tap 📷 in the top bar for <b>photo mode</b> (rotate, zoom, save a PNG with your explorer and relic). Listen for the savanna wind, chirping birds, the <b class="g">kakaaki horn</b> of the north at Nok, Yoruba <b class="g">talking drum</b> at Ife, Igbo <b class="g">oja whistle</b> at Igbo-Ukwu, <b class="g">gangan and guitar</b> at Benin — and your heartbeat when danger is one step away. The highlife jingle plays when you clear a stage!</p>
 <p><b class="g">The journey</b> — Stage 1 Nok (~1000 BCE terracotta & iron) → 2 Ife (12th–15th C royal bronzes) → 3 Igbo-Ukwu (9th C bronze hoard) → 4 Benin (15th C palace bronzes, the Guard!) → 5 Esie & Owo (soapstone & terracotta). Every artifact card tells the true story.</p>
 </div></div></div>
 <div class="modal" id="shopModal"><div class="mbox"><button class="close" data-close="shopModal">✕</button><h2>🛒 Safari Supply Store — <span id="shopCoins">💰 100</span></h2><p style="font-size:12px;opacity:.75;margin-top:0">Gear is saved on this device. Weapons use one charge per strike.</p><div id="shopList"></div></div></div>
+<div class="modal" id="playerModal"><div class="mbox"><button class="close" data-close="playerModal">✕</button><h2>🧑‍🔧 Choose your hunter</h2><p style="font-size:12px;opacity:.75;margin-top:0">Players belong to your signed-in account. Guests can only pick a male or female explorer for this device.</p><div id="plList"></div><div id="plNew" style="display:none;margin-top:10px;border-top:1px solid #ffffff2e;padding-top:10px">
+<input id="plName" placeholder="Player name" maxlength="18" style="width:100%;background:#2a2413;border:1px solid var(--acc);color:#fff;padding:9px 10px;border-radius:10px;font-weight:700;font-size:13px">
+<div style="display:flex;gap:6px;margin-top:8px"><select id="plGender" style="flex:1;background:#2a2413;border:1px solid var(--acc);color:#fff;padding:9px 10px;border-radius:10px;font-weight:700;font-size:13px"><option value="male">♂ Male hunter</option><option value="female">♀ Female hunter</option></select><button id="plGo" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 12px">＋ Create player</button></div></div>
+<button id="plGuestSkip" class="big" style="width:100%;margin:6px 0 0" hidden>Skip — keep exploring as guest</button></div></div>
 </div>
 <script type="module">
 import * as THREE from './three.module.min.js';
@@ -210,7 +214,7 @@ const playCure=()=>[520,660,780].forEach((f,i)=>tone(f,0.15,'sine',0.1,null,i*0.
 const playBird=()=>{const f=2300+Math.random()*1300;tone(f,0.07,'sine',0.05,f*1.25);tone(f*1.18,0.06,'sine',0.04,f*0.92,0.1)};
 const playHeart=()=>{tone(52,0.1,'sine',0.3,42);tone(46,0.09,'sine',0.2,38,0.16)};
 const playHighlife=()=>{const seq=[523,659,784,880,988,880,784,659,784,1046,880,1318];seq.forEach((f,i)=>{tone(f,0.12,'triangle',0.11,null,i*0.105);tone(f/2,0.12,'sine',0.06,null,i*0.105)})};
-let ambWind=null,ambTm=[];
+let ambWind=null,ambTm=[],talkDrumI=0,whistleI=0,guitarI=0,stoneI=0;
 function startAmbient(){
   if(ambTm.length)return;
   try{const c=ac();const len=2*c.sampleRate,buf=c.createBuffer(1,len,c.sampleRate),d=buf.getChannelData(0);let v=0;
@@ -221,7 +225,36 @@ function startAmbient(){
     ambWind.connect(f);f.connect(g);g.connect(c.destination);ambWind.start();
   }catch(e){}
   ambTm.push(setTimeout(function birdLoop(){if(soundOn&&!paused)playBird();ambTm.push(setTimeout(birdLoop,4000+Math.random()*5000))},2500));
-  ambTm.push(setTimeout(function drumLoop(){if(soundOn&&running&&!paused){const pat=[[1,0,0,0],[1,0,1,0],[1,1,0,1],[1,0,1,1],[1,1,1,1]][curStage-1];pat&&pat.forEach((b,i)=>{if(b)tone(76+Math.random()*8,0.22,'sine',0.2,55,i*0.33)})}ambTm.push(setTimeout(drumLoop,1500))},1800));
+  ambTm.push(setTimeout(function drumLoop(){
+    if(soundOn&&running&&!paused){
+      if(curStage===1){ // Kakaaki — northern long horn (Nok / Plateau)
+        const b=196+Math.random()*26;
+        tone(b,0.5,'sawtooth',0.07,b*0.97);
+        tone(b*1.19,0.34,'sawtooth',0.075,b*1.17,0.52);
+        tone(b*0.84,0.42,'sawtooth',0.07,undefined,0.9);
+      }else if(curStage===2){ // Talking drum — Yoruba dún-dún bends (Ife)
+        const b0=++talkDrumI%3;
+        tone(150-(b0%3)*22,0.3,'triangle',0.2,86);tone(64,0.2,'sine',0.22,50);
+        setTimeout(()=>soundOn&&!paused&&tone(128+((2-b0)%3)*20,0.26,'triangle',0.2,78),320);
+      }else if(curStage===3){ // Oja — Igbo wooden whistle trills (Igbo-Ukwu)
+        const f=1150+Math.random()*450,i=++whistleI%3;
+        tone(f,0.06,'square',0.04,f*1.05,0);
+        tone(f*1.07,0.06,'square',0.04,f*0.95,0.08);
+        tone(f*(1.02-i*0.05),0.16,'sine',0.045,f*1.25,0.17);
+        if(i===2)setTimeout(()=>soundOn&&!paused&&tone(f*1.16,0.05,'square',0.04,f*1.3),330);
+      }else if(curStage===4){ // Gangan drum + guitar pluck (Benin)
+        const seq=[220,261,329,261,329,392];
+        tone(84,0.22,'sine',0.22,58);tone(84,0.16,'sine',0.2,56,0.36);tone(80,0.24,'sine',0.18,54,0.62);
+        if(++guitarI%2===0)seq.forEach((f,i)=>tone(f/2*(i%2===1?1.007:1),0.16,'triangle',0.055,f*0.995,i*0.11));
+        else seq.forEach((f,i)=>tone(f,0.15,'triangle',0.05,null,i*0.11));
+      }else{ // Esie & Owo — blended stone-set beat + soft flute
+        const b0=++stoneI%4;
+        tone(96,0.3,'sine',0.18,b0%2?60:66);tone(88,0.26,'sine',0.15,58,0.4);
+        tone(660+b0*33,0.5,'triangle',0.04,520);
+      }
+    }
+    ambTm.push(setTimeout(drumLoop,1900))
+  },1800));
   ambTm.push(setTimeout(function heartLoop(){
     const danger=lions.some(L=>Math.abs(L.x-px)+Math.abs(L.y-py)<=1)
       ||(guard3D&&guard3D.visible&&Math.abs(px-gx)+Math.abs(py-gy)<=1)
@@ -245,8 +278,73 @@ async function askStartNg(message,replyType,timeoutMs=5000){
   })}catch(e){return null}
 }
 
-// ===== PLAYER (start.ng character) =====
+// ===== PLAYER / LOCAL PROFILES =====
 let style={body:'female',primaryColor:'#008751',secondaryColor:'#2b2f4a',skinColor:'#8d5524',hairColor:'#17120f',hair:'braids',hat:'none',accessory:'none'},pName='Guest',pAcct='Not signed in',isGuest=true,playerId=null;
+let players=[],curPl=null;
+function styleForGender(g){return{body:g==='male'?'male':'female',primaryColor:'#008751',secondaryColor:g==='male'?'#2b2f4a':'#7a1f1f',skinColor:'#8d5524',hairColor:'#17120f',hair:g==='male'?'short':'braids',hat:'none',accessory:'none'}}
+function loadPlayers(){let m={};try{m=JSON.parse(localStorage.getItem('rh_players')||'{}')}catch(e){}players=(playerId&&m[playerId])||[];curPl=(players[0]||null)}
+function savePlayers(){if(!playerId)return;let m={};try{m=JSON.parse(localStorage.getItem('rh_players')||'{}')}catch(e){}m[playerId]=players;localStorage.setItem('rh_players',JSON.stringify(m))}
+function rememberCurPl(){let m={};try{m=JSON.parse(localStorage.getItem('rh_curpl')||'{}')}catch(e){}if(curPl)m[playerId||'guest']=curPl.id+':'+curPl.gender;localStorage.setItem('rh_curpl',JSON.stringify(m))}
+function setPlayer(pl,silent){
+  curPl=pl;style={...styleForGender(pl.gender)};
+  document.getElementById('name').textContent=pl.name;
+  rememberCurPl();if(hasGL)rebuildPlayer();
+}
+function adoptGender(g){style=styleForGender(g);if(hasGL)rebuildPlayer()}
+function guestCharGender(){return localStorage.getItem('rh_char')||'female'}
+function refreshGuestChar(){
+  const g=guestCharGender();
+  document.getElementById('name').textContent='Guest ('+(g==='male'?'♂':'♀')+')';
+  document.getElementById('acct').textContent='Not signed in';
+  const nb=document.getElementById('note');if(nb)nb.textContent='You are a guest — sign in with start.ng to save scores on the shared leaderboard.';
+  adoptGender(g);
+}
+function chooseGenderGuest(g){clickSnd();localStorage.setItem('rh_char',g);refreshGuestChar();closePlayerModal();toast('Character: '+(g==='male'?'♂ male':'♀ female')+' explorer — sign in to save players & reach the leaderboard')}
+function closePlayerModal(){document.getElementById('playerModal').classList.remove('show')}
+function ensureProfile(){
+  if(isGuest){refreshGuestChar();return}
+  let createdDefault=false;
+  if(!players.length){players=[{id:'p'+Date.now().toString(36),name:pName||'Player 1',gender:'male'}];createdDefault=true;savePlayers()}
+  let want='';try{want=(JSON.parse(localStorage.getItem('rh_curpl')||'{}')[playerId])||''}catch(e){}
+  const[wid,wg]=want.split(':');
+  let pl=players.find(p=>p.id===wid)||players[0];
+  if(wg)pl={...pl,gender:wg};
+  setPlayer(pl);
+  if(createdDefault)setTimeout(openPlayerModal,400);
+}
+function renderPlList(){
+  const list=document.getElementById('plList'),newBox=document.getElementById('plNew'),skip=document.getElementById('plGuestSkip');
+  if(isGuest){
+    newBox.style.display='none';skip.hidden=false;
+    const g=guestCharGender();
+    list.innerHTML='<p style="font-size:12px;opacity:.75;margin:2px 0 8px">Guest explorer for this device:</p><div style="display:flex;gap:6px"><button id="gpM" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 10px">♂ Male'+(g==='male'?' ✓':'')+'</button><button id="gpF" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 10px">♀ Female'+(g==='female'?' ✓':'')+'</button></div>';
+    document.getElementById('gpM').onclick=()=>chooseGenderGuest('male');
+    document.getElementById('gpF').onclick=()=>chooseGenderGuest('female');
+  }else{
+    newBox.style.display='block';skip.hidden=true;
+    const opts=players.map(p=>'<button class="plOpt" data-pl="'+p.id+'" style="display:flex;gap:8px;align-items:center;width:100%;margin:5px 0;border:0;background:'+(curPl&&curPl.id===p.id?'var(--acc);color:#111':'#2e2a1a;color:#fff')+';border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:800;font-size:13px;text-align:left">'+(p.gender==='male'?'♂':'♀')+' '+p.name+(curPl&&curPl.id===p.id?' • playing':'')+'</button>').join('');
+    list.innerHTML=(players.length?'<p style="font-size:12px;opacity:.75;margin:2px 0 4px">Saved hunters on this account:</p>':'<p style="font-size:12px;opacity:.75;margin:2px 0 4px">No saved hunters yet — create one:</p>')+opts;
+    list.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{const pl=players.find(p=>p.id===b.dataset.pl);if(pl){setPlayer(pl);closePlayerModal();toast('Now digging as '+pl.name)}});
+    document.getElementById('plGo').onclick=()=>{
+      const nm=(document.getElementById('plName').value||('Player '+(players.length+1))).trim().slice(0,18);
+      const p={id:'p'+Date.now().toString(36),name:nm,gender:document.getElementById('plGender').value};
+      players.push(p);savePlayers();setPlayer(p);closePlayerModal();document.getElementById('plName').value='';
+      toast('New hunter '+nm+' ready — good hunting!');playBuy();
+    };
+  }
+}
+function openPlayerModal(){renderPlList();document.getElementById('playerModal').classList.add('show')}
+document.getElementById('plSwitch').onclick=()=>{clickSnd();openPlayerModal()};
+document.getElementById('plGuestSkip').onclick=()=>{clickSnd();closePlayerModal()};
+document.getElementById('plSignout').onclick=()=>{
+  clickSnd();playerId=null;isGuest=true;pAcct='Not signed in';
+  document.getElementById('plSignout').hidden=true;
+  document.getElementById('signin').hidden=false;
+  document.getElementById('acct').textContent='Not signed in';
+  document.getElementById('note')&&((Nb=>{Nb.textContent='You are a guest — sign in with start.ng to save scores on the shared leaderboard.'})(document.getElementById('note')));
+  refreshGuestChar();renderShop();loadLB();
+  toast('Signed out — gear stays saved on this device');
+};
 async function loadP(){
   const reply=await askStartNg({type:'startng:whoami'},'startng:user');
   const player=reply?.user??reply?.guest;
@@ -254,18 +352,22 @@ async function loadP(){
     if(player.style)style={...style,...player.style};
     pName=player.name||'Guest';pAcct=reply.user?.account?'@'+reply.user.account:'Not signed in';
     isGuest=!reply?.user;playerId=reply.user?.id||null;
-    document.getElementById('name').textContent=pName;
     document.getElementById('acct').textContent=pAcct;
     if(player.face)document.getElementById('face').src=player.face;
+    ensureProfile();
+    document.getElementById('plSignout').hidden=isGuest;
+    document.getElementById('signin').hidden=!isGuest;
     if(hasGL)rebuildPlayer();
     loadLB();
   }
   const isGuestParam=new URLSearchParams(location.search).has('guest');
   document.getElementById('signin').hidden=isGuestParam||!isGuest;
+  document.getElementById('plSignout').hidden=isGuestParam||isGuest;
+  if(!player)ensureProfile();
   document.getElementById('signin').onclick=()=>{location.href=`https://start.ng/?return_to=${encodeURIComponent(location.origin+location.pathname)}`};
 }
-addEventListener('visibilitychange',()=>{if(!document.hidden)loadP()});
-addEventListener('focus',()=>loadP());
+addEventListener('visibilitychange',()=>{if(!document.hidden&&!running)loadP()});
+addEventListener('focus',()=>{if(!running)loadP()});
 
 // ===== ECONOMY =====
 let coins=+(localStorage.getItem('rh_coins')??100);if(Number.isNaN(coins))coins=100;
@@ -388,15 +490,7 @@ function tryLandscapeFS(){
 function lockLandscape(){
   try{if(screen.orientation&&screen.orientation.lock){const p=screen.orientation.lock('landscape');if(p&&p.catch)p.catch(()=>{})}}catch(e){}
 }
-document.getElementById('rotGo').onclick=()=>{clickSnd();document.body.classList.add('portrait-ok');tryLandscapeFS().then(lockLandscape)};
-document.getElementById('rotSkip').onclick=()=>{clickSnd();document.body.classList.add('portrait-ok')};
-let rotWasPaused=null;
-function syncRotateFix(){
-  const shown=PORTRAIT_SM.matches&&!document.body.classList.contains('portrait-ok');
-  if(shown){if(running){rotWasPaused=paused;paused=true}}
-  else if(rotWasPaused!==null){if(running)paused=rotWasPaused;rotWasPaused=null}
-}
-try{PORTRAIT_SM.addEventListener('change',syncRotateFix)}catch(e){if(PORTRAIT_SM.addListener)PORTRAIT_SM.addListener(syncRotateFix)}
+
 document.getElementById('phRot').onclick=()=>{camTheta+=0.5;clickSnd()};
 document.getElementById('phZIn').onclick=()=>{sphere=Math.max(6.5,sphere-1.4)};
 document.getElementById('phZOut').onclick=()=>{sphere=Math.min(30,sphere+1.4)};
@@ -1122,19 +1216,19 @@ function useSpear(){
   if(inventory.spear<1){if(fistVsBoss())return;toast('No 🔨 spear — buy one in the shop (B)');return}
   const N=STAGES[curStage-1].size;
   const t=findSpearTarget();
-  const aim=t?[t.x,t.y]:facingCell();
+  if(!t){playSwish();toastOnce('🔨 No beast within 4 tiles — step closer or face one');return}
+  const aim=[t.x,t.y];
   const[tx,ty]=aim;
   const w1=worldOf(px,py,N),w2=worldOf(Math.max(0,Math.min(N-1,tx)),Math.max(0,Math.min(N-1,ty)),N);
   const spear=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.6,6),mM('#8a5a2b',0.5));
   spear.position.set(w1.x,0.78,w1.z);scene.add(spear);
-  flyers.push({mesh:spear,from:spear.position.clone(),to:new THREE.Vector3(w2.x,0.6,w2.z),t:0,dur:Math.max(0.14,Math.min(0.4,Math.abs(tx-px)+Math.abs(ty-py)*0.05||0.16))});
+  const dist=Math.abs(tx-px)+Math.abs(ty-py);
+  flyers.push({mesh:spear,from:spear.position.clone(),to:new THREE.Vector3(w2.x,0.6,w2.z),t:0,dur:Math.max(0.14,Math.min(0.42,0.08+dist*0.06))});
   playSwish();
   inventory.spear--;saveEco();
-  if(!t){toastOnce('🔨 No beast in throwing range — face one to aim');return}
-  const dist=Math.abs(t.x-px)+Math.abs(t.y-py);
   if(t.kind==='boss'){hitBoss(false,true)}
-  else if(t.kind==='lions'){playRoar();totalScore+=20;killMob(lions,t.idx,25,'#ff8040');if(dist<=1){addCoins(10);totalScore+=10;toast('🔨 Spear floored the lion point-blank! +💰35 (+score)')}else toast('🔨 Spear threw across '+dist+' tiles and floored the lion! +💰25 (+score)');upd()}
-  else{totalScore+=15;killMob(snakes,t.idx,15,'#60ff60');if(dist<=1){addCoins(10);totalScore+=10;toast('🔨 Spear floored the snake point-blank! +💰25 (+score)')}else toast('🔨 Spear threw across '+dist+' tiles and floored the snake! +💰15 (+score)');upd()}
+  else if(t.kind==='lions'){playRoar();totalScore+=20;killMob(lions,t.idx,25,'#ff8040');if(dist<=1){addCoins(10);totalScore+=10;toast('🔨 Spear floored the lion point-blank! +💰35 (+score)')}else toast('🔨 Spear flew '+dist+' tiles and floored the lion! +💰25 (+score)');upd()}
+  else{totalScore+=15;killMob(snakes,t.idx,15,'#60ff60');if(dist<=1){addCoins(10);totalScore+=10;toast('🔨 Spear floored the snake point-blank! +💰25 (+score)')}else toast('🔨 Spear flew '+dist+' tiles and floored the snake! +💰15 (+score)');upd()}
 }
 function useMachete(){
   if(!atkGate())return;
