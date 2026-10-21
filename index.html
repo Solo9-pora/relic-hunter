@@ -38,6 +38,8 @@ button{-webkit-tap-highlight-color:transparent}
 #digBar{height:6px;background:var(--acc);border-radius:999px;width:0%}
 #overlay{position:absolute;inset:0;background:linear-gradient(rgba(2,4,40,.5),rgba(0,11,204,.72)),#000bcc url(cover.jpg) 50% 0/contain no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;z-index:9;padding:16px}
 #overlay h2{font-size:22px;text-shadow:0 1px 8px #000c}
+#shareBtn{display:none;font-family:'Manrope',sans-serif}
+#shareBtn.showShare{display:inline-block;background:#111;color:#fff;border:2px solid #fff}
 #info{position:absolute;inset:0;background:rgba(3,6,45,.38);display:none;align-items:center;justify-content:center;z-index:11;padding:10px}
 
 .ibox{background:rgba(30,26,15,.86);border:2px solid var(--acc);border-radius:16px;max-width:340px;width:100%;max-height:82vh;overflow:auto;padding:12px 14px;text-align:center;font-size:13px}
@@ -137,7 +139,7 @@ body.photo #overlay,body.photo #info{background:#000a}
 <div id="digBarWrap"><div id="digBar"></div></div>
 <div id="photoBar"><button id="phSh">📸 Save</button><button id="phRot">↻ Rotate</button><button id="phZIn">🔍＋</button><button id="phZOut">🔍－</button><button id="phDone">✅ Done</button></div>
 <div id="overlay"><h2 id="ovT">Stage 1: Nok, Plateau State</h2><p id="ovP">Three relics sleep beneath the red earth. Ninety seconds. Go.</p>
-<div><button class="big" id="play">▶ Start Stage 1</button></div>
+<div><button class="big" id="play">▶ Start Stage 1</button><a class="big" id="shareBtn" href="#" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">📤 Share on X</a></div>
 <p style="font-size:12px;opacity:.7;max-width:320px">D-pad = move • ⚔️ = attack • 🛒 = shop • ☰ = map &amp; gear</p></div>
 <div id="info"><div class="ibox"><div id="infoIcon">🗿</div><h3 id="infoTitle"></h3><p><b id="infoMeta"></b></p><p id="infoFact"></p><p id="infoQuiz" style="background:#2a2413;padding:10px;border-radius:10px"></p><div id="quizBox"></div><button class="big" id="continueBtn">Continue →</button></div></div>
 </div>
@@ -1396,6 +1398,11 @@ function endGame(won){
     document.getElementById('ovP').textContent='The ground keeps its secrets one more day. Score: '+totalScore+'. Stock blades and remedies at the \uD83D\uDED2 market, and rise again!';
   }
   addCoins(won?40+time:0);
+  const sb=document.getElementById('shareBtn');
+  const stTxt=won?('I scored '+totalScore+' hunting the relics of '+st.place+' in Relic Hunter: Nigeria Edition '+('\u2B50'.repeat(lives>=3?3:lives>=2?2:1))+' 🏺 Can you beat me?'):
+    ('I scored '+totalScore+' hunting relics in Relic Hunter: Nigeria Edition 🏺 The savanna kept its secrets — retrying!');
+  sb.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(stTxt)+'&url='+encodeURIComponent('https://naija-relic-hunter.start.ng');
+  sb.classList.add('showShare');
   document.getElementById('play').textContent=won?(curStage<5?'▶ Next Stage →':'▶ Play Again from Stage 1'):'↻ Try Again';
   document.getElementById('play').onclick=()=>{clickSnd();setupStage(target);startStage()};
   saveScore();
