@@ -67,6 +67,14 @@ button.big{background:var(--acc);border:0;padding:12px 22px;border-radius:999px;
 .mbox{background:rgba(30,26,15,.94);border:2px solid var(--acc);border-radius:16px;max-width:480px;width:100%;max-height:84vh;overflow:auto;padding:16px}
 .mbox h2{margin:0 0 8px;font-size:20px}
 .mbox .close{float:right;border:0;background:#2e2a1a;color:#fff;border-radius:999px;width:32px;height:32px;font-size:16px;cursor:pointer}
+#plName{width:100%;background:#2a2413;border:1px solid var(--acc);color:#fff;padding:9px 10px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:2px}
+.plRow{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0;font-size:12px;font-weight:700;text-align:left}
+.plRow select{background:#2a2413;border:1px solid var(--acc);color:#fff;padding:7px 9px;border-radius:8px;font-weight:700;font-size:12px}
+.plLbl{font-size:11px;font-weight:800;opacity:.75;margin:6px 0 2px;text-align:left}
+.swRow{display:flex;flex-wrap:wrap;gap:6px;margin:3px 0 8px}
+.sw{width:28px;height:28px;border-radius:50%;border:2px solid #ffffff33;cursor:pointer;padding:0}
+.sw.on{border-color:var(--acc);box-shadow:0 0 0 2px #0008,0 0 8px var(--acc)}
+#plGlass{width:18px;height:18px;accent-color:#d8fd71}
 .shopItem{display:flex;gap:10px;align-items:center;background:#2a2413;padding:10px 12px;border-radius:12px;margin:8px 0}
 .shopItem .ic{font-size:26px}.shopItem b{display:block;font-size:15px}.shopItem p{margin:2px 0 0;font-size:12px;opacity:.8}
 .shopItem button{margin-left:auto;border:0;border-radius:999px;padding:8px 14px;background:var(--acc);font-weight:800;cursor:pointer;white-space:nowrap}
@@ -186,10 +194,8 @@ body.photo #overlay,body.photo #info{background:#000a}
 <p><b class="g">The journey</b> — Stage 1 Nok (~1000 BCE terracotta & iron) → 2 Ife (12th–15th C royal bronzes) → 3 Igbo-Ukwu (9th C bronze hoard) → 4 Benin (15th C palace bronzes, the Guard!) → 5 Esie & Owo (soapstone & terracotta). Every artifact card tells the true story.</p>
 </div></div></div>
 <div class="modal" id="shopModal"><div class="mbox"><button class="close" data-close="shopModal">✕</button><h2>🛒 Safari Supply Store — <span id="shopCoins">💰 100</span></h2><p style="font-size:12px;opacity:.75;margin-top:0">Gear is saved on this device. Weapons use one charge per strike.</p><div id="shopList"></div></div></div>
-<div class="modal" id="playerModal"><div class="mbox"><button class="close" data-close="playerModal">✕</button><h2>🧑‍🔧 Choose your hunter</h2><p style="font-size:12px;opacity:.75;margin-top:0">Players belong to your signed-in account. Guests can only pick a male or female explorer for this device.</p><div id="plList"></div><div id="plNew" style="display:none;margin-top:10px;border-top:1px solid #ffffff2e;padding-top:10px">
-<input id="plName" placeholder="Player name" maxlength="18" style="width:100%;background:#2a2413;border:1px solid var(--acc);color:#fff;padding:9px 10px;border-radius:10px;font-weight:700;font-size:13px">
-<div style="display:flex;gap:6px;margin-top:8px"><select id="plGender" style="flex:1;background:#2a2413;border:1px solid var(--acc);color:#fff;padding:9px 10px;border-radius:10px;font-weight:700;font-size:13px"><option value="male">♂ Male hunter</option><option value="female">♀ Female hunter</option></select><button id="plGo" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 12px">＋ Create player</button></div></div>
-<button id="plGuestSkip" class="big" style="width:100%;margin:6px 0 0" hidden>Skip — keep exploring as guest</button></div></div>
+<div class="modal" id="playerModal"><div class="mbox"><button class="close" data-close="playerModal">✕</button><h2>🧑‍🔧 Create your hunter</h2><p style="font-size:12px;opacity:.75;margin-top:0">Pick a male or female explorer, then customise hair, skin, shirt, skirt/trousers, hat and glasses. Signed-in players are saved to your account.</p><div id="plList"></div><div id="plNew" style="margin-top:10px;border-top:1px solid #ffffff2e;padding-top:10px"></div>
+<button id="plGuestSkip" class="big" style="width:100%;margin:6px 0 0" hidden>Skip — keep current look</button></div></div>
 </div>
 <script type="module">
 import * as THREE from './three.module.min.js';
@@ -283,25 +289,34 @@ async function askStartNg(message,replyType,timeoutMs=5000){
 // ===== PLAYER / LOCAL PROFILES =====
 let style={body:'female',primaryColor:'#008751',secondaryColor:'#2b2f4a',skinColor:'#8d5524',hairColor:'#17120f',hair:'braids',hat:'none',accessory:'none'},pName='Guest',pAcct='Not signed in',isGuest=true,playerId=null;
 let players=[],curPl=null;
-function styleForGender(g){return{body:g==='male'?'male':'female',primaryColor:'#008751',secondaryColor:g==='male'?'#2b2f4a':'#7a1f1f',skinColor:'#8d5524',hairColor:'#17120f',hair:g==='male'?'short':'braids',hat:'none',accessory:'none'}}
+const SKINS=['#f9d7b5','#f0c39a','#e0ac69','#c68642','#8d5524','#5c3317'];
+const TOPS=['#008751','#e74c3c','#2980b9','#f1c40f','#8e44ad','#e67e22','#ecf0f1','#16a085'];
+const BOTS=['#2b2f4a','#7a1f1f','#5b3a1a','#14130f','#1f6f4a','#4a3728'];
+const HAIRS=[['short','Short'],['afro','Afro'],['bun','Bun'],['ponytail','Ponytail'],['braids','Braids'],['dreads','Dreads']];
+const HATS=[['none','None'],['cap','Cap'],['beanie','Beanie'],['tophat','Top hat'],['crown','Crown']];
+function makeStyle(pl){
+  const g=pl.gender==='male'?'male':'female';
+  return{body:g,primaryColor:pl.top||'#008751',secondaryColor:pl.bot||'#2b2f4a',skinColor:pl.skin||'#8d5524',hairColor:'#17120f',
+    hair:pl.hair||(g==='male'?'short':'braids'),hat:pl.hat||'none',accessory:pl.glass?'glasses':'none'};
+}
 function loadPlayers(){let m={};try{m=JSON.parse(localStorage.getItem('rh_players')||'{}')}catch(e){}players=(playerId&&m[playerId])||[];curPl=(players[0]||null)}
 function savePlayers(){if(!playerId)return;let m={};try{m=JSON.parse(localStorage.getItem('rh_players')||'{}')}catch(e){}m[playerId]=players;localStorage.setItem('rh_players',JSON.stringify(m))}
 function rememberCurPl(){let m={};try{m=JSON.parse(localStorage.getItem('rh_curpl')||'{}')}catch(e){}if(curPl)m[playerId||'guest']=curPl.id+':'+curPl.gender;localStorage.setItem('rh_curpl',JSON.stringify(m))}
 function setPlayer(pl,silent){
-  curPl=pl;style={...styleForGender(pl.gender)};
+  curPl=pl;style=makeStyle(pl);
   document.getElementById('name').textContent=pl.name;
   rememberCurPl();if(hasGL)rebuildPlayer();
 }
-function adoptGender(g){style=styleForGender(g);if(hasGL)rebuildPlayer()}
-function guestCharGender(){return localStorage.getItem('rh_char')||'female'}
+function guestChar(){try{return{gender:'female',...(JSON.parse(localStorage.getItem('rh_guest_char')||'{}'))}}catch(e){return{gender:'female'}}}
+function guestCharGender(){return guestChar().gender}
 function refreshGuestChar(){
-  const g=guestCharGender();
-  document.getElementById('name').textContent='Guest ('+(g==='male'?'♂':'♀')+')';
+  const g=guestChar();
+  document.getElementById('name').textContent='Guest ('+(g.gender==='male'?'♂':'♀')+')';
   document.getElementById('acct').textContent='Not signed in';
   const nb=document.getElementById('note');if(nb)nb.textContent='You are a guest — sign in with start.ng to save scores on the shared leaderboard.';
-  adoptGender(g);
+  style=makeStyle(g);if(hasGL)rebuildPlayer();
 }
-function chooseGenderGuest(g){clickSnd();localStorage.setItem('rh_char',g);refreshGuestChar();closePlayerModal();toast('Character: '+(g==='male'?'♂ male':'♀ female')+' explorer — sign in to save players & reach the leaderboard')}
+function chooseGenderGuest(g){clickSnd();localStorage.setItem('rh_guest_char',JSON.stringify({...guestChar(),gender:g}));refreshGuestChar();closePlayerModal();toast('Character: '+(g==='male'?'♂ male':'♀ female')+' — open 👥 Players to customise hair, skin & clothes')}
 function closePlayerModal(){document.getElementById('playerModal').classList.remove('show')}
 function ensureProfile(){
   if(isGuest){refreshGuestChar();return}
@@ -314,25 +329,55 @@ function ensureProfile(){
   setPlayer(pl);
   if(createdDefault)setTimeout(openPlayerModal,400);
 }
+let plForm=null;
+function renderPlForm(preset){
+  plForm=preset||(()=>{const base=isGuest?guestChar():(curPl&&curPl.id?curPl:{gender:'female'});return{gender:base.gender||'female',hair:base.hair||null,skin:base.skin||'#8d5524',top:base.top||'#008751',bot:base.bot||'#2b2f4a',hat:base.hat||'none',glass:!!base.glass}})();
+  if(!plForm.hair)plForm.hair=plForm.gender==='male'?'short':'braids';
+  const box=document.getElementById('plNew');box.style.display='block';
+  const sw=(id,vals,cur)=>'<div class="swRow" id="'+id+'">'+vals.map(c=>'<button class="sw'+(c===cur?' on':'')+'" data-c="'+c+'" style="background:'+c+'" aria-label="colour"></button>').join('')+'</div>';
+  box.innerHTML=
+    (isGuest?'':'<input id="plName" placeholder="Player name" maxlength="18">')+
+    '<div class="plRow"><span>Gender</span><select id="plGender"><option value="male">♂ Male</option><option value="female">♀ Female</option></select></div>'+
+    '<div class="plRow"><span>Hair</span><select id="plHair">'+HAIRS.map(h=>'<option value="'+h[0]+'">'+h[1]+'</option>').join('')+'</select></div>'+
+    '<div class="plRow"><span>Hat</span><select id="plHat">'+HATS.map(h=>'<option value="'+h[0]+'">'+h[1]+'</option>').join('')+'</select></div>'+
+    '<div class="plRow"><span>Glasses</span><input type="checkbox" id="plGlass"'+(plForm.glass?' checked':'')+'></div>'+
+    '<div class="plLbl">Skin tone</div>'+sw('plSkin',SKINS,plForm.skin)+
+    '<div class="plLbl">Shirt colour</div>'+sw('plTop',TOPS,plForm.top)+
+    '<div class="plLbl">'+(plForm.gender==='male'?'Trouser':'Skirt')+' colour</div>'+sw('plBot',BOTS,plForm.bot)+
+    '<button id="plGo" class="big" style="width:100%;margin:6px 0 0;font-size:14px">'+(isGuest?'▶ Use this look':'＋ Create player')+'</button>';
+  document.getElementById('plGender').value=plForm.gender;
+  document.getElementById('plHair').value=plForm.hair;
+  document.getElementById('plHat').value=plForm.hat||'none';
+  document.getElementById('plGender').onchange=e=>{plForm.gender=e.target.value;if(e.target.value==='male'&&plForm.hair==='braids')plForm.hair='short';if(e.target.value==='female'&&plForm.hair==='short')plForm.hair='braids';renderPlForm(plForm)};
+  document.getElementById('plHair').onchange=e=>{plForm.hair=e.target.value};
+  document.getElementById('plHat').onchange=e=>{plForm.hat=e.target.value};
+  const map={plSkin:'skin',plTop:'top',plBot:'bot'};
+  box.querySelectorAll('.swRow').forEach(row=>{row.querySelectorAll('.sw').forEach(b=>b.onclick=()=>{row.querySelectorAll('.sw').forEach(x=>x.classList.remove('on'));b.classList.add('on');plForm[map[row.id]]=b.dataset.c})});
+  document.getElementById('plGlass').onchange=e=>{plForm.glass=e.target.checked};
+  document.getElementById('plGo').onclick=()=>{
+    const g={gender:document.getElementById('plGender').value,hair:document.getElementById('plHair').value,hat:document.getElementById('plHat').value,glass:document.getElementById('plGlass').checked,skin:plForm.skin,top:plForm.top,bot:plForm.bot};
+    if(isGuest){localStorage.setItem('rh_guest_char',JSON.stringify(g));refreshGuestChar();closePlayerModal();toast('New look saved — good hunting!');playBuy();return}
+    const nm=(document.getElementById('plName').value||('Player '+(players.length+1))).trim().slice(0,18);
+    const p={id:'p'+Date.now().toString(36),name:nm,...g};
+    players.push(p);savePlayers();setPlayer(p);closePlayerModal();
+    toast('New hunter '+nm+' created — good hunting!');playBuy();
+  };
+}
 function renderPlList(){
-  const list=document.getElementById('plList'),newBox=document.getElementById('plNew'),skip=document.getElementById('plGuestSkip');
+  const list=document.getElementById('plList'),skip=document.getElementById('plGuestSkip');
   if(isGuest){
-    newBox.style.display='none';skip.hidden=false;
+    skip.hidden=false;
     const g=guestCharGender();
-    list.innerHTML='<p style="font-size:12px;opacity:.75;margin:2px 0 8px">Guest explorer for this device:</p><div style="display:flex;gap:6px"><button id="gpM" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 10px">♂ Male'+(g==='male'?' ✓':'')+'</button><button id="gpF" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 10px">♀ Female'+(g==='female'?' ✓':'')+'</button></div>';
+    list.innerHTML='<p style="font-size:12px;opacity:.75;margin:2px 0 6px">Quick pick, or customise below:</p><div style="display:flex;gap:6px"><button id="gpM" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 10px">♂ Male'+(g==='male'?' ✓':'')+'</button><button id="gpF" class="big" style="flex:1;margin:0;font-size:13px;padding:9px 10px">♀ Female'+(g==='female'?' ✓':'')+'</button></div>';
     document.getElementById('gpM').onclick=()=>chooseGenderGuest('male');
     document.getElementById('gpF').onclick=()=>chooseGenderGuest('female');
+    renderPlForm();
   }else{
-    newBox.style.display='block';skip.hidden=true;
+    skip.hidden=true;
     const opts=players.map(p=>'<button class="plOpt" data-pl="'+p.id+'" style="display:flex;gap:8px;align-items:center;width:100%;margin:5px 0;border:0;background:'+(curPl&&curPl.id===p.id?'var(--acc);color:#111':'#2e2a1a;color:#fff')+';border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:800;font-size:13px;text-align:left">'+(p.gender==='male'?'♂':'♀')+' '+p.name+(curPl&&curPl.id===p.id?' • playing':'')+'</button>').join('');
-    list.innerHTML=(players.length?'<p style="font-size:12px;opacity:.75;margin:2px 0 4px">Saved hunters on this account:</p>':'<p style="font-size:12px;opacity:.75;margin:2px 0 4px">No saved hunters yet — create one:</p>')+opts;
+    list.innerHTML=(players.length?'<p style="font-size:12px;opacity:.75;margin:2px 0 4px">Saved hunters on this account:</p>':'<p style="font-size:12px;opacity:.75;margin:2px 0 4px">No saved hunters yet — create one below:</p>')+opts;
     list.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{const pl=players.find(p=>p.id===b.dataset.pl);if(pl){setPlayer(pl);closePlayerModal();toast('Now digging as '+pl.name)}});
-    document.getElementById('plGo').onclick=()=>{
-      const nm=(document.getElementById('plName').value||('Player '+(players.length+1))).trim().slice(0,18);
-      const p={id:'p'+Date.now().toString(36),name:nm,gender:document.getElementById('plGender').value};
-      players.push(p);savePlayers();setPlayer(p);closePlayerModal();document.getElementById('plName').value='';
-      toast('New hunter '+nm+' ready — good hunting!');playBuy();
-    };
+    renderPlForm();
   }
 }
 function openPlayerModal(){renderPlList();document.getElementById('playerModal').classList.add('show')}
@@ -534,7 +579,7 @@ try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffe
 const hasGL=!!renderer;
 if(!renderer){
   document.getElementById('grid').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:20px;text-align:center;opacity:.8">3D is not available on this device — the game needs WebGL.</div>';
-}else{renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap}
+}else{renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12}
 const scene=new THREE.Scene();
 scene.background=new THREE.Color('#1c150c');
 scene.fog=new THREE.Fog('#1c150c',20,70);
@@ -554,6 +599,8 @@ function buildWorld(N){
   disposeGroup(boardGroup);
   boardGroup=new THREE.Group();scene.add(boardGroup);
   const bio=STAGES[curStage-1].bio||STAGES[0].bio;
+  const skyC=new THREE.Color(bio.ground||'#1c150c');skyC.offsetHSL(0,-0.1,0.05);scene.background=skyC;scene.fog.color.copy(skyC);
+  const sunA=0.7+curStage*0.85;sun.position.set(Math.cos(sunA)*10,15,Math.sin(sunA)*10);
   const ground=new THREE.Mesh(new THREE.BoxGeometry(90,0.2,90),new THREE.MeshStandardMaterial({color:bio.ground||'#332612',roughness:1}));
   ground.position.y=-0.3;ground.receiveShadow=true;boardGroup.add(ground);
   const rim=new THREE.Mesh(new THREE.BoxGeometry(N+2.3,0.28,N+2.3),new THREE.MeshStandardMaterial({color:bio.rim||'#241a0d',roughness:1}));
@@ -845,9 +892,25 @@ function setupStage(n){
   digSpots={};mounds={};thornMeshes={};const spots=[];
   while(spots.length<stageRelics.length){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(k!=='0,'+(N-1)&&!spots.includes(k))spots.push(k)}
   stageRelics.forEach((r,i)=>digSpots[spots[i]]=r);
-  wallsSet=new Set();while(wallsSet.size<st.walls){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&k!=='0,'+(N-1))wallsSet.add(k)}
+  wallsSet=new Set();while(wallsSet.size<st.walls){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&k!=='0,'+(N-1)&&k!==(N-1)+',0')wallsSet.add(k)}
   trapsSet=new Set();while(trapsSet.size<st.traps){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&!wallsSet.has(k)&&k!=='0,'+(N-1))trapsSet.add(k)}
   thornsSet=new Set();while(thornsSet.size<st.thorns){const x=Math.floor(Math.random()*N),y=Math.floor(Math.random()*N);const k=kOf(x,y);if(!spots.includes(k)&&!wallsSet.has(k)&&!trapsSet.has(k)&&k!=='0,'+(N-1)&&k!=='0,0'&&k!==(N-1)+',0')thornsSet.add(k)}
+  // GUARANTEE PASSAGE: spawn must always reach the exit and every digSpot
+  {
+    const solid=k=>wallsSet.has(k)||thornsSet.has(k);
+    const floodOk=()=>{
+      const seen=new Set([kOf(0,N-1)]),q=[[0,N-1]];
+      while(q.length){const[cx,cy]=q.pop();[[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{const nx=cx+dx,ny=cy+dy;if(nx<0||ny<0||nx>=N||ny>=N)return;const k2=kOf(nx,ny);if(seen.has(k2)||solid(k2))return;seen.add(k2);q.push([nx,ny])})}
+      return seen.has(kOf(N-1,0))&&Object.keys(digSpots).every(k=>seen.has(k));
+    };
+    let it=0;
+    while(!floodOk()&&it++<800){
+      const cand=[...wallsSet,...thornsSet].filter(k=>k!==kOf(0,N-1));
+      if(!cand.length)break;
+      const k=cand[Math.floor(Math.random()*cand.length)];
+      wallsSet.delete(k);thornsSet.delete(k);
+    }
+  }
   time=st.time;running=false;paused=false;digging=false;hintsUsed=0;stageMapUsed=false;bonusCoins=[];boss=null;bossDone=false;bossState='idle';bossTarget=null;bossAttack=null;telegraphList.length=0;fireList.length=0;slashList.length=0;
   if(hasGL)removeBadges();if(bossTimer){clearInterval(bossTimer);bossTimer=null}
   tiles={};
@@ -1504,6 +1567,7 @@ if(String(location.search).indexOf('qa')>=0){
     setupStage,startStage,armBossPrompt,endStageFinale,startBoss,endGame,
     digAll(){const ks=Object.keys(digSpots);let i=0;const t=setInterval(()=>{if(digging)return;if(i>=ks.length){clearInterval(t);return}startDig(ks[i++])},80)},
     gear(){inventory.spear=9;inventory.machete=9;saveEco()},
+    floodOk(){const N=STAGES[curStage-1].size;const solid=k=>wallsSet.has(k)||thornsSet.has(k);const seen=new Set([kOf(0,N-1)]),q=[[0,N-1]];while(q.length){const[cx,cy]=q.pop();[[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{const nx=cx+dx,ny=cy+dy;if(nx<0||ny<0||nx>=N||ny>=N)return;const k2=kOf(nx,ny);if(seen.has(k2)||solid(k2))return;seen.add(k2);q.push([nx,ny])})}return{exit:seen.has(kOf(N-1,0)),mounds:Object.keys(digSpots).every(k=>seen.has(k)),openNeighbors:[[1,0],[0,-1]].filter(([dx,dy])=>!solid(kOf(dx,dy))).length}},
     state:()=>({found:(document.getElementById('found')||{}).textContent,info:document.getElementById('info').classList.contains('show'),title:document.getElementById('infoTitle').textContent,qb:document.getElementById('quizBox').style.display,ov:document.getElementById('overlay').style.display,over:document.getElementById('ovT').textContent,cb:document.getElementById('continueBtn').textContent,lives:document.getElementById('lives').textContent,running,paused,bossDone,px,py,bossPos:boss?{x:boss.x,y:boss.y,hp:bossHp}:null,bossState})
   };
 }
